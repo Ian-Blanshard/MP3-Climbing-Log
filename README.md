@@ -77,6 +77,8 @@ A user of the site wants to:
 
 ![Screenshot database schema](/climbing_log/static/images/database_schema.jpg)
 
+The database is a simple design with a single user having one or more sessions and each session containing one or more climbs. An email and password are included for users to allow scope for adding user logins further in development.
+
 ***
 
 ### Wireframes <a name="wireframes"></a>
@@ -85,42 +87,57 @@ A user of the site wants to:
 
 ### Homepage
 
-![Screenshot moblie wireframe 1](/climbing_log/static/images/mobile_wireframe_1.jpg)
+![Screenshot of mobile wireframe 1](/climbing_log/static/images/mobile_wireframe_1.jpg)
 
-![Screenshot moblie wireframe 2](/climbing_log/static/images/mobile_wireframe_2.jpg)
+![Screenshot of mobile wireframe 2](/climbing_log/static/images/mobile_wireframe_2.jpg)
 
 ### Sessions home page
 
-![Screenshot moblie wireframe 3](/climbing_log/static/images/mobile_wireframe_3.jpg)
+![Screenshot of mobile wireframe 3](/climbing_log/static/images/mobile_wireframe_3.jpg)
 
 ### New session page
 
-![Screenshot moblie wireframe 4](/climbing_log/static/images/mobile_wireframe_4.jpg)
+![Screenshot of mobile wireframe 4](/climbing_log/static/images/mobile_wireframe_4.jpg)
 
 ### Logging climbs to session page
 
-![Screenshot moblie wireframe 5](/climbing_log/static/images/mobile_wireframe_5.jpg)
+![Screenshot of mobile wireframe 5](/climbing_log/static/images/mobile_wireframe_5.jpg)
 
 ### Individual session information
 
-![Screenshot moblie wireframe 6](/climbing_log/static/images/mobile_wireframe_6.jpg)
+![Screenshot of mobile wireframe 6](/climbing_log/static/images/mobile_wireframe_6.jpg)
 
 ***
 
-### Tablet wireframes
+
+### Tablet/ Desktop wireframes
+
+The layout and design for tablet/desktop will be the same with desktop having larger borders to the side of the cards. This provides consistency across devices.The site is desinged mobile first, with the idea being it will primarily be used on a mobile in a situtaion you are performing the activities.
+
+### Homepage
+
+![Screenshot of tablet/desktop wireframe 1](/climbing_log/static/images/tablet_wireframe_1.jpg)
+
+![Screenshot of tablet/desktop wireframe 2](/climbing_log/static/images/tablet_wireframe_2.jpg)
 
 ### Sessions home page
+
+![Screenshot of tablet/desktop wireframe 3](/climbing_log/static/images/tablet_wireframe_3.jpg)
+
 ### New session page
+
+![Screenshot of tablet/desktop wireframe 4](/climbing_log/static/images/tablet_wireframe_4.jpg)
+
 ### Logging climbs to session page
+
+![Screenshot of tablet/desktop wireframe 5](/climbing_log/static/images/tablet_wireframe_5.jpg)
+
 ### Individual session information
+
+![Screenshot of tablet/desktop wireframe 6](/climbing_log/static/images/tablet_wireframe_6.jpg)
+
+
  ***
-### Desktop wireframes
 
-### Sessions home page
-### New session page
-### Logging climbs to session page
-### Individual session information
-
-***
 
 ### Colour Scheme and Font <a name="styles"></a>

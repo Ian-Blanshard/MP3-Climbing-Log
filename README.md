@@ -141,3 +141,10 @@ The layout and design for tablet/desktop will be the same with desktop having la
 
 
 ### Colour Scheme and Font <a name="styles"></a>
+
+## Credits <a name="credits"></a>
+
+https://vertabelo.com/blog/schema-diagram/
+https://www.gleek.io/blog/crows-foot-notation.html#google_vignette
+
+

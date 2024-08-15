@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if current_user.is_authenticated %}
-    <h1>You are logged in</h1>
+    <h1>You are logged in as {{ current_user.username }}</h1>
     {% else %}
     <h1>You are not logged in</h1>
-    {% endif %}
+    
 <div class="card">
     <div class="card-header">
-      Are you new to climb log?
+      Are you new to climbing log?
     </div>
     <div class="card-body">
       <h5 class="card-title">Create your user profile</h5>
@@ -21,11 +21,23 @@
     </div>
     <div class="card-body">
       <h5 class="card-title">Lets start logging your activities</h5>
-      <p class="card-text">Log in to your account to log a new activity or view data from your climbing sesions</p>
+      <p class="card-text">Login to your account to log a new activity or view data from your climbing sesions</p>
       <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
     </div>
   </div>
-
+  {% endif %}
+{% if current_user.is_authenticated %}
 <h3>Recent Sessions</h3>
+<div class="card">
+    <div class="card-header">
+      You have no recent sessions to display
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Lets start logging your activities</h5>
+      <p class="card-text"></p>
+      <a href="#" class="btn btn-primary">Log a session</a>
+    </div>
+  </div>
+{% endif %}
 
 {% endblock  %}

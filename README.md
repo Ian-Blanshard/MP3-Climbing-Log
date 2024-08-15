@@ -147,4 +147,5 @@ The layout and design for tablet/desktop will be the same with desktop having la
 https://vertabelo.com/blog/schema-diagram/
 https://www.gleek.io/blog/crows-foot-notation.html#google_vignette
 
-
+for stopping duplicate enteries into database for unique fields
+https://stackoverflow.com/questions/70997771/is-there-a-way-to-use-python-flask-to-receive-a-unique-input-from-the-user

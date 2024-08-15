@@ -143,9 +143,12 @@ The layout and design for tablet/desktop will be the same with desktop having la
 ### Colour Scheme and Font <a name="styles"></a>
 
 ## Credits <a name="credits"></a>
-
+for learning about database schemas
 https://vertabelo.com/blog/schema-diagram/
 https://www.gleek.io/blog/crows-foot-notation.html#google_vignette
 
 for stopping duplicate enteries into database for unique fields
 https://stackoverflow.com/questions/70997771/is-there-a-way-to-use-python-flask-to-receive-a-unique-input-from-the-user
+
+basic tutorial for flask-login
+https://www.geeksforgeeks.org/how-to-add-authentication-to-your-app-with-flask-login/

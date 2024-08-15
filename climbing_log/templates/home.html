@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-
+{% if current_user.is_authenticated %}
+    <h1>You are logged in</h1>
+    {% else %}
+    <h1>You are not logged in</h1>
+    {% endif %}
 <div class="card">
     <div class="card-header">
       Are you new to climb log?
@@ -9,6 +13,16 @@
       <h5 class="card-title">Create your user profile</h5>
       <p class="card-text">Set up a user profile by clicking the button below, this will allow you to start adding climbs to your log</p>
       <a href="{{ url_for('add_user') }}" class="btn btn-primary">Create new user</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      Already have an account?
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Lets start logging your activities</h5>
+      <p class="card-text">Log in to your account to log a new activity or view data from your climbing sesions</p>
+      <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
     </div>
   </div>
 

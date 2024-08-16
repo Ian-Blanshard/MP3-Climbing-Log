@@ -1,7 +1,8 @@
 from flask import render_template, request, redirect, url_for, flash
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user
 from climbing_log import app, db, login_manager, bcrypt
 from climbing_log.models import Users, Sessions, Climb
+from datetime import datetime
 
 
 
@@ -68,3 +69,24 @@ def add_user():
             db.session.commit()
         return redirect(url_for("login"))
     return render_template("add_user.html")
+
+@app.route("/add_session", methods=["GET", "POST"])
+def add_session():
+    if request.method == 'POST':
+        # get current date/time
+        now = datetime.now()
+
+        session = Sessions(
+            user_id = current_user.user_id,
+            date = now.date(),
+            location = request.form.get('location'),
+            # session length will be calculated when last climb is logged
+            length = 0,
+            time = now
+        )
+
+        db.session.add(session)
+        db.session.commit()
+
+
+    return render_template('session_info.html')

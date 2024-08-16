@@ -46,6 +46,8 @@ def add_user():
                      sex=request.form.get('sex'),
                      height=request.form.get('height'),
                      weight=request.form.get('weight'))
+        password_check = request.form.get('password_check')
+
         duplicate_user = Users.query.filter(
             (Users.username == user.username)).first()
         
@@ -56,8 +58,10 @@ def add_user():
             flash('duplicate username')
         elif duplicate_email:
             flash('duplicate email')
+        elif user.password != password_check:
+            flash('passwords do not match')    
         else:
             db.session.add(user)
             db.session.commit()
-        return redirect(url_for("add_user"))
+        return redirect(url_for("login"))
     return render_template("add_user.html")

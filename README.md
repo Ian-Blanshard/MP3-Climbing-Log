@@ -152,3 +152,6 @@ https://stackoverflow.com/questions/70997771/is-there-a-way-to-use-python-flask-
 
 basic tutorial for flask-login
 https://www.geeksforgeeks.org/how-to-add-authentication-to-your-app-with-flask-login/
+
+tutorial for hashing passwrod using flask
+https://www.geeksforgeeks.org/password-hashing-with-bcrypt-in-flask/

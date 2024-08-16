@@ -155,3 +155,7 @@ https://www.geeksforgeeks.org/how-to-add-authentication-to-your-app-with-flask-l
 
 tutorial for hashing passwrod using flask
 https://www.geeksforgeeks.org/password-hashing-with-bcrypt-in-flask/
+
+for learning how to user flask-migrate to apply changes to the database
+https://www.digitalocean.com/community/tutorials/how-to-perform-flask-sqlalchemy-migrations-using-flask-migrate
+

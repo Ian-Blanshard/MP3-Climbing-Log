@@ -1,7 +1,8 @@
 from flask import render_template, request, redirect, url_for, flash
-from flask_login import LoginManager, login_user, logout_user
-from climbing_log import app, db, login_manager
+from flask_login import login_user, logout_user
+from climbing_log import app, db, login_manager, bcrypt
 from climbing_log.models import Users, Sessions, Climb
+
 
 
 
@@ -23,7 +24,8 @@ def login():
             username=request.form.get("username")).first()
         # Check if the password entered is the 
         # same as the user's password
-        if user.password == request.form.get("password"):
+        is_valid = bcrypt.check_password_hash(user.password, request.form.get("password"))
+        if is_valid:
             # Use the login_user method to log in the user
             login_user(user)
             return redirect(url_for("home"))
@@ -61,6 +63,7 @@ def add_user():
         elif user.password != password_check:
             flash('passwords do not match')    
         else:
+            user.password = bcrypt.generate_password_hash(user.password).decode('utf-8')
             db.session.add(user)
             db.session.commit()
         return redirect(url_for("login"))

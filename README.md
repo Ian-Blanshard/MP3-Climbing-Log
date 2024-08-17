@@ -159,3 +159,11 @@ https://www.geeksforgeeks.org/password-hashing-with-bcrypt-in-flask/
 for learning how to user flask-migrate to apply changes to the database
 https://www.digitalocean.com/community/tutorials/how-to-perform-flask-sqlalchemy-migrations-using-flask-migrate
 
+
+## Testing  <a name="testing"></a>
+
+### Bugs <a name="bugs"></a>
+
+#### Bug fix
+
+Fix the bug throws error when trying to log in with a username that doesn't exist in database

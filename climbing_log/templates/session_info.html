@@ -1,54 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{% if current_user.is_authenticated %}
 
-<div class="card">
-    <div class="card-header">Session details</div>
-    <div class="card-body">
-      <h5 class="card-title">
-        Add session details below to start the session
-      </h5>
-  
-      <form method="POST" action="{{ url_for('add_session') }}">
-        <div class="mb-3">
-          <label for="location" class="form-label">Location</label>
-          <input
-            type="text"
-            class="form-control"
-            id="location"
-            name="location"
-            minlength="3"
-            maxlength="50"
-            aria-describedby="enter location of session"
-            required
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">
-          Start session
-        </button>
-      </form>
-    </div>
-  </div>
-
-
-
-{% else %}
-<div class="card">
-    <div class="card-header">You are not logged into</div>
-    <div class="card-body">
-      <h5 class="card-title">You must be logged in to use this feature</h5>
-      <p class="card-text">
-        Either log in to your profile or create one to begin adding sessions and logging your climbs
-      </p>
-      <a href="{{ url_for('add_user') }}" class="btn btn-primary"
-        >Create new user</a
-      >
-      <a href="{{ url_for('login') }}" class="btn btn-primary"
-        >Login</a
-      >
-    </div>
-  </div>
-{% endif %} 
 
 {% endblock  %}

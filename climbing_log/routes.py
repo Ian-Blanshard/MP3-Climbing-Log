@@ -70,7 +70,7 @@ def add_user():
         return redirect(url_for("login"))
     return render_template("add_user.html")
 
-@app.route("/add_session", methods=["GET", "POST"])
+@app.route("/new_session", methods=["GET", "POST"])
 def add_session():
     if request.method == 'POST':
         # get current date/time
@@ -87,6 +87,25 @@ def add_session():
 
         db.session.add(session)
         db.session.commit()
+        return redirect(url_for("log_climb"))
+    return render_template('new_session.html')
 
+@app.route("/log_climb", methods=["GET", "POST"])
+def log_climb():
+    if request.method == 'POST':
+        current_session = Sessions.query.filter_by(user_id=current_user.user_id).order_by(Sessions.time.desc()).first()
+        if not current_session: 
+            current_session = 0
 
-    return render_template('session_info.html')
+        climb = Climb(
+            session_id = current_session.session_id,
+            difficulty = request.form.get('difficulty'),
+            length = int(request.form.get('length')),  
+            name = request.form.get('name'), 
+            completed = (request.form.get('completed') =='True')
+        )
+        db.session.add(climb)
+        db.session.commit()
+        return redirect(url_for("log_climb"))
+
+    return render_template('log_climb.html')

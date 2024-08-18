@@ -3,7 +3,11 @@ from flask_login import login_user, logout_user, current_user
 from climbing_log import app, db, login_manager, bcrypt
 from climbing_log.models import Users, Sessions, Climb
 from datetime import datetime
-
+from sqlalchemy import func
+import pandas as pd
+import json
+from plotly.utils import PlotlyJSONEncoder
+import plotly.express as px
 
 
 
@@ -84,7 +88,6 @@ def add_session():
             length = 0,
             time = now
         )
-
         db.session.add(session)
         db.session.commit()
         return redirect(url_for("log_climb"))
@@ -109,3 +112,26 @@ def log_climb():
         return redirect(url_for("log_climb"))
 
     return render_template('log_climb.html')
+
+@app.route("/sessions")
+def sessions():
+    if current_user.is_authenticated:
+        # get data from database for chart
+        number_of_sessions = Sessions.query.filter_by(user_id=current_user.user_id).count()
+        completed_count = db.session.query(func.count(Climb.climb_id)).filter_by(session_id=number_of_sessions, completed=True).scalar()
+        not_completed_count = db.session.query(func.count(Climb.climb_id)).filter_by(session_id=number_of_sessions, completed=False).scalar()
+        # use pandas to create the dataframe
+        df = pd.DataFrame({
+            'Status': ['Climbs completed', 'Climbs NOT completed'],
+            'Amount': [completed_count, not_completed_count]
+        })
+        #use plotly to create the pie chart
+        fig = px.pie(df, names='Status', values='Amount')
+        # convert the plotly figure to JSON
+        pie_json = json.dumps(fig, cls=PlotlyJSONEncoder)
+
+        return render_template('sessions.html', graphJSON=pie_json)
+
+
+    return render_template('sessions.html')
+

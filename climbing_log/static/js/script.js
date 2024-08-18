@@ -26,8 +26,10 @@ const grades = [
 // assign difficulty dropdown element to v variable
 const gradeDropdown = document.getElementById('difficulty');
 // for loop to populate dropdown
-grades.forEach(grade => {
+if (gradeDropdown) {
+  grades.forEach(grade => {
     const option = document.createElement('option');
     option.textContent = grade;
     gradeDropdown.appendChild(option);
 });
+}

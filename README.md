@@ -159,6 +159,12 @@ https://www.geeksforgeeks.org/password-hashing-with-bcrypt-in-flask/
 for learning how to user flask-migrate to apply changes to the database
 https://www.digitalocean.com/community/tutorials/how-to-perform-flask-sqlalchemy-migrations-using-flask-migrate
 
+for learning how to create plotly charts and place into html
+https://stackoverflow.com/questions/63616028/how-to-integrate-plotly-express-chart-to-flask-app
+https://www.geeksforgeeks.org/create-a-bar-chart-from-a-dataframe-with-plotly-and-flask/
+
+https://docs.sqlalchemy.org/en/20/tutorial/orm_data_manipulation.html#tutorial-orm-data-manipulation
+
 
 ## Testing  <a name="testing"></a>
 

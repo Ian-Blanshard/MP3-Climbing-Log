@@ -164,13 +164,14 @@ def sessions():
         # loop through the sessions and query the database for climbs
         for session_id in session_ids:
             # get climbs for that session
-            climbs = db.session.query(Climb).filter_by(session_id=session_id).all()
+            climbs = db.session.query(Climb).filter_by(
+                session_id=session_id).all()
             # Initialize the session_id key if it doesn't already exist
             if session_id not in climb_details:
                 climb_details[session_id] = {}
             # loop through climbs and add them to dictionary
             for climb in climbs:
-                # store data in nested dictionaries 
+                # store data in nested dictionaries
                 climb_details[climb.session_id][climb.climb_id] = {
                     'name': climb.name,
                     'difficulty': climb.difficulty,
@@ -179,7 +180,11 @@ def sessions():
                 }
     return render_template('sessions.html', climb_details=climb_details)
 
-
-
+@app.route("/delete_climb/<int:climb_id>")
+def delete_climb(climb_id):
+    climb = Climb.query.get_or_404(climb_id)
+    db.session.delete(climb)
+    db.session.commit()
+    return redirect(url_for("sessions"))
 
 

@@ -1,18 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="card">
-  <div class="card-header">What percentage of climbs did you complete in this session?</div>
-  <div class="card-body">
-    
-    <p class="card-text"></p>
-    <div id="pie-chart"></div>
-    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+{% if current_user.is_authenticated %}
+<body>
+  <div class="container mt-4">
+      <h1>Your logged climbing sessions</h1>
+      {% for session_id, climbs in climb_details.items() %}
+      <h2>Session ID: {{ session_id }}</h2>
+      <table class="table">
+          <thead>
+              <tr>
+                  <th scope="col">Climb ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Difficulty</th>
+                  <th scope="col">Length</th>
+                  <th scope="col">Completed</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for climb_id, climb in climbs.items() %}
+              <tr>
+                  <th scope="row">{{ climb_id }}</th>
+                  <td>{{ climb.name }}</td>
+                  <td>{{ climb.difficulty }}</td>
+                  <td>{{ climb.length }}</td>
+                  <td>{{ 'Yes' if climb.completed else 'No' }}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+      {% endfor %}
   </div>
-</div>
-
-<script type='text/javascript'>
-  var graphs = {{graphJSON | safe}};
-  Plotly.plot('pie-chart',graphs,{});
-</script>
-</div>
+  {% else %}
+  <p>You need to log in to view this page.</p>
+{% endif %}
 {% endblock  %}

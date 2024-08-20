@@ -4,11 +4,11 @@ current_user.is_authenticated %}
   <div class="container mt-4">
     <h1>Your logged climbing sessions</h1>
     {% for session_id, climbs in climb_details.items() %}
-
-    <div class="card">
+    <!-- climbs displayed in a table for larger screen sizes -->
+    <div class="card" id="climbs-as-table">
       <div class="card-header">Session ID: {{ session_id }}</div>
       <div class="card-body">
-        <table class="table">
+        <table class="table table-sm">
           <thead>
             <tr>
               <th scope="col">Name</th>
@@ -40,6 +40,30 @@ current_user.is_authenticated %}
             {% endfor %}
           </tbody>
         </table>
+      </div>
+    </div>
+    <!-- climbs displayed in a table for larger screen sizes -->
+    <div class="card" id="climbs-as-list">
+      <div class="card-header">Session ID: {{ session_id }}</div>
+      <div class="card-body">
+        {% for climb_id, climb in climbs.items() %}
+        <ul class="list-group">
+          <li class="list-group-item fw-bold">{{ climb.name }}</li>
+          <li class="list-group-item">{{ climb.difficulty }}</li>
+          <li class="list-group-item">{{ climb.length }}</li>
+          <li class="list-group-item">{{ 'Yes' if climb.completed else 'No' }}</</li>
+          <li class="list-group-item"><a
+            href="{{ url_for('edit_climb', climb_id=climb_id) }}"
+            class="btn btn-primary"
+            >Edit climb</a
+          >
+          <a
+            href="{{ url_for('delete_climb', climb_id=climb_id) }}"
+            class="btn btn-primary"
+            >Delete climb</a
+          ></li>
+        </ul>
+        {% endfor %}
       </div>
     </div>
     {% endfor %}

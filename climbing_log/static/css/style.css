@@ -11,3 +11,33 @@ body {
 .footer {
     flex-shrink: 0;
 }
+
+
+/* media queries */
+
+/* queries to change session_info climbs from list to table with screen size */
+
+/* have the table and list set to hidden as standard */
+
+#climbs-as-table {
+    display: none;
+}
+
+#climbs-as-list {
+    display: none;
+}
+
+
+@media (min-width: 1000px) {
+    #climbs-as-table {
+        display: block;
+    }
+}
+
+@media (max-width: 1000px) {
+    #climbs-as-list {
+        display: block;
+    }
+}
+
+

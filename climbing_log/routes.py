@@ -180,11 +180,23 @@ def sessions():
                 }
     return render_template('sessions.html', climb_details=climb_details)
 
+
+@app.route("/edit_climb/<int:climb_id>", methods=["GET", "POST"])
+def edit_climb(climb_id):
+    climb = Climb.query.get_or_404(climb_id)
+    if request.method == "POST":
+        climb.name = request.form.get('name')
+        climb.difficulty = request.form.get('difficulty')
+        climb.length = request.form.get('length')
+        climb.completed = request.form.get('completed') == 'True'
+        db.session.commit()
+        return redirect(url_for("sessions"))
+    return render_template("edit_climb.html", climb=climb, climb_id=climb_id)
+
+
 @app.route("/delete_climb/<int:climb_id>")
 def delete_climb(climb_id):
     climb = Climb.query.get_or_404(climb_id)
     db.session.delete(climb)
     db.session.commit()
     return redirect(url_for("sessions"))
-
-

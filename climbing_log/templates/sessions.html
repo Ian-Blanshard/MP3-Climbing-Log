@@ -46,23 +46,60 @@ current_user.is_authenticated %}
     <div class="card" id="climbs-as-list">
       <div class="card-header">Session ID: {{ session_id }}</div>
       <div class="card-body">
+        <p class="text-start fw-bold">Climbs :</p>
         {% for climb_id, climb in climbs.items() %}
-        <ul class="list-group">
-          <li class="list-group-item fw-bold">{{ climb.name }}</li>
-          <li class="list-group-item">{{ climb.difficulty }}</li>
-          <li class="list-group-item">{{ climb.length }}</li>
-          <li class="list-group-item">{{ 'Yes' if climb.completed else 'No' }}</</li>
-          <li class="list-group-item"><a
-            href="{{ url_for('edit_climb', climb_id=climb_id) }}"
-            class="btn btn-primary"
-            >Edit climb</a
-          >
-          <a
-            href="{{ url_for('delete_climb', climb_id=climb_id) }}"
-            class="btn btn-primary"
-            >Delete climb</a
-          ></li>
-        </ul>
+        <div class="accordion accordion-flush">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapse-{{ climb_id}}"
+                aria-expanded="false"
+                aria-controls="flush-collapse-{{ climb_id}}"
+              >
+                <p class="text-end">{{  climb.name if climb.name else 'Unnamed Climb'  }}</p>
+              </button>
+            </h2>
+            <div
+              id="flush-collapse-{{ climb_id}}"
+              class="accordion-collapse collapse"
+            
+            >
+              <div class="accordion-body">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <p class="text-start">Grade</p>
+                    <p class="text-end">{{ climb.difficulty }}</p>
+                  </li>
+                  <li class="list-group-item">
+                    <p class="text-start">Moves</p>
+                    <p class="text-end">{{ climb.length }}</p>
+                  </li>
+                  <li class="list-group-item">
+                    <p class="text-start">Completed</p>
+                    <p class="text-end">
+                      {{ 'Yes' if climb.completed else 'No' }}
+                    </p>
+                  </li>
+                  <li class="list-group-item">
+                    <a
+                      href="{{ url_for('edit_climb', climb_id=climb_id) }}"
+                      class="btn btn-primary"
+                      >Edit climb</a
+                    >
+                    <a
+                      href="{{ url_for('delete_climb', climb_id=climb_id) }}"
+                      class="btn btn-primary"
+                      >Delete climb</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
         {% endfor %}
       </div>
     </div>

@@ -172,6 +172,13 @@ def delete_climb(climb_id):
     db.session.commit()
     return redirect(url_for("sessions"))
 
+@app.route("/delete_session/<int:session_id>")
+def delete_session(session_id):
+    session = Sessions.query.get_or_404(session_id)
+    db.session.delete(session)
+    db.session.commit()
+    return redirect(url_for("sessions"))
+
 
 @app.route('/sessions')
 def sessions():

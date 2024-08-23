@@ -37,10 +37,20 @@
                                         >
                                       </td>
                                     </tr>
+                                    
                                     {% endfor %}
                                   </tbody>
+                                </table>
+                                <a
+                                  href="{{ url_for('delete_session', session_id=session.session_id) }}"
+                                  class="btn btn-primary"
+                                  >Delete session</a
+                                >   
                 {% endif %}
-            </table>
+                
+            
+          
+            
         </div>
     </div>
     {% if session.climbs %}  
@@ -104,10 +114,15 @@
               </div>
 
 
-            {% endfor %}  
+            {% endfor %} 
+            <a
+                                  href="{{ url_for('delete_session', session_id=session.session_id) }}"
+                                  class="btn btn-primary"
+                                  >Delete session</a
+                                >   
         </div>
     </div>
-  </div>
+  
   {% endif %}
             {% endfor %}
 

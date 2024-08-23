@@ -165,6 +165,39 @@ https://www.geeksforgeeks.org/create-a-bar-chart-from-a-dataframe-with-plotly-an
 
 https://docs.sqlalchemy.org/en/20/tutorial/orm_data_manipulation.html#tutorial-orm-data-manipulation
 
+I'd hugely overcomplicated my sessions() route, doing multiple queries to build nested dictionaries so that i could use those relationships to display all the climbs for each session in a list using jinja. I realised the code was very confusing and there surely must be a better way. i used the following resources to learn that i should be using the existing relationships from my database and there was a far simpler way of doing it. this led to refactoring and producing a much better route.
+(code to show how messy things can get)
+# get session ids
+        session_ids = db.session.query(Sessions.session_id).filter_by(
+            user_id=current_user.user_id).order_by(Sessions.session_id.desc()).all()
+        # turn this into a list of integers - rather than tuples
+        session_ids = [session_id[0] for session_id in session_ids]
+        # create a dictionary to store the climbs/session in
+        climb_details = {}
+        # loop through the sessions and query the database for climbs
+        for session_id in session_ids:
+            # get climbs for that session
+            climbs = db.session.query(Climb).filter_by(
+                session_id=session_id).all()
+            # Initialize the session_id key if it doesn't already exist
+            if session_id not in climb_details:
+                climb_details[session_id] = {}
+            # loop through climbs and add them to dictionary
+            for climb in climbs:
+                # store data in nested dictionaries
+                climb_details[climb.session_id][climb.climb_id] = {
+                    'name': climb.name,
+                    'difficulty': climb.difficulty,
+                    'length': climb.length,
+                    'completed': climb.completed
+                }
+
+https://www.golinuxcloud.com/flask-sqlalchemy/#Querying_Data
+https://medium.com/@vickypalaniappan12/relationship-loading-techniques-in-sqlalchemy-4e7d1ff96f75
+https://docs.sqlalchemy.org/en/20/orm/queryguide/relationships.html
+
+
+
 
 ## Testing  <a name="testing"></a>
 

@@ -4,6 +4,7 @@ from climbing_log import app, db, login_manager, bcrypt
 from climbing_log.models import Users, Sessions, Climb
 from datetime import datetime
 from sqlalchemy import func
+from sqlalchemy.orm import joinedload
 import pandas as pd
 import json
 from plotly.utils import PlotlyJSONEncoder
@@ -151,36 +152,6 @@ def session_info():
     return render_template('session_info.html')
 
 
-@app.route("/sessions")
-def sessions():
-    if current_user.is_authenticated:
-        # get session ids
-        session_ids = db.session.query(Sessions.session_id).filter_by(
-            user_id=current_user.user_id).order_by(Sessions.session_id.desc()).all()
-        # turn this into a list of integers - rather than tuples
-        session_ids = [session_id[0] for session_id in session_ids]
-        # create a dictionary to store the climbs/session in
-        climb_details = {}
-        # loop through the sessions and query the database for climbs
-        for session_id in session_ids:
-            # get climbs for that session
-            climbs = db.session.query(Climb).filter_by(
-                session_id=session_id).all()
-            # Initialize the session_id key if it doesn't already exist
-            if session_id not in climb_details:
-                climb_details[session_id] = {}
-            # loop through climbs and add them to dictionary
-            for climb in climbs:
-                # store data in nested dictionaries
-                climb_details[climb.session_id][climb.climb_id] = {
-                    'name': climb.name,
-                    'difficulty': climb.difficulty,
-                    'length': climb.length,
-                    'completed': climb.completed
-                }
-    return render_template('sessions.html', climb_details=climb_details)
-
-
 @app.route("/edit_climb/<int:climb_id>", methods=["GET", "POST"])
 def edit_climb(climb_id):
     climb = Climb.query.get_or_404(climb_id)
@@ -200,3 +171,15 @@ def delete_climb(climb_id):
     db.session.delete(climb)
     db.session.commit()
     return redirect(url_for("sessions"))
+
+
+@app.route('/sessions')
+def sessions():
+    if current_user.is_authenticated:
+        # query database for all sessions from user which is logged in
+        # plus all the climbs from the sessions using the joinedload
+        sessions = Sessions.query.options(joinedload(Sessions.climbs)).filter_by(
+            user_id=current_user.user_id).order_by(Sessions.session_id.desc()).all()
+
+    # return template with current logged in user session history
+    return render_template('sessions.html', sessions=sessions)

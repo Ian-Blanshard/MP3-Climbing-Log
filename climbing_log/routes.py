@@ -13,7 +13,10 @@ import plotly.express as px
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    if current_user.is_authenticated:
+        sessions = Sessions.query.options(joinedload(Sessions.climbs)).filter_by(
+            user_id=current_user.user_id).order_by(Sessions.session_id.desc()).limit(10).all()
+    return render_template("home.html", sessions=sessions)
 
 # Creates a user loader callback that returns the user object given an id
 
@@ -124,19 +127,18 @@ def log_climb():
     return render_template('log_climb.html')
 
 
-@app.route("/session_info")
-def session_info():
+@app.route("/session_info/<int:session_id>")
+def session_info(session_id):
     if current_user.is_authenticated:
         # get data from database for chart
         # get the most recent session
-        last_session = Sessions.query.filter_by(
-            user_id=current_user.user_id).order_by(Sessions.session_id.desc()).first()
+        last_session = Sessions.query.filter_by(session_id=session_id).first()
         # get number of climbs completed from most recent session
         completed_count = db.session.query(func.count(Climb.climb_id)).filter_by(
-            session_id=last_session, completed=True).scalar()
+            session_id=last_session.session_id, completed=True).scalar()
         # get number of climbs not completed from most recent session
         not_completed_count = db.session.query(func.count(Climb.climb_id)).filter_by(
-            session_id=last_session, completed=False).scalar()
+            session_id=last_session.session_id, completed=False).scalar()
         # use pandas to create the dataframe
         df = pd.DataFrame({
             'Status': ['Climbs completed', 'Climbs NOT completed'],
@@ -144,6 +146,14 @@ def session_info():
         })
         # use plotly to create the pie chart using the dataframe
         fig = px.pie(df, names='Status', values='Amount')
+        fig.update_layout(
+            margin=dict(t=0, b=0, l=0, r=0),
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=0.01,
+                xanchor="right",
+                x=0.95))
         # convert the plotly figure to JSON
         pie_json = json.dumps(fig, cls=PlotlyJSONEncoder)
 
@@ -171,6 +181,7 @@ def delete_climb(climb_id):
     db.session.delete(climb)
     db.session.commit()
     return redirect(url_for("sessions"))
+
 
 @app.route("/delete_session/<int:session_id>")
 def delete_session(session_id):

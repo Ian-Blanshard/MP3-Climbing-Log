@@ -1,142 +1,133 @@
 {% extends 'base.html' %} {% block content %} {% if
-    current_user.is_authenticated %}
-    <div class="container mt-4"></div>
-        <h1>Sessions</h1>
-            {% for session in sessions %}
-            {% if session.climbs %}      
-                    <div class="card" id="climbs-as-table">
-                        <div class="card-header">Your session from {{ session.date }}</div>
-                        <div class="card-body">
-                            <table class="table table-sm">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Grade</th>
-                                    <th scope="col">Moves</th>
-                                    <th scope="col">Completed</th>
-                                  </tr>
-                                </thead>
+current_user.is_authenticated %}
+<div class="container mt-4"></div>
+<h1>Sessions</h1>
+{% for session in sessions %} {% if session.climbs %}
+<div class="card" id="climbs-as-table">
+  <div class="card-header">Your session from {{ session.date }}</div>
+  <div class="card-body">
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Grade</th>
+          <th scope="col">Moves</th>
+          <th scope="col">Completed</th>
+        </tr>
+      </thead>
 
-                                <tbody>
-                                    {% for climb in session.climbs %}
-                                    <tr>
-                                      <th scope="row">{{ climb.name if climb.name else 'Unnamed Climb' }}</th>
-                                      <td>{{ climb.difficulty }}</td>
-                                      <td>{{ climb.length }}</td>
-                                      <td>{{ 'Yes' if climb.completed else 'No' }}</td>
-                                      <td>
-                                        <a
-                                          href="{{ url_for('edit_climb', climb_id=climb.climb_id) }}"
-                                          class="btn btn-primary"
-                                          >Edit climb</a
-                                        >
-                                        <a
-                                          href="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
-                                          class="btn btn-primary"
-                                          >Delete climb</a
-                                        >
-                                      </td>
-                                    </tr>
-                                    
-                                    {% endfor %}
-                                  </tbody>
-                                </table>
-                                <a
-                                  href="{{ url_for('delete_session', session_id=session.session_id) }}"
-                                  class="btn btn-primary"
-                                  >Delete session</a
-                                >   
-                {% endif %}
-                
-            
-          
-            
-        </div>
-    </div>
-    {% if session.climbs %}  
-    <div class="card" id="climbs-as-list">
-        <div class="card-header">Your session from {{ session.date }}</div>
-        <div class="card-body">
-            <p class="text-start fw-bold">Climbs :</p>
-            {% for climb in session.climbs %}
-            <div class="accordion accordion-flush">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button
-                      class="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#flush-collapse-{{ climb.climb_id }}"
-                      aria-expanded="false"
-                      aria-controls="flush-collapse-{{ climb.climb_id }}"
-                    >
-                      <p class="text-end">
-                        {{ climb.name if climb.name else 'Unnamed Climb' }}
-                      </p>
-                    </button>
-                  </h2>
-                  <div
-                    id="flush-collapse-{{ climb.climb_id}}"
-                    class="accordion-collapse collapse"
-                  >
-                    <div class="accordion-body">
-                      <ul class="list-group">
-                        <li class="list-group-item">
-                          <p class="text-start">Grade</p>
-                          <p class="text-end">{{ climb.difficulty }}</p>
-                        </li>
-                        <li class="list-group-item">
-                          <p class="text-start">Moves</p>
-                          <p class="text-end">{{ climb.length }}</p>
-                        </li>
-                        <li class="list-group-item">
-                          <p class="text-start">Completed</p>
-                          <p class="text-end">
-                            {{ 'Yes' if climb.completed else 'No' }}
-                          </p>
-                        </li>
-                        <li class="list-group-item">
-                          <a
-                            href="{{ url_for('edit_climb', climb_id=climb.climb_id) }}"
-                            class="btn btn-primary"
-                            >Edit climb</a
-                          >
-                          <a
-                            href="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
-                            class="btn btn-primary"
-                            >Delete climb</a
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-            {% endfor %} 
+      <tbody>
+        {% for climb in session.climbs %}
+        <tr>
+          <th scope="row">
+            {{ climb.name if climb.name else 'Unnamed Climb' }}
+          </th>
+          <td>{{ climb.difficulty }}</td>
+          <td>{{ climb.length }}</td>
+          <td>{{ 'Yes' if climb.completed else 'No' }}</td>
+          <td>
             <a
-                                  href="{{ url_for('delete_session', session_id=session.session_id) }}"
-                                  class="btn btn-primary"
-                                  >Delete session</a
-                                >   
+              href="{{ url_for('edit_climb', climb_id=climb.climb_id) }}"
+              class="btn btn-primary"
+              >Edit climb</a
+            >
+            <a
+              href="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
+              class="btn btn-primary"
+              onclick="return confirm('Are you sure you wish to delete?');"
+              >Delete climb</a
+            >
+          </td>
+        </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+    <a
+      href="{{ url_for('delete_session', session_id=session.session_id) }}"
+      class="btn btn-primary"
+      onclick="return confirm('Are you sure you wish to delete?');"
+      >Delete session</a
+    >
+    <a href="{{ url_for('session_info', session_id=session.session_id) }}" class="btn btn-primary"
+      >View sessions analysis charts</a
+    >
+    {% endif %}
+  </div>
+</div>
+{% if session.climbs %}
+<div class="card" id="climbs-as-list">
+  <div class="card-header">Your session from {{ session.date }}</div>
+  <div class="card-body">
+    <p class="text-start fw-bold">Climbs :</p>
+    {% for climb in session.climbs %}
+    <div class="accordion accordion-flush">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapse-{{ climb.climb_id }}"
+            aria-expanded="false"
+            aria-controls="flush-collapse-{{ climb.climb_id }}"
+          >
+            <p class="text-end">
+              {{ climb.name if climb.name else 'Unnamed Climb' }}
+            </p>
+          </button>
+        </h2>
+        <div
+          id="flush-collapse-{{ climb.climb_id}}"
+          class="accordion-collapse collapse"
+        >
+          <div class="accordion-body">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <p class="text-start">Grade</p>
+                <p class="text-end">{{ climb.difficulty }}</p>
+              </li>
+              <li class="list-group-item">
+                <p class="text-start">Moves</p>
+                <p class="text-end">{{ climb.length }}</p>
+              </li>
+              <li class="list-group-item">
+                <p class="text-start">Completed</p>
+                <p class="text-end">{{ 'Yes' if climb.completed else 'No' }}</p>
+              </li>
+              <li class="list-group-item">
+                <a
+                  href="{{ url_for('edit_climb', climb_id=climb.climb_id) }}"
+                  class="btn btn-primary"
+                  >Edit climb</a
+                >
+                <a
+                  href="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
+                  onclick="return confirm('Are you sure you wish to delete?');"
+                  class="btn btn-primary"
+                  >Delete climb</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
-  
-  {% endif %}
-            {% endfor %}
 
+    {% endfor %}
+    <a
     
-        
-    
-        
-    
+      href="{{ url_for('delete_session', session_id=session.session_id) }}"
+      onclick="return confirm('Are you sure you wish to delete?');"
+      class="btn btn-primary"
+      >Delete session</a
+    >
+    <a  href="{{ url_for('session_info', session_id=session.session_id) }}" class="btn btn-primary"
+      >View charts</a
+    >
+  </div>
+</div>
 
-
-
-
-
-
-    {% else %}
-    <p>You need to log in to view this page.</p>
-    {% endif %} {% endblock %}
+{% endif %} {% endfor %} {% else %}
+<p>You need to log in to view this page.</p>
+{% endif %} {% endblock %}

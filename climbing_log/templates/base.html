@@ -21,7 +21,9 @@
     <header>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="">Navbar</a>
+          <a class="navbar-brand" href=""
+            >Navbar</a
+          >
           <button
             class="navbar-toggler"
             type="button"
@@ -43,23 +45,39 @@
                   >Home</a
                 >
               </li>
+
+              {% if current_user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('sessions') }}"
+                  >Sessions</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('add_session') }}"
+                  >Record Session</a
+                >
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  onclick="return confirm('Are you sure you wish to logout?');"
+                  href="{{ url_for('logout') }}"
+                  >Logout</a
+                >
+              </li>
+              {% else %}
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('add_user') }}"
                   >Add user</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('sessions') }}">Sessions</a>
+                <a class="nav-link" href="{{ url_for('login') }}"
+                  >Login</a
+                >
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('add_session') }}">Record Session</a>
-              </li>
-                {% if current_user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/logout">Logout</a>
-                  </li>
-                {% endif %}
-              </li>
+              {% endif %}
             </ul>
           </div>
         </div>

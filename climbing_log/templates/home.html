@@ -1,17 +1,53 @@
-{% extends 'base.html' %} {% block content %} 
-{% if current_user.is_authenticated %}
+{% extends 'base.html' %} {% block content %} {% if
+current_user.is_authenticated %}
 <h1>You are logged in as {{ current_user.username }}</h1>
-<h3>Recent Sessions</h3>
 <div class="card">
-  <div class="card-header">You have no recent sessions to display</div>
+  <div class="card-header">Log a new climbing session</div>
   <div class="card-body">
     <h5 class="card-title">Lets start logging your activities</h5>
     <p class="card-text"></p>
-    <a href="{{ url_for('add_session') }}" class="btn btn-primary">Log a session</a>
+    <a href="{{ url_for('add_session') }}" class="btn btn-primary"
+      >Log a session</a
+    >
   </div>
 </div>
+
+<div class="card">
+  <div class="card-header">Your recent sessions</div>
+  {% for session in sessions %}{% if session.climbs %}
+  <div class="card-body">
+    <h5 class="card-title">Your session from {{ session.date }}</h5>
+    <p class="card-text"></p>
+    <a href="{{ url_for('session_info', session_id=session.session_id) }}" class="btn btn-primary"
+      >View sessions analysis charts</a
+    >
+    <a
+      href="{{ url_for('delete_session', session_id=session.session_id) }}"
+      class="btn btn-primary"
+      onclick="return confirm('Are you sure you wish to delete?');"
+      >Delete session</a
+    >
+    
+  </div>
+  {% endif %}{% endfor %}
+</div>
 {% else %}
-<h1>You are not logged in</h1>
+<div class="card">
+  <div class="card-header">Welcome to climbing log</div>
+  <div class="card-body">
+    <h5 class="card-title">
+      The best site for activity logging for climbing. Track your sessions, view
+      data and visualise your progress
+    </h5>
+    <div class="card-body d-inline">
+      example image
+    </div>
+    <div class="card-body d-inline">
+      example image
+    </div>
+    <p class="card-text"></p>
+  </div>
+</div>
 
 <div class="card">
   <div class="card-header">Are you new to climbing log?</div>
@@ -37,5 +73,4 @@
     <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
   </div>
 </div>
-{% endif %} 
-{% endblock %}
+{% endif %} {% endblock %}

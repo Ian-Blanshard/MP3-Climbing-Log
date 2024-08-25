@@ -5,7 +5,7 @@ from climbing_log.models import Users, Sessions, Climb
 from datetime import datetime
 from sqlalchemy.orm import joinedload
 import plotly.express as px
-from climbing_log.chart_queries import get_completed_uncompleted_climbs
+from climbing_log.chart_queries import get_completed_uncompleted_climbs, get_range_of_difficulty_climbed
 
 
 @app.route("/")
@@ -128,8 +128,10 @@ def log_climb():
 def session_info(session_id):
     if current_user.is_authenticated:
         pie_json = get_completed_uncompleted_climbs(session_id)
+        bar_json = get_range_of_difficulty_climbed(session_id)
+        
 
-        return render_template('session_info.html', graphJSON=pie_json)
+        return render_template('session_info.html', graphJSON=pie_json, graph1JSON=bar_json)
 
     return render_template('session_info.html')
 

@@ -1,20 +1,31 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <div class="card">
-    <div class="card-header fw-bold">What percentage of climbs did you complete in this session?</div>
-    <div class="card-body">
-      
-      <p class="card-text"></p>
-      <div id="pie-chart"></div>
-      <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
-    </div>
+  <div class="card-header fw-bold">
+    What percentage of climbs did you complete in this session?
   </div>
-  
-  <script type='text/javascript'>
-    var graphs = {{graphJSON | safe}};
-    Plotly.plot('pie-chart',graphs,{});
-  </script>
+  <div class="card-body">
+    <p class="card-text"></p>
+    <div id="pie-chart"></div>
   </div>
+</div>
 
-{% endblock  %}
+<div class="card">
+  <div class="card-header fw-bold">Grade spread of climbs from his session</div>
+  <div class="card-body">
+    <p class="card-text"></p>
+    <div id="bar-chart"></div>
+  </div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+  var graphs = {{graphJSON | safe}};
+  Plotly.plot('pie-chart',graphs,{});
+</script>
+<script type="text/javascript">
+  var graphs = {{graph1JSON | safe}};
+  Plotly.plot('bar-chart',graphs,{});
+</script>
+
+{% endblock %}

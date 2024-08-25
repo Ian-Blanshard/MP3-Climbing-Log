@@ -166,6 +166,8 @@ https://www.geeksforgeeks.org/create-a-bar-chart-from-a-dataframe-with-plotly-an
 for pie chart borders 
 https://community.plotly.com/t/how-can-i-adjust-the-whitespace-around-go-pie-chart/78584
 
+https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html
+
 https://docs.sqlalchemy.org/en/20/tutorial/orm_data_manipulation.html#tutorial-orm-data-manipulation
 
 I'd hugely overcomplicated my sessions() route, doing multiple queries to build nested dictionaries so that i could use those relationships to display all the climbs for each session in a list using jinja. I realised the code was very confusing and there surely must be a better way. i used the following resources to learn that i should be using the existing relationships from my database and there was a far simpler way of doing it. this led to refactoring and producing a much better route.

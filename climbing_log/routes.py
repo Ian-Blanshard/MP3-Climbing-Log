@@ -129,8 +129,8 @@ def session_info(session_id):
     if current_user.is_authenticated:
         pie_json = get_completed_uncompleted_climbs(session_id)
         bar_json = get_range_of_difficulty_climbed(session_id)
-        # lengths = get_range_of_length_climbs(session_id)
-        # print(lengths)
+        lengths = get_range_of_length_climbs(session_id)
+        print(lengths)
 
         return render_template('session_info.html', graphJSON=pie_json, graph1JSON=bar_json)
 

@@ -9,14 +9,15 @@
     <div id="pie-chart"></div>
   </div>
 </div>
-
+{% if graph1JSON %}
 <div class="card">
-  <div class="card-header fw-bold">Grade spread of climbs from his session</div>
+  <div class="card-header fw-bold">Grade spread of climbs completed from his session</div>
   <div class="card-body">
     <p class="card-text"></p>
     <div id="bar-chart"></div>
   </div>
 </div>
+{% endif %}
 
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script type="text/javascript">

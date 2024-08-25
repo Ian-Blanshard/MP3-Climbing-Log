@@ -51,10 +51,13 @@ def get_range_of_difficulty_climbed(session_id):
         # zipped_list = list(zip(grades, number_of_each_grade))
         bar_labels = {'x':'Grade', 'y':'Number climbed'}
         #create bar chart using data
-        fig = px.bar(x=grades,y=number_of_each_grade,labels=bar_labels)
-        bar_grades = json.dumps(fig, cls=PlotlyJSONEncoder)
-        
-        return bar_grades
+        if grades:
+            fig = px.bar(x=grades,y=number_of_each_grade,labels=bar_labels)
+            bar_grades = json.dumps(fig, cls=PlotlyJSONEncoder)
+            
+            return bar_grades
+        else:
+               return None
 
 
 def get_range_of_length_climbs(session_id):

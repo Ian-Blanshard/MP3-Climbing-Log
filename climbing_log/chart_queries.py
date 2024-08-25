@@ -59,6 +59,29 @@ def get_range_of_difficulty_climbed(session_id):
         else:
                return None
 
+def get_range_of_difficulty_not_climbed(session_id):
+        # get data of all completed climbs from the session
+        climbs = Climb.query.filter_by(session_id=session_id).filter_by(completed=False).all()
+        # empty list to hold grades
+        grades = []
+        # loop through climbs completed appending grade to list
+        for climb in climbs:
+                grades.append(climb.difficulty)
+        count_grades = Counter(grades)
+        grades = list(count_grades.keys())
+        number_of_each_grade = list(count_grades.values())
+        # to check grades/count match correctly !!!!! remember to remove
+        # zipped_list = list(zip(grades, number_of_each_grade))
+        bar_labels = {'x':'Grade', 'y':'Number of failed attempts'}
+        #create bar chart using data
+        if grades:
+            fig = px.bar(x=grades,y=number_of_each_grade,labels=bar_labels)
+            bar_grades = json.dumps(fig, cls=PlotlyJSONEncoder)
+            
+            return bar_grades
+        else:
+               return None
+
 
 def get_range_of_length_climbs(session_id):
         climbs = Climb.query.filter_by(session_id=session_id).all()

@@ -19,6 +19,16 @@
 </div>
 {% endif %}
 
+{% if graph_grades_not_climbedJSON %}
+<div class="card">
+  <div class="card-header fw-bold">Grade spread of climbs failed on</div>
+  <div class="card-body">
+    <p class="card-text"></p>
+    <div id="bar-chart-not-grade"></div>
+  </div>
+</div>
+{% endif %}
+
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script type="text/javascript">
   var graphs = {{graphJSON | safe}};
@@ -27,6 +37,10 @@
 <script type="text/javascript">
   var graphs = {{graph1JSON | safe}};
   Plotly.plot('bar-chart',graphs,{});
+</script>
+<script type="text/javascript">
+  var graphs = {{graph_grades_not_climbedJSON | safe}};
+  Plotly.plot('bar-chart-not-grade',graphs,{});
 </script>
 
 {% endblock %}

@@ -3,6 +3,7 @@ from climbing_log.models import Users, Sessions, Climb
 from sqlalchemy import func
 from sqlalchemy.orm import joinedload
 import pandas as pd
+from collections import Counter
 import json
 from plotly.utils import PlotlyJSONEncoder
 import plotly.express as px
@@ -43,16 +44,29 @@ def get_range_of_difficulty_climbed(session_id):
         # loop through climbs completed appending grade to list
         for climb in climbs:
                 grades.append(climb.difficulty)
-        number_of_each_grade = pd.Series(grades).value_counts().tolist()
+        count_grades = Counter(grades)
+        grades = list(count_grades.keys())
+        number_of_each_grade = list(count_grades.values())
         # to check grades/count match correctly !!!!! remember to remove
         # zipped_list = list(zip(grades, number_of_each_grade))
         bar_labels = {'x':'Grade', 'y':'Number climbed'}
         #create bar chart using data
         fig = px.bar(x=grades,y=number_of_each_grade,labels=bar_labels)
         bar_grades = json.dumps(fig, cls=PlotlyJSONEncoder)
+        
         return bar_grades
 
 
+def get_range_of_length_climbs(session_id):
+        climbs = Climb.query.filter_by(session_id=session_id).all()
+        climb_lengths = []
+        for climb in climbs:
+                climb_lengths.append(climb.length)
+        return climb_lengths
+        
+     
 
-        return zipped_list
+
+
+        
                 

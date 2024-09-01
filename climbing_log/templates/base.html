@@ -66,6 +66,14 @@
                   >Logout</a
                 >
               </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  
+                  href="{{ url_for('delete_user') }}"
+                  >Delete Account</a
+                >
+              </li>
               {% else %}
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('add_user') }}"

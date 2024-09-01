@@ -85,10 +85,39 @@ def get_range_of_difficulty_not_climbed(session_id):
 
 def get_range_of_length_climbs(session_id):
         climbs = Climb.query.filter_by(session_id=session_id).all()
-        climb_lengths = []
+
+        grade = []
+        length = []
+        completed = []
+
         for climb in climbs:
-                climb_lengths.append(climb.length)
-        return climb_lengths
+            grade.append(climb.difficulty)
+            length.append(climb.length)
+            completed.append(climb.completed)
+
+        fig = px.scatter(x=grade, y=length, color=completed)
+        scatter = json.dumps(fig, cls=PlotlyJSONEncoder)
+        return scatter
+
+
+
+
+
+
+
+
+        # climbs_completed = Climb.query.filter_by(session_id=session_id).filter_by(completed=True).all()
+        # climbs_not_completed = Climb.query.filter_by(session_id=session_id).filter_by(completed=False).all()
+        # climb_lengths_completed = []
+        # climb_lengths_not_completed = []
+        # for climb in climbs_completed:
+        #         climb_lengths_completed.append(climb.length)
+        # for climb in climbs_not_completed:
+        #         climb_lengths_not_completed.append(climb.length)
+
+
+           
+        # return climb_lengths_completed, climb_lengths_not_completed
         
      
 

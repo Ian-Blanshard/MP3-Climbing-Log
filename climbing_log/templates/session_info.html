@@ -1,4 +1,13 @@
 {% extends 'base.html' %} {% block content %}
+<div class="card">
+  <div class="card-header fw-bold">
+    grade of climbs vs length
+  </div>
+  <div class="card-body">
+    <p class="card-text"></p>
+    <div id="scatter-chart"></div>
+  </div>
+</div>
 
 <div class="card">
   <div class="card-header fw-bold">
@@ -30,6 +39,10 @@
 {% endif %}
 
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+  var graphs = {{scatterJSON | safe}};
+  Plotly.plot('scatter-chart',graphs,{});
+</script>
 <script type="text/javascript">
   var graphs = {{graphJSON | safe}};
   Plotly.plot('pie-chart',graphs,{});

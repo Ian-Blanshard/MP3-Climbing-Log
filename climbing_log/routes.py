@@ -13,7 +13,8 @@ def home():
     if current_user.is_authenticated:
         sessions = Sessions.query.options(joinedload(Sessions.climbs)).filter_by(
             user_id=current_user.user_id).order_by(Sessions.session_id.desc()).limit(10).all()
-    return render_template("home.html", sessions=sessions)
+        return render_template("home.html", sessions=sessions)
+    return render_template('home.html')
 
 # Creates a user loader callback that returns the user object given an id
 
@@ -81,6 +82,28 @@ def add_user():
         return redirect(url_for("login"))
     return render_template("add_user.html")
 
+@app.route("/delete_user", methods=["GET", "POST"])
+def delete_user():
+    if request.method == 'POST':
+        user = Users.query.filter_by(
+            username = current_user.username).first()
+        
+        password = request.form.get('password')
+        password_check = request.form.get('password_check')
+
+        if password != password_check:
+            flash('passwords do not match')
+        else:
+            is_valid = bcrypt.check_password_hash(
+            user.password, password)
+            if is_valid:
+               db.session.delete(user)
+               db.session.commit()
+               return redirect(url_for('home'))
+            else:
+                flash('Password incorrect')
+        
+    return render_template('delete_user.html')
 
 @app.route("/new_session", methods=["GET", "POST"])
 def add_session():
@@ -130,10 +153,10 @@ def session_info(session_id):
         pie_json = get_completed_uncompleted_climbs(session_id)
         bar_json = get_range_of_difficulty_climbed(session_id)
         bar_uncompleted_grades = get_range_of_difficulty_not_climbed(session_id)
-        lengths = get_range_of_length_climbs(session_id)
-        print(lengths)
+        scatter_json = get_range_of_length_climbs(session_id)
+        
 
-        return render_template('session_info.html', graphJSON=pie_json, graph1JSON=bar_json, graph_grades_not_climbedJSON=bar_uncompleted_grades)
+        return render_template('session_info.html', graphJSON=pie_json, graph1JSON=bar_json, graph_grades_not_climbedJSON=bar_uncompleted_grades, scatterJSON=scatter_json)
 
     return render_template('session_info.html')
 

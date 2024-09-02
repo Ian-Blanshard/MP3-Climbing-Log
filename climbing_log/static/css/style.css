@@ -5,11 +5,13 @@
 html,
 body {
   height: 100%;
-  font-family: 'Kanit', sans-serif;
+  font-family: "Kanit", sans-serif;
 }
 body {
   display: flex;
   flex-direction: column;
+  background-color: rgb(60, 60, 60);
+  color: rgb(235, 235, 235);
 }
 .content {
   flex: 1 0 auto;
@@ -18,27 +20,72 @@ body {
   flex-shrink: 0;
 }
 
+/* nav bar styles */
+
+.navbar,
+.footer,
+.navbar-brand,
+.nav-link {
+  background-color: rgb(99, 99, 99) !important;
+  color: rgb(235, 235, 235);
+}
+
 /* for all cards */
 
 .card {
-    margin: 5% 2%;
+  margin: 5% 2%;
+  border-color: black;
+  color: rgb(235, 235, 235);
 }
 
+.card-body {
+  background-color: rgb(68, 68, 68);
+}
 .card-header {
-    
-    font-weight: 500;
+  font-weight: 500;
+  font-size: 22px;
+  background-color: rgb(99, 99, 99);
+  border-color: black;
 }
 
 .card-title {
-    
-    font-weight: 400;
+  font-weight: 400;
 }
 
 .card-text {
-    
-    font-weight: 200;
+  font-weight: 200;
 }
 
+/* accordian styles */
+
+.accordion-button,
+.accordion-collapse,
+.list-group-item {
+  background-color: rgb(99, 99, 99);
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: rgb(99, 99, 99);
+  color: white;
+}
+
+/* form styles */
+.form-control,
+textarea:focus {
+  background-color: rgb(99, 99, 99) !important;
+  color: white !important;
+}
+
+.form-text {
+  color: white;
+}
+/* for all buttons */
+
+.btn {
+  background-color: rgb(99, 99, 99);
+  border: none;
+  margin: 2%;
+}
 
 /* media queries */
 

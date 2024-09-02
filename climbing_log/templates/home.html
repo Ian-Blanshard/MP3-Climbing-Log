@@ -5,10 +5,11 @@ current_user.is_authenticated %}
   <div class="card-header">Log a new climbing session</div>
   <div class="card-body">
     <h5 class="card-title">Lets start logging your activities</h5>
-    <p class="card-text"></p>
+    <p class="card-text text-end">
     <a href="{{ url_for('add_session') }}" class="btn btn-primary"
       >Log a session</a
     >
+  </p>
   </div>
 </div>
 
@@ -17,7 +18,7 @@ current_user.is_authenticated %}
   {% for session in sessions %}{% if session.climbs %}
   <div class="card-body">
     <h5 class="card-title">Your session from {{ session.date }}</h5>
-    <p class="card-text"></p>
+    <p class="card-text text-end">
     <a href="{{ url_for('session_info', session_id=session.session_id) }}" class="btn btn-primary"
       >View sessions analysis charts</a
     >
@@ -27,7 +28,7 @@ current_user.is_authenticated %}
       onclick="return confirm('Are you sure you wish to delete?');"
       >Delete session</a
     >
-    
+  </p>
   </div>
   {% endif %}{% endfor %}
 </div>
@@ -51,16 +52,18 @@ current_user.is_authenticated %}
 </div>
 
 <div class="card">
-  <div class="card-header">Are you new to climbing log?</div>
+  <div class="card-header">New to climbing log?</div>
   <div class="card-body">
     <h5 class="card-title">Create your user profile</h5>
     <p class="card-text">
       Set up a user profile by clicking the button below, this will allow you to
       start adding climbs to your log
     </p>
+    <p class="card-text text-end">
     <a href="{{ url_for('add_user') }}" class="btn btn-primary"
       >Create new user</a
     >
+  </p>
   </div>
 </div>
 <div class="card">
@@ -71,7 +74,10 @@ current_user.is_authenticated %}
       Login to your account to log a new activity or view data from your
       climbing sesions
     </p>
+    <p class="card-text text-end">
     <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
+  </p>
   </div>
+
 </div>
 {% endif %} {% endblock %}

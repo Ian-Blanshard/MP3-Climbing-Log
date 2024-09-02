@@ -20,6 +20,17 @@ body {
   flex-shrink: 0;
 }
 
+/* element styles */
+
+p {
+  color: white;
+}
+
+th, td {
+    color: white !important;
+    background-color: rgb(99, 99, 99) !important;
+}
+
 /* nav bar styles */
 
 .navbar,
@@ -64,7 +75,12 @@ body {
   background-color: rgb(99, 99, 99);
 }
 
-.accordion-button:not(.collapsed) {
+p {
+  color: white;
+}
+
+.accordion-button:not(.collapsed),
+.accordion-button.collapsed {
   background-color: rgb(99, 99, 99);
   color: white;
 }

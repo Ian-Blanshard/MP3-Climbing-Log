@@ -1,15 +1,42 @@
-html, body {
-    height: 100%;
+/* import for google fonts */
+@import url(https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
+
+/* push footer to bottom of page */
+html,
+body {
+  height: 100%;
+  font-family: 'Kanit', sans-serif;
 }
 body {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .content {
-    flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 .footer {
-    flex-shrink: 0;
+  flex-shrink: 0;
+}
+
+/* for all cards */
+
+.card {
+    margin: 5% 2%;
+}
+
+.card-header {
+    
+    font-weight: 500;
+}
+
+.card-title {
+    
+    font-weight: 400;
+}
+
+.card-text {
+    
+    font-weight: 200;
 }
 
 
@@ -20,24 +47,23 @@ body {
 /* have the table and list set to hidden as standard */
 
 #climbs-as-table {
-    display: none;
+  display: none;
 }
 
 #climbs-as-list {
-    display: none;
+  display: none;
 }
 
+/* displays them when certian screen width rules are met */
 
 @media (min-width: 1000px) {
-    #climbs-as-table {
-        display: block;
-    }
+  #climbs-as-table {
+    display: block;
+  }
 }
 
 @media (max-width: 1000px) {
-    #climbs-as-list {
-        display: block;
-    }
+  #climbs-as-list {
+    display: block;
+  }
 }
-
-

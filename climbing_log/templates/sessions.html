@@ -61,6 +61,8 @@ current_user.is_authenticated %}
 <div class="card" id="climbs-as-list">
   <div class="card-header">Your session from {{ session.date }}</div>
   <div class="card-body">
+    <p class="text-start">Session length: </p>
+    <p class="text-start">Number of climbs: {{ session.climbs | length }} </p>
     <div class="accordion">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
@@ -72,7 +74,7 @@ current_user.is_authenticated %}
             aria-expanded="false"
             aria-controls="collapse--{{ session.session_id }}"
           >
-            <p class="text-start">Click to view climb details</p>
+            <p class="text-start">Click to view / edit climb details</p>
           </button>
         </h2>
         <div

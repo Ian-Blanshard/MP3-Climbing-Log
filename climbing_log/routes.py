@@ -135,6 +135,7 @@ def log_climb():
     if request.method == 'POST':
         current_session = Sessions.query.filter_by(
             user_id=current_user.user_id).order_by(Sessions.time.desc()).first()
+        # so that code works if first session and no session to find in database
         if not current_session:
             current_session = 0
 
@@ -145,6 +146,16 @@ def log_climb():
             name=request.form.get('name'),
             completed=(request.form.get('completed') == 'True')
         )
+        # this climb time when logged
+        last_climb_time = datetime.now()
+        # start of session climb time
+        first_climb_time = current_session.time
+        # difference between the two = length of sesssion
+        session_length = last_climb_time - first_climb_time
+
+        session_length_in_seconds = session_length.total_seconds()
+        current_session.length =  session_length_in_seconds
+        
         db.session.add(climb)
         db.session.commit()
         return redirect(url_for("log_climb"))

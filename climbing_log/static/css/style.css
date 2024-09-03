@@ -26,9 +26,10 @@ p {
   color: white;
 }
 
-th, td {
-    color: white !important;
-    background-color: rgb(99, 99, 99) !important;
+th,
+td {
+  color: white !important;
+  background-color: rgb(99, 99, 99) !important;
 }
 
 /* nav bar styles */
@@ -101,6 +102,30 @@ textarea:focus {
   background-color: rgb(99, 99, 99);
   border: none;
   margin: 2%;
+}
+
+/* sessions.html specific styles */
+
+.climbs-as-list-button {
+  margin: 5% !important;
+}
+
+.edit-climb-list-btn,
+.delete-climb-list-btn {
+  font-size: smaller;
+}
+
+.list-group-item {
+  background-color: rgb(68, 68, 68);
+  padding: 4%;
+}
+/* ensure title and text for climb details apear on same line in list */
+.list-group-item > p {
+  display: inline;
+}
+/* push value to right side of space */
+.list-group-item > .text-end {
+  float: right;
 }
 
 /* media queries */

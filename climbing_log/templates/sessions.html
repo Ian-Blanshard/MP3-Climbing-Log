@@ -6,6 +6,10 @@ current_user.is_authenticated %}
 <div class="card" id="climbs-as-table">
   <div class="card-header">Your session from {{ session.date }}</div>
   <div class="card-body">
+    <p class="text-start">
+      Session length: {{ session_lengths[session.session_id] }}
+    </p>
+    <p class="text-start">Number of climbs: {{ session.climbs | length }}</p>
     <table class="table table-sm">
       <thead>
         <tr>
@@ -13,6 +17,8 @@ current_user.is_authenticated %}
           <th scope="col">Grade</th>
           <th scope="col">Moves</th>
           <th scope="col">Completed</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
       </thead>
 
@@ -31,6 +37,8 @@ current_user.is_authenticated %}
               class="btn btn-primary"
               >Edit climb</a
             >
+          </td>
+          <td>
             <a
               href="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
               class="btn btn-primary"
@@ -61,8 +69,10 @@ current_user.is_authenticated %}
 <div class="card" id="climbs-as-list">
   <div class="card-header">Your session from {{ session.date }}</div>
   <div class="card-body">
-    <p class="text-start">Session length: {{ session_lengths[session.session_id] }}  </p>
-    <p class="text-start">Number of climbs: {{ session.climbs | length }} </p>
+    <p class="text-start">
+      Session length: {{ session_lengths[session.session_id] }}
+    </p>
+    <p class="text-start">Number of climbs: {{ session.climbs | length }}</p>
     <div class="accordion">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
@@ -106,15 +116,15 @@ current_user.is_authenticated %}
                   <div class="accordion-body">
                     <ul class="list-group">
                       <li class="list-group-item">
-                        <p class="text-start">Grade</p>
+                        <p class="text-start">Grade:</p>
                         <p class="text-end">{{ climb.difficulty }}</p>
                       </li>
                       <li class="list-group-item">
-                        <p class="text-start">Moves</p>
+                        <p class="text-start">Moves:</p>
                         <p class="text-end">{{ climb.length }}</p>
                       </li>
                       <li class="list-group-item">
-                        <p class="text-start">Completed</p>
+                        <p class="text-start">Completed:</p>
                         <p class="text-end">
                           {{ 'Yes' if climb.completed else 'No' }}
                         </p>
@@ -122,13 +132,13 @@ current_user.is_authenticated %}
                       <li class="list-group-item">
                         <a
                           href="{{ url_for('edit_climb', climb_id=climb.climb_id) }}"
-                          class="btn btn-primary"
+                          class="btn btn-primary edit-climb-list-btn"
                           >Edit climb</a
                         >
                         <a
                           href="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
                           onclick="return confirm('Are you sure you wish to delete?');"
-                          class="btn btn-primary"
+                          class="btn btn-primary delete-climb-list-btn"
                           >Delete climb</a
                         >
                       </li>
@@ -147,12 +157,12 @@ current_user.is_authenticated %}
     <a
       href="{{ url_for('delete_session', session_id=session.session_id) }}"
       onclick="return confirm('Are you sure you wish to delete?');"
-      class="btn btn-primary"
+      class="btn btn-primary climbs-as-list-button"
       >Delete session</a
     >
     <a
       href="{{ url_for('session_info', session_id=session.session_id) }}"
-      class="btn btn-primary"
+      class="btn btn-primary climbs-as-list-button"
       >View charts</a
     >
   </div>

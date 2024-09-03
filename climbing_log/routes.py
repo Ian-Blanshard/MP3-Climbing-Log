@@ -154,8 +154,8 @@ def log_climb():
         session_length = last_climb_time - first_climb_time
 
         session_length_in_seconds = session_length.total_seconds()
-        current_session.length =  session_length_in_seconds
-        
+        current_session.length = session_length_in_seconds
+
         db.session.add(climb)
         db.session.commit()
         return redirect(url_for("log_climb"))
@@ -217,25 +217,19 @@ def sessions():
         session_lengths = {}
         # loop through all the sessions for user
         for session in sessions:
-    
+
             session_length_in_seconds = session.length
-            #calculate session minutes
+            # calculate session minutes
             session_minutes = int(session_length_in_seconds // 60)
             # calculate remaining seconds
             session_seconds = int(session_length_in_seconds % 60)
             # calculate session in hours
-            session_hours = int(session_minutes // 60 )
+            session_hours = int(session_minutes // 60)
             # calculate remaining minutes
-            session_minutes = int(session_minutes % 60 )
+            session_minutes = int(session_minutes % 60)
             # store result as string in dictionary
-            session_lengths[session.session_id] = f'{session_hours} hours {session_minutes} mins {session_seconds} secs'
-
-        
-
-
-
-
-
+            session_lengths[session.session_id] = f'{session_hours} hours {
+                session_minutes} mins {session_seconds} secs'
 
     # return template with current logged in user session history
     return render_template('sessions.html', sessions=sessions, session_lengths=session_lengths)

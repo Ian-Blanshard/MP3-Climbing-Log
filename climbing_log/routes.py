@@ -213,6 +213,29 @@ def sessions():
         # plus all the climbs from the sessions using the joinedload
         sessions = Sessions.query.options(joinedload(Sessions.climbs)).filter_by(
             user_id=current_user.user_id).order_by(Sessions.session_id.desc()).all()
+        # empty dictionary to hold session lengths
+        session_lengths = {}
+        # loop through all the sessions for user
+        for session in sessions:
+    
+            session_length_in_seconds = session.length
+            #calculate session minutes
+            session_minutes = int(session_length_in_seconds // 60)
+            # calculate remaining seconds
+            session_seconds = int(session_length_in_seconds % 60)
+            # calculate session in hours
+            session_hours = int(session_minutes // 60 )
+            # calculate remaining minutes
+            session_minutes = int(session_minutes % 60 )
+            # store result as string in dictionary
+            session_lengths[session.session_id] = f'{session_hours} hours {session_minutes} mins {session_seconds} secs'
+
+        
+
+
+
+
+
 
     # return template with current logged in user session history
-    return render_template('sessions.html', sessions=sessions)
+    return render_template('sessions.html', sessions=sessions, session_lengths=session_lengths)

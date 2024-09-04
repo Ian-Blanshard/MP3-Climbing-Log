@@ -1,16 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <div class="card">
-  <div class="card-header fw-bold">
-    grade of climbs vs length
-  </div>
-  <div class="card-body">
-    <p class="card-text"></p>
-    <div id="scatter-chart"></div>
-  </div>
-</div>
-
-<div class="card">
-  <div class="card-header fw-bold">
+  <div class="card-header">
     What percentage of climbs did you complete in this session?
   </div>
   <div class="card-body">
@@ -18,19 +8,26 @@
     <div id="pie-chart"></div>
   </div>
 </div>
+<div class="card">
+  <div class="card-header">Grade of climbs vs length</div>
+  <div class="card-body">
+    <p class="card-text"></p>
+    <div id="scatter-chart"></div>
+  </div>
+</div>
 {% if graph1JSON %}
 <div class="card">
-  <div class="card-header fw-bold">Grade spread of climbs completed from his session</div>
+  <div class="card-header">
+    Grade spread of climbs completed from his session
+  </div>
   <div class="card-body">
     <p class="card-text"></p>
     <div id="bar-chart"></div>
   </div>
 </div>
-{% endif %}
-
-{% if graph_grades_not_climbedJSON %}
+{% endif %} {% if graph_grades_not_climbedJSON %}
 <div class="card">
-  <div class="card-header fw-bold">Grade spread of climbs failed on</div>
+  <div class="card-header">Grade spread of climbs failed on</div>
   <div class="card-body">
     <p class="card-text"></p>
     <div id="bar-chart-not-grade"></div>

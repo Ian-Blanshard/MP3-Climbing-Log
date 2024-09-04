@@ -201,7 +201,8 @@ https://www.golinuxcloud.com/flask-sqlalchemy/#Querying_Data
 https://medium.com/@vickypalaniappan12/relationship-loading-techniques-in-sqlalchemy-4e7d1ff96f75
 https://docs.sqlalchemy.org/en/20/orm/queryguide/relationships.html
 
-
+plotly layouy/margin 
+https://plot.ly/python/reference/#layout-margin
 
 
 

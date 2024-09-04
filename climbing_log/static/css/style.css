@@ -26,12 +26,6 @@ p {
   color: white;
 }
 
-th,
-td {
-  color: white !important;
-  background-color: rgb(99, 99, 99) !important;
-}
-
 /* nav bar styles */
 
 .navbar,
@@ -105,9 +99,36 @@ textarea:focus {
 }
 
 /* sessions.html specific styles */
+/* climbs as table styes*/
+
+th {
+  color: white !important;
+  background-color: rgb(99, 99, 99) !important;
+  font-weight: 500 !important;
+}
+
+td {
+    color: white !important;
+    background-color: rgb(68, 68, 68) !important;
+}
+
+.climbs-as-table-button {
+    font-size: smaller;
+}
+
+.edit-session-table-btn , .delete-session-table-btn {
+    
+}
+
+.climbs-as-table-button {
+    text-align: right;
+  }
+
+/* climbs as list styles */
 
 .climbs-as-list-button {
-  margin: 5% !important;
+  text-align: center;
+  margin-top: 5%;
 }
 
 .edit-climb-list-btn,
@@ -154,4 +175,10 @@ textarea:focus {
   #climbs-as-list {
     display: block;
   }
+}
+
+/* plotly chart styles */
+
+.modebar {
+    display: none;
 }

@@ -25,23 +25,23 @@ current_user.is_authenticated %}
       <tbody>
         {% for climb in session.climbs %}
         <tr>
-          <th scope="row">
+          <td scope="row">
             {{ climb.name if climb.name else 'Unnamed Climb' }}
-          </th>
+          </td>
           <td>{{ climb.difficulty }}</td>
           <td>{{ climb.length }}</td>
           <td>{{ 'Yes' if climb.completed else 'No' }}</td>
           <td>
             <a
               href="{{ url_for('edit_climb', climb_id=climb.climb_id) }}"
-              class="btn btn-primary"
+              class="btn btn-primary climbs-as-table-button"
               >Edit climb</a
             >
           </td>
           <td>
             <a
               href="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
-              class="btn btn-primary"
+              class="btn btn-primary climbs-as-table-button"
               onclick="return confirm('Are you sure you wish to delete?');"
               >Delete climb</a
             >
@@ -51,17 +51,19 @@ current_user.is_authenticated %}
         {% endfor %}
       </tbody>
     </table>
+     <div class="climbs-as-table-button">
     <a
       href="{{ url_for('delete_session', session_id=session.session_id) }}"
-      class="btn btn-primary"
+      class="btn btn-primary delete-session-table-btn"
       onclick="return confirm('Are you sure you wish to delete?');"
       >Delete session</a
     >
     <a
       href="{{ url_for('session_info', session_id=session.session_id) }}"
-      class="btn btn-primary"
+      class="btn btn-primary edit-session-table-btn"
       >View sessions analysis charts</a
     >
+  </div>
     {% endif %}
   </div>
 </div>
@@ -153,18 +155,19 @@ current_user.is_authenticated %}
         </div>
       </div>
     </div>
-
-    <a
+<div class=" climbs-as-list-button">
+   <a
       href="{{ url_for('delete_session', session_id=session.session_id) }}"
       onclick="return confirm('Are you sure you wish to delete?');"
-      class="btn btn-primary climbs-as-list-button"
+      class="btn btn-primary"
       >Delete session</a
     >
     <a
       href="{{ url_for('session_info', session_id=session.session_id) }}"
-      class="btn btn-primary climbs-as-list-button"
+      class="btn btn-primary"
       >View charts</a
     >
+  </div>
   </div>
 </div>
 

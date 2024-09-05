@@ -1,12 +1,48 @@
-{% extends 'base.html' %} 
-{% block content %} 
-{% if current_user.is_authenticated %}
-
+{% extends 'base.html' %} {% block content %} {% if
+current_user.is_authenticated %}
+<div
+  class="modal fade"
+  id="myModal"
+  tabindex="-1"
+  aria-labelledby="SessionLocationModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content card">
+      
+        <div class="card-header">How to add location</div>
+        <div class="card-body">
+        <p class="card-text text-end">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </p>
+      </div>
+      
+    </div>
+  </div>
+</div>
 <div class="card">
-  <div class="card-header">Session details</div>
+  <div class="card-header d-flex">Session details
+    <p class="card-text ms-auto">
+      <button
+        type="button"
+        class="btn btn-primary help-button"
+        data-bs-toggle="modal"
+        data-bs-target="#myModal"
+      >
+        Help
+      </button>
+      </p>
+  </div>
   <div class="card-body">
-    <h5 class="card-title">Add session details below to start the session</h5>
-
+    <h5 class="card-title">
+      Add the location of the session to begin logging climbs
+    </h5>
     <form method="POST" action="{{ url_for('add_session') }}">
       <div class="mb-3">
         <label for="location" class="form-label">Location</label>
@@ -21,11 +57,12 @@
           required
         />
       </div>
-      <button type="submit" class="btn btn-primary">Start session</button>
+      <p class="card-text text-end">
+        <button type="submit" class="btn btn-primary">Start session</button>
+      </p>
     </form>
   </div>
 </div>
-
 {% else %}
 <div class="card">
   <div class="card-header">You are not logged into</div>
@@ -41,5 +78,4 @@
     <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
   </div>
 </div>
-{% endif %} 
-{% endblock %}
+{% endif %} {% endblock %}

@@ -1,23 +1,62 @@
 {% extends 'base.html' %} {% block content %} {% if
 current_user.is_authenticated %}
 
+<div
+  class="modal fade"
+  id="myModal"
+  tabindex="-1"
+  aria-labelledby="HowToLogClimbModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content card">
+      
+        <div class="card-header">How to log a climb</div>
+        <div class="card-body">
+        <p class="card-text text-end">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </p>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
 <div class="card">
-  <div class="card-header">Current session =#</div>
+  <div class="card-header d-flex">Current session
+    <p class="card-text ms-auto">
+      <button
+        type="button"
+        class="btn btn-primary help-button"
+        data-bs-toggle="modal"
+        data-bs-target="#myModal"
+      >
+        Help
+      </button>
+      </p>
+  </div>
   <div class="card-body">
     <h5 class="card-title">Add climb to your current session</h5>
+    
 
     <form method="POST" action="{{ url_for('log_climb') }}">
-        <div class="mb-3">
-            <label for="climbname" class="form-label">Climb name (optional)</label>
-            <input
-              type="text"
-              class="form-control"
-              id="climbname"
-              name="name"
-              maxlength="50"
-              aria-describedby="enter climbing name, not required"
-            />
-          </div>
+      <div class="mb-3">
+        <label for="climbname" class="form-label">Climb name (optional)</label>
+        <input
+          type="text"
+          class="form-control"
+          id="climbname"
+          name="name"
+          maxlength="50"
+          aria-describedby="enter climbing name, not required"
+        />
+      </div>
       <div class="mb-3">
         <label for="difficulty" class="form-label">Grade</label>
         <select
@@ -40,32 +79,41 @@ current_user.is_authenticated %}
           required
         />
         <div class="d-flex">
-            <div class="form-check me-3">
-              <input
-                type="radio"
-                class="form-check-input"
-                id="completed"
-                name="completed"
-                value="True"
-                required
-              />
-              <label class="form-check-label" for="completed">completed</label>
-            </div>
-            <div class="form-check">
-              <input
-                type="radio"
-                class="form-check-input"
-                id="notcompleted"
-                name="completed"
-                value="False"
-              />
-              <label class="form-check-label" for="notcompleted">not completed</label>
-            </div>
+          <div class="form-check me-3">
+            <input
+              type="radio"
+              class="form-check-input"
+              id="completed"
+              name="completed"
+              value="True"
+              required
+            />
+            <label class="form-check-label" for="completed">completed</label>
           </div>
+          <div class="form-check">
+            <input
+              type="radio"
+              class="form-check-input"
+              id="notcompleted"
+              name="completed"
+              value="False"
+            />
+            <label class="form-check-label" for="notcompleted"
+              >not completed</label
+            >
+          </div>
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary">
-        Add climb to session
-      </button>
+      
+      <p class="card-text d-flex">
+        
+        <button type="submit" class="btn btn-primary" name="action" value="log_and_redirect">
+          End Session
+        </button>
+        <button type="submit" class="btn btn-primary ms-auto" name="action" value="log_climb">
+          Add Climb
+        </button>
+      </p>
     </form>
   </div>
 </div>

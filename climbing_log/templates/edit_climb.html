@@ -1,8 +1,43 @@
 {% extends 'base.html' %} {% block content %} {% if
 current_user.is_authenticated %}
-
+<div
+  class="modal fade"
+  id="myModal"
+  tabindex="-1"
+  aria-labelledby="EditClimbModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content card">
+      <div class="card-header">How to edit a climb</div>
+      <div class="card-body">
+        <p class="card-text text-end">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="card">
-  <div class="card-header">Current session =#</div>
+  <div class="card-header d-flex">
+    Edit climb details
+    <p class="card-text ms-auto">
+      <button
+        type="button"
+        class="btn btn-primary help-button"
+        data-bs-toggle="modal"
+        data-bs-target="#myModal"
+      >
+        Help
+      </button>
+    </p>
+  </div>
   <div class="card-body">
     <h5 class="card-title">Edit climb</h5>
 
@@ -69,7 +104,9 @@ current_user.is_authenticated %}
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Edit climb</button>
+      <p class="text-end">
+        <button type="submit" class="btn btn-primary">Edit climb</button>
+      </p>
     </form>
   </div>
 </div>

@@ -98,6 +98,12 @@ textarea:focus {
   margin: 2%;
 }
 
+.help-button {
+    font-size: small !important;
+    background-color: rgb(68, 68, 68);
+    
+}
+
 /* sessions.html specific styles */
 /* climbs as table styes*/
 
@@ -108,21 +114,17 @@ th {
 }
 
 td {
-    color: white !important;
-    background-color: rgb(68, 68, 68) !important;
+  color: white !important;
+  background-color: rgb(68, 68, 68) !important;
 }
 
 .climbs-as-table-button {
-    font-size: smaller;
-}
-
-.edit-session-table-btn , .delete-session-table-btn {
-    
+  font-size: smaller;
 }
 
 .climbs-as-table-button {
-    text-align: right;
-  }
+  text-align: right;
+}
 
 /* climbs as list styles */
 
@@ -180,5 +182,5 @@ td {
 /* plotly chart styles */
 
 .modebar {
-    display: none;
+  display: none;
 }

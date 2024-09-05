@@ -21,9 +21,7 @@
     <header>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href=""
-            >Climbing Log</a
-          >
+          <a class="navbar-brand" href="">Climbing Log</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -49,7 +47,7 @@
               {% if current_user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('sessions') }}"
-                  >Sessions</a
+                  >View Sessions</a
                 >
               </li>
               <li class="nav-item">
@@ -67,10 +65,7 @@
                 >
               </li>
               <li class="nav-item">
-                <a
-                  class="nav-link"
-                  
-                  href="{{ url_for('delete_user') }}"
+                <a class="nav-link" href="{{ url_for('delete_user') }}"
                   >Delete Account</a
                 >
               </li>
@@ -81,9 +76,7 @@
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('login') }}"
-                  >Login</a
-                >
+                <a class="nav-link" href="{{ url_for('login') }}">Login</a>
               </li>
               {% endif %}
             </ul>
@@ -105,10 +98,11 @@
 
     <footer class="footer mt-auto py-3 bg-light">
       <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
+        <span class="text-muted">Social media links</span>
       </div>
     </footer>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

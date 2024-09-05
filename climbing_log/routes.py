@@ -77,6 +77,7 @@ def add_user():
             flash('duplicate email')
         elif user.password != password_check:
             flash('passwords do not match')
+            return render_template("add_user.html")
         else:
             user.password = bcrypt.generate_password_hash(
                 user.password).decode('utf-8')
@@ -158,7 +159,13 @@ def log_climb():
 
         db.session.add(climb)
         db.session.commit()
-        return redirect(url_for("log_climb"))
+
+        if request.form.get('action') == 'log_and_redirect':
+            return redirect(url_for("sessions")) 
+        else:
+            return redirect(url_for("log_climb"))
+
+        
 
     return render_template('log_climb.html')
 

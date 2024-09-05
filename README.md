@@ -205,6 +205,8 @@ plotly layouy/margin
 https://plot.ly/python/reference/#layout-margin
 
 
+https://stackoverflow.com/questions/11178426/how-can-i-pass-data-from-flask-to-javascript-in-a-template
+
 
 ## Testing  <a name="testing"></a>
 

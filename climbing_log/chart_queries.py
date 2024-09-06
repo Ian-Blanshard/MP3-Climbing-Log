@@ -1,7 +1,6 @@
 from climbing_log import db
-from climbing_log.models import Users, Sessions, Climb
+from climbing_log.models import Sessions, Climb
 from sqlalchemy import func
-from sqlalchemy.orm import joinedload
 import pandas as pd
 from collections import Counter
 import json
@@ -86,7 +85,7 @@ def get_range_of_difficulty_climbed(session_id):
     count_grades = Counter(grades)
     grades = list(count_grades.keys())
     number_of_each_grade = list(count_grades.values())
-    
+
     bar_labels = {'x': 'Grade', 'y': 'Number Climbed'}
     # create bar chart using data
     if grades:
@@ -104,15 +103,15 @@ def get_range_of_difficulty_climbed(session_id):
         )
         fig.update_yaxes(showgrid=False)
 
-        # this code filters the grade list for ones which have a value 
+        # this code filters the grade list for ones which have a value
         # to remove empty grades from x axis but ensure correct order of grades
-        
+
         grades_present_in_chart = []
-        
+
         for grade in grades_correct_order:
             if grade in grades:
                 grades_present_in_chart.append(grade)
-        
+
         fig.update_xaxes(categoryorder='array',
                          categoryarray=grades_present_in_chart)
         bar_grades = json.dumps(fig, cls=PlotlyJSONEncoder)
@@ -152,11 +151,11 @@ def get_range_of_difficulty_not_climbed(session_id):
         )
 
         fig.update_yaxes(showgrid=False)
-        # this code filters the grade list for ones which have a value 
+        # this code filters the grade list for ones which have a value
         # to remove empty grades from x axis but ensure correct order of grades
-        
+
         grades_present_in_chart = []
-        
+
         for grade in grades_correct_order:
             if grade in grades:
                 grades_present_in_chart.append(grade)

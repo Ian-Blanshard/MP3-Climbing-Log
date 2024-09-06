@@ -208,6 +208,9 @@ https://plot.ly/python/reference/#layout-margin
 https://stackoverflow.com/questions/11178426/how-can-i-pass-data-from-flask-to-javascript-in-a-template
 
 
+
+https://www.webfx.com/blog/web-design/responsive-background-image/
+
 ## Testing  <a name="testing"></a>
 
 ### Bugs <a name="bugs"></a>

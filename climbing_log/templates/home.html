@@ -33,8 +33,9 @@ current_user.is_authenticated %}
   {% endif %}{% endfor %}
 </div>
 {% else %}
-<div class="card">
-  <div class="card-header">Welcome to climbing log</div>
+<!--  homepage intro div -->
+<div class="card card-homepage">
+  <!-- <div class="card-header">Welcome to climbing log</div>
   <div class="card-body">
     <h5 class="card-title">The best site for activity logging for climbing</h5>
     <p class="card-text">
@@ -48,9 +49,17 @@ current_user.is_authenticated %}
       example image
     </div>
     <p class="card-text"></p>
-  </div>
-</div>
+  </div> -->
+  <p class="card-header card-header-homepage">Welcome to</p>
+  <p class="card-header card-header-homepage">Climbing Log</p>
+  <br>
+  <p class="card-text">
+    Track your sessions, view
+    data and visualise your progress
+  </p>
 
+</div>
+<!-- homepage create new user div -->
 <div class="card">
   <div class="card-header">New to climbing log?</div>
   <div class="card-body">
@@ -66,6 +75,8 @@ current_user.is_authenticated %}
   </p>
   </div>
 </div>
+
+<!-- homepage login div -->
 <div class="card">
   <div class="card-header">Already have an account?</div>
   <div class="card-body">

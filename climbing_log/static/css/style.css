@@ -1,6 +1,34 @@
 /* import for google fonts */
 @import url(https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
+/*============================================================================
+============================ Background styles ===============================
+============================================================================*/
+body {
+  background-image: 
+    linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.73)), 
+    url(/static/images/climbing.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: cover;
+  
+}
 
+@media (max-width: 600px) {
+  body {
+    
+    background-position: 75% 50%; 
+  }
+}
+
+.navbar {
+  opacity: 80%;
+  
+}
+
+/*============================================================================
+============================ Site wide styles ================================
+============================================================================*/
 /* push footer to bottom of page */
 html,
 body {
@@ -36,30 +64,51 @@ p {
   color: rgb(235, 235, 235);
 }
 
+
+.card, .card-header, .card-body, .card-title, .card-text {
+  background-color: rgba(68, 68, 68, 0.0) !important;
+  border: none;
+}
+
+
+/*============================================================================
+============================= Homepage styles ================================
+============================================================================*/
+
+.card-homepage, .card-header-homepage, .card-body-homepage, .card-title-homepage, .card-text-homepage {
+  
+}
+
+
+.card, .card-header, .card-body, .card-title, .card-text {
+  background-color: rgba(68, 68, 68, 0.0) !important;
+  border: none;
+}
+
+
+
 /* for all cards */
 
 .card {
   margin: 5% 2%;
-  border-color: black;
+  
   color: rgb(235, 235, 235);
 }
 
-.card-body {
-  background-color: rgb(68, 68, 68);
-}
+
 .card-header {
   font-weight: 500;
-  font-size: 22px;
-  background-color: rgb(99, 99, 99);
-  border-color: black;
-}
+  font-size: 40px;
+  padding-left: 0;
+  padding-top: 0;
+} 
 
 .card-title {
   font-weight: 400;
 }
 
 .card-text {
-  font-weight: 200;
+  font-weight: 400;
 }
 
 /* accordian styles */

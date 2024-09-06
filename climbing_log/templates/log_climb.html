@@ -1,6 +1,5 @@
 {% extends 'base.html' %} {% block content %} {% if
 current_user.is_authenticated %}
-
 <div
   class="modal fade"
   id="myModal"
@@ -9,8 +8,7 @@ current_user.is_authenticated %}
   aria-hidden="true"
 >
   <div class="modal-dialog">
-    <div class="modal-content card">
-      
+    <div class="modal-content card">     
         <div class="card-header">How to log a climb</div>
         <div class="card-body">
         <p class="card-text text-end">
@@ -23,11 +21,9 @@ current_user.is_authenticated %}
           </button>
         </p>
       </div>
-      
     </div>
   </div>
 </div>
-
 <div class="card">
   <div class="card-header d-flex">Current session
     <p class="card-text ms-auto">
@@ -43,8 +39,6 @@ current_user.is_authenticated %}
   </div>
   <div class="card-body">
     <h5 class="card-title">Add climb to your current session</h5>
-    
-
     <form method="POST" action="{{ url_for('log_climb') }}">
       <div class="mb-3">
         <label for="climbname" class="form-label">Climb name (optional)</label>
@@ -104,9 +98,7 @@ current_user.is_authenticated %}
           </div>
         </div>
       </div>
-      
-      <p class="card-text d-flex">
-        
+      <p class="card-text d-flex"> 
         <button type="submit" class="btn btn-primary" name="action" value="log_and_redirect">
           End Session
         </button>
@@ -117,7 +109,6 @@ current_user.is_authenticated %}
     </form>
   </div>
 </div>
-
 {% else %}
 <div class="card">
   <div class="card-header">You are not logged into</div>

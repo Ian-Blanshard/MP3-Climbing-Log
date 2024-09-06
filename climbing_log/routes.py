@@ -4,7 +4,6 @@ from climbing_log import app, db, login_manager, bcrypt
 from climbing_log.models import Users, Sessions, Climb
 from datetime import datetime
 from sqlalchemy.orm import joinedload
-import plotly.express as px
 from climbing_log.chart_queries import get_completed_uncompleted_climbs, get_range_of_difficulty_climbed, get_range_of_length_climbs, get_range_of_difficulty_not_climbed
 
 
@@ -40,6 +39,8 @@ def login():
                 # Use the login_user method to log in the user
                 login_user(user)
                 return redirect(url_for("home"))
+            else:
+                flash('Password incorrect please re-enter')
         else:
             flash('There is no user by this name, check you entered your username correctly or create a new account')
         # Redirect the user back to the home
@@ -161,11 +162,9 @@ def log_climb():
         db.session.commit()
 
         if request.form.get('action') == 'log_and_redirect':
-            return redirect(url_for("sessions")) 
+            return redirect(url_for("sessions"))
         else:
             return redirect(url_for("log_climb"))
-
-        
 
     return render_template('log_climb.html')
 

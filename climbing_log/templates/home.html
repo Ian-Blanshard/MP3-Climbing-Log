@@ -1,94 +1,123 @@
 {% extends 'base.html' %} {% block content %} {% if
 current_user.is_authenticated %}
-<h1>You are logged in as {{ current_user.username }}</h1>
+<h5>logged in as: {{ current_user.username }}</h5>
+
+<!-- homepage new session div-->
 <div class="card">
-  <div class="card-header">Log a new climbing session</div>
-  <div class="card-body">
-    <h5 class="card-title">Lets start logging your activities</h5>
-    <p class="card-text text-end">
-    <a href="{{ url_for('add_session') }}" class="btn btn-primary"
-      >Log a session</a
-    >
-  </p>
+  <br />
+  <h1 class="card-header">
+    Log a new <br />
+    Climbing Session
+  </h1>
+  <br />
+  <div class="card-text card-text-homepage">
+    <ul>
+      <li>Start recording a new session</li>
+      <br />
+      <li>
+        <a href="{{ url_for('add_session') }}" class="btn btn-primary"
+          >Log a session</a
+        >
+      </li>
+    </ul>
   </div>
 </div>
-
+<!-- homepage view sessions div-->
 <div class="card">
-  <div class="card-header">Your recent sessions</div>
+  <br />
+  <h1 class="card-header">
+    View your <br />
+    Sessions
+  </h1>
+  <br />
+  <div class="card-text card-text-homepage">
+    <ul>
+      <li>View all your logged sessions</li>
+      <br />
+      <li>
+        <a href="{{ url_for('sessions') }}" class="btn btn-primary"
+          >View sessions</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="homepage-spacer"></div>
+<!-- homepage recent sessions div-->
+<div class="card">
+  <h2 class="card-header">Your recent<br />sessions</h2>
+  <br />
   {% for session in sessions %}{% if session.climbs %}
-  <div class="card-body">
-    <h5 class="card-title">Your session from {{ session.date }}</h5>
-    <p class="card-text text-end">
-    <a href="{{ url_for('session_info', session_id=session.session_id) }}" class="btn btn-primary"
-      >View sessions analysis charts</a
-    >
-    <a
-      href="{{ url_for('delete_session', session_id=session.session_id) }}"
-      class="btn btn-primary"
-      onclick="return confirm('Are you sure you wish to delete?');"
-      >Delete session</a
-    >
-  </p>
+  <div class="card-text card-text-homepage">
+    <ul>
+      <li>Your session from {{ session.date }}</li>
+      
+      <li>
+        <a
+          href="{{ url_for('session_info', session_id=session.session_id) }}"
+          class="btn btn-primary"
+          >View sessions analysis charts</a
+        >
+      </li>
+      
+      <li>
+        <a
+          href="{{ url_for('delete_session', session_id=session.session_id) }}"
+          class="btn btn-primary"
+          onclick="return confirm('Are you sure you wish to delete?');"
+          >Delete session</a
+        >
+      </li>
+    </ul>
+    <div class="homepage-spacer"></div>
   </div>
   {% endif %}{% endfor %}
 </div>
 {% else %}
 <!--  homepage intro div -->
-<div class="card card-homepage">
-  <!-- <div class="card-header">Welcome to climbing log</div>
-  <div class="card-body">
-    <h5 class="card-title">The best site for activity logging for climbing</h5>
-    <p class="card-text">
-      Track your sessions, view
-      data and visualise your progress
-    </p>
-    <div class="card-body d-inline">
-      example image
-    </div>
-    <div class="card-body d-inline">
-      example image
-    </div>
-    <p class="card-text"></p>
-  </div> -->
-  <p class="card-header card-header-homepage">Welcome to</p>
-  <p class="card-header card-header-homepage">Climbing Log</p>
-  <br>
-  <p class="card-text">
-    Track your sessions, view
-    data and visualise your progress
-  </p>
-
+<div class="card">
+  <br />
+  <h1 class="card-header">Welcome to<br />Climbing Log</h1>
+  <br />
+  <div class="card-text card-text-homepage">
+    <ul>
+      <li>Track your sessions</li>
+      <br />
+      <li>View data</li>
+      <br />
+      <li>Visualise your progress</li>
+    </ul>
+  </div>
 </div>
+<div class="homepage-spacer"></div>
 <!-- homepage create new user div -->
 <div class="card">
-  <div class="card-header">New to climbing log?</div>
-  <div class="card-body">
-    <h5 class="card-title">Create your user profile</h5>
-    <p class="card-text">
-      Set up a user profile by clicking the button below, this will allow you to
-      start adding climbs to your log
-    </p>
-    <p class="card-text text-end">
-    <a href="{{ url_for('add_user') }}" class="btn btn-primary"
-      >Create new user</a
-    >
-  </p>
+  <h2 class="card-header">New to <br />Climbing Log?</h2>
+  <br />
+  <div class="card-text card-text-homepage">
+    <ul>
+      <li>
+        <a href="{{ url_for('add_user') }}" class="btn btn-primary btn-homepage"
+          >Sign up here</a
+        >
+      </li>
+    </ul>
   </div>
 </div>
 
+<div class="homepage-spacer"></div>
 <!-- homepage login div -->
 <div class="card">
-  <div class="card-header">Already have an account?</div>
-  <div class="card-body">
-    <h5 class="card-title">Lets start logging your activities</h5>
-    <p class="card-text">
-      Login to your account to log a new activity or view data from your
-      climbing sesions
-    </p>
-    <p class="card-text text-end">
-    <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
-  </p>
+  <h2 class="card-header">Already have <br />an account?</h2>
+  <br />
+  <div class="card-text card-text-homepage">
+    <ul>
+      <li>
+        <a href="{{ url_for('login') }}" class="btn btn-primary btn-homepage"
+          >Login to your account</a
+        >
+      </li>
+    </ul>
   </div>
-
+  {% endif %} {% endblock %}
 </div>
-{% endif %} {% endblock %}

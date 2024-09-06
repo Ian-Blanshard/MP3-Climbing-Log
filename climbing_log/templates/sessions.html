@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %} {% if
 current_user.is_authenticated %}
-<div class="container mt-4"></div>
+
 <h1>Sessions</h1>
 {% for session in sessions %} {% if session.climbs %}
 <div class="card" id="climbs-as-table">

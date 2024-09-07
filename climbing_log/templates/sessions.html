@@ -1,10 +1,17 @@
 {% extends 'base.html' %} {% block content %} {% if
 current_user.is_authenticated %}
 
-<h1>Sessions</h1>
+<h1 class="sessions-header">Your sessions</h1>
+<!-- session details as table for larger screen sizes -->
 {% for session in sessions %} {% if session.climbs %}
 <div class="card" id="climbs-as-table">
-  <div class="card-header">Your session from {{ session.date }}</div>
+  <br />
+  <h2 class="card-header">
+    Session on <br />
+    {{ session.date }}
+  </h2>
+  <br />
+
   <div class="card-body">
     <p class="text-start">
       Session length: {{ session_lengths[session.session_id] }}
@@ -51,128 +58,142 @@ current_user.is_authenticated %}
         {% endfor %}
       </tbody>
     </table>
-     <div class="climbs-as-table-button">
-    <a
-      href="{{ url_for('delete_session', session_id=session.session_id) }}"
-      class="btn btn-primary delete-session-table-btn"
-      onclick="return confirm('Are you sure you wish to delete?');"
-      >Delete session</a
-    >
-    <a
-      href="{{ url_for('session_info', session_id=session.session_id) }}"
-      class="btn btn-primary edit-session-table-btn"
-      >View sessions analysis charts</a
-    >
-  </div>
+    <div class="climbs-as-table-button">
+      <a
+        href="{{ url_for('delete_session', session_id=session.session_id) }}"
+        class="btn btn-primary delete-session-table-btn"
+        onclick="return confirm('Are you sure you wish to delete?');"
+        >Delete session</a
+      >
+      <a
+        href="{{ url_for('session_info', session_id=session.session_id) }}"
+        class="btn btn-primary edit-session-table-btn"
+        >View sessions analysis charts</a
+      >
+    </div>
     {% endif %}
   </div>
 </div>
+<!-- session details as list for smaller screen sizes -->
 {% if session.climbs %}
+<!-- session details div -->
 <div class="card" id="climbs-as-list">
-  <div class="card-header">Your session from {{ session.date }}</div>
-  <div class="card-body">
-    <p class="text-start">
-      Session length: {{ session_lengths[session.session_id] }}
-    </p>
-    <p class="text-start">Number of climbs: {{ session.climbs | length }}</p>
-    <div class="accordion">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapse--{{ session.session_id }}"
-            aria-expanded="false"
-            aria-controls="collapse--{{ session.session_id }}"
-          >
-            <p class="text-start">Click to view / edit climb details</p>
-          </button>
-        </h2>
-        <div
-          id="collapse--{{ session.session_id }}"
-          class="accordion-collapse collapse"
-        >
-          <div class="accordion-body">
-            {% for climb in session.climbs %}
-            <div class="accordion accordion-flush">
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button
-                    class="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#flush-collapse-{{ climb.climb_id }}"
-                    aria-expanded="false"
-                    aria-controls="flush-collapse-{{ climb.climb_id }}"
-                  >
-                    <p class="text-end">
-                      {{ climb.name if climb.name else 'Unnamed Climb' }}
-                    </p>
-                  </button>
-                </h2>
-                <div
-                  id="flush-collapse-{{ climb.climb_id}}"
-                  class="accordion-collapse collapse"
-                >
-                  <div class="accordion-body">
-                    <ul class="list-group">
-                      <li class="list-group-item">
-                        <p class="text-start">Grade:</p>
-                        <p class="text-end">{{ climb.difficulty }}</p>
-                      </li>
-                      <li class="list-group-item">
-                        <p class="text-start">Moves:</p>
-                        <p class="text-end">{{ climb.length }}</p>
-                      </li>
-                      <li class="list-group-item">
-                        <p class="text-start">Completed:</p>
-                        <p class="text-end">
-                          {{ 'Yes' if climb.completed else 'No' }}
+  <br />
+  <h2 class="card-header">
+    Session from <br />
+    {{ session.date }}
+  </h2>
+  <div class="card-text card-text-homepage">
+    <ul>
+      <li>Session length: <br />{{ session_lengths[session.session_id] }}</li>
+      <br />
+      <li>Number of climbs: <br />{{ session.climbs | length }}</li>
+      <br />
+      <li>
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapse--{{ session.session_id }}"
+                aria-expanded="false"
+                aria-controls="collapse--{{ session.session_id }}"
+              >
+                <p class="text-start list-text-title">
+                  Click to view / edit climbs
+                </p>
+              </button>
+            </h2>
+            <div
+              id="collapse--{{ session.session_id }}"
+              class="accordion-collapse collapse"
+            >
+              <div class="accordion-body">
+                {% for climb in session.climbs %}
+                <div class="accordion accordion-flush">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapse-{{ climb.climb_id }}"
+                        aria-expanded="false"
+                        aria-controls="flush-collapse-{{ climb.climb_id }}"
+                      >
+                        <p class="list-text-title">
+                          {{ climb.name if climb.name else 'Unnamed Climb' }}
                         </p>
-                      </li>
-                      <li class="list-group-item">
-                        <a
-                          href="{{ url_for('edit_climb', climb_id=climb.climb_id) }}"
-                          class="btn btn-primary edit-climb-list-btn"
-                          >Edit climb</a
-                        >
-                        <a
-                          href="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
-                          onclick="return confirm('Are you sure you wish to delete?');"
-                          class="btn btn-primary delete-climb-list-btn"
-                          >Delete climb</a
-                        >
-                      </li>
-                    </ul>
+                      </button>
+                    </h2>
+                    <div
+                      id="flush-collapse-{{ climb.climb_id}}"
+                      class="accordion-collapse collapse"
+                    >
+                      <div class="accordion-body">
+                        <ul class="list-group list-group-climbs">
+                          <li class="list-group-item">
+                            <p class="text-start">Grade:</p>
+                            <p class="text-end">{{ climb.difficulty }}</p>
+                          </li>
+                          <li class="list-group-item">
+                            <p class="text-start">Moves:</p>
+                            <p class="text-end">{{ climb.length }}</p>
+                          </li>
+                          <li class="list-group-item">
+                            <p class="text-start">Completed:</p>
+                            <p class="text-end">
+                              {{ 'Yes' if climb.completed else 'No' }}
+                            </p>
+                          </li>
+                          <!-- edit/delete climb buttons -->
+                          <li class="list-group-item">
+                            <a
+                              href="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
+                              onclick="return confirm('Are you sure you wish to delete?');"
+                              class="btn btn-primary delete-climb-list-btn"
+                              >Delete</a
+                            >
+                            <a
+                              href="{{ url_for('edit_climb', climb_id=climb.climb_id) }}"
+                              class="btn btn-primary edit-climb-list-btn text-end"
+                              >Edit</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
+                {% endfor %}
               </div>
             </div>
-
-            {% endfor %}
           </div>
         </div>
+      </li>
+      <!-- edit/delete session div -->
+      <div class="climbs-as-list-button text-start">
+        <a
+          href="{{ url_for('delete_session', session_id=session.session_id) }}"
+          onclick="return confirm('Are you sure you wish to delete?');"
+          class="btn btn-primary btn-climb-as-list"
+          >Delete session</a
+        >
+        <a
+          href="{{ url_for('session_info', session_id=session.session_id) }}"
+          class="btn btn-primary btn-climb-as-list"
+          >View charts</a
+        >
       </div>
-    </div>
-<div class=" climbs-as-list-button">
-   <a
-      href="{{ url_for('delete_session', session_id=session.session_id) }}"
-      onclick="return confirm('Are you sure you wish to delete?');"
-      class="btn btn-primary"
-      >Delete session</a
-    >
-    <a
-      href="{{ url_for('session_info', session_id=session.session_id) }}"
-      class="btn btn-primary"
-      >View charts</a
-    >
+    </ul>
   </div>
-  </div>
-</div>
-
-{% endif %} {% endfor %} {% else %}
-<div>
-  <p>You need to log in to view this page.</p>
-  {% endif %} {% endblock %}
+      {% endif %} {% endfor %} {% else %}
+      <div>
+        <p>You need to log in to view this page.</p>
+        {% endif %} {% endblock %}
+      </div>
+    
+  
 </div>

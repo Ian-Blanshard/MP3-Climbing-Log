@@ -22,8 +22,6 @@ body {
   }
 }
 
-
-
 /*============================================================================
 ============================ Site wide styles ================================
 ============================================================================*/
@@ -54,13 +52,17 @@ p {
 
 /* nav bar styles */
 
-.navbar-brand,
-.nav-link {
-  color: rgb(235, 235, 235);
-}
+
 .navbar,
 .footer {
-  background-color: rgb(0, 0, 0, .65) !important;
+  background-color: rgb(0, 0, 0) !important;
+}
+.navbar {
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
 }
 
 /* for all cards */
@@ -79,6 +81,7 @@ p {
 }
 
 .card-header {
+  margin-top: 10%;
   font-weight: 500;
   font-size: 40px;
   padding-left: 0;
@@ -94,7 +97,29 @@ p {
   font-weight: 400;
   padding-top: 5%;
 }
+/* form styles */
+.form-control,
+textarea:focus {
+  background-color: rgb(99, 99, 99) !important;
+  color: white !important;
+}
 
+.form-text {
+  color: white;
+}
+/* for all buttons */
+
+.btn {
+  background-color: rgb(0, 0, 0);
+  border: none;
+  margin: 2%;
+  animation: neon 1.5s ease-in-out infinite alternate;
+}
+
+.help-button {
+  font-size: small !important;
+  background-color: rgb(0, 0, 0);
+}
 /*============================================================================
 ============================= Homepage styles ================================
 ============================================================================*/
@@ -110,51 +135,31 @@ p {
   margin: 0 !important;
 }
 
+/*============================================================================
+=========================== sessions page styles =============================
+============================================================================*/
+/* title styles */
 
+.sessions-header {
+  font-size: 40px;
+  margin-top: 5%;
+  
+}
 
 
 /* accordian styles */
 
 .accordion-button,
 .accordion-collapse,
-.list-group-item {
-  background-color: rgb(99, 99, 99);
+.accordion-button:not(.collapsed)
+.list-group-item,
+.accordion-item {
+  background-color: rgb(99, 99, 99,0.35) !important;
+  border: 0;
 }
 
-p {
-  color: white;
-}
 
-.accordion-button:not(.collapsed),
-.accordion-button.collapsed {
-  background-color: rgb(99, 99, 99);
-  color: white;
-}
 
-/* form styles */
-.form-control,
-textarea:focus {
-  background-color: rgb(99, 99, 99) !important;
-  color: white !important;
-}
-
-.form-text {
-  color: white;
-}
-/* for all buttons */
-
-.btn {
-  background-color: rgb(99, 99, 99);
-  border: none;
-  margin: 2%;
-}
-
-.help-button {
-  font-size: small !important;
-  background-color: rgb(68, 68, 68);
-}
-
-/* sessions.html specific styles */
 /* climbs as table styes*/
 
 th {
@@ -178,6 +183,9 @@ td {
 
 /* climbs as list styles */
 
+.list-text-title {
+  font-size: 20px;
+}
 .climbs-as-list-button {
   text-align: center;
   margin-top: 5%;
@@ -185,16 +193,22 @@ td {
 
 .edit-climb-list-btn,
 .delete-climb-list-btn {
-  font-size: smaller;
+  border: white 1px;
+}
+
+.btn-climb-as-list {
+  margin-left: 0;
 }
 
 .list-group-item {
-  background-color: rgb(68, 68, 68);
+  background-color: rgb(68, 68, 68,0.2);
   padding: 4%;
 }
+
 /* ensure title and text for climb details apear on same line in list */
 .list-group-item > p {
   display: inline;
+  font-size: 16px;
 }
 /* push value to right side of space */
 .list-group-item > .text-end {
@@ -228,9 +242,69 @@ td {
     display: block;
   }
 }
-
-/* plotly chart styles */
+/*============================================================================
+=========================== plotly chart styles ==============================
+============================================================================*/
 
 .modebar {
   display: none;
+}
+
+/*============================================================================
+============================= footer styles ==================================
+============================================================================*/
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.socials {
+  font-size: 30px;
+  text-align: center;
+  padding: 0;
+}
+.socials li {
+  display: inline;
+  padding: 0px 40px;
+}
+ul {
+  margin-bottom: 0;
+}
+.icon {
+  color: rgb(235, 235, 235,0.7);
+  text-decoration: none;
+}
+
+.icon:hover {
+  color: rgb(255, 255, 255)
+}
+
+
+/*-----------------------Effects------------------------------*/
+
+.card {
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes neon {
+  from {
+    box-shadow: 0 0 3px #fff, 0 0 3.5px #fff, 0 0 4.5px #fff, 0 0 6px #ffffff
+  }
+  to {
+    box-shadow: 0 0 1.5px #fff, 0 0 1.75px #fff, 0 0 2.25px #fff, 0 0 3px #ffffff
+  }
 }

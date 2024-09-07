@@ -10,6 +10,12 @@
       crossorigin="anonymous"
       type="text/css"
     />
+    <!--font awesome cdn-->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous">
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
@@ -34,10 +40,10 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ms-auto">
               <li class="nav-item">
                 <a
-                  class="nav-link"
+                  class="nav-link {% if request.endpoint == 'home' %}active{% endif %}"
                   aria-current="page"
                   href="{{ url_for('home') }}"
                   >Home</a
@@ -46,12 +52,12 @@
 
               {% if current_user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('sessions') }}"
+                <a class="nav-link {% if request.endpoint == 'sessions' %}active{% endif %}" href="{{ url_for('sessions') }}"
                   >View Sessions</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('add_session') }}"
+                <a class="nav-link {% if request.endpoint == 'add_session' %}active{% endif %}" href="{{ url_for('add_session') }}"
                   >Record Session</a
                 >
               </li>
@@ -65,18 +71,18 @@
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('delete_user') }}"
+                <a class="nav-link {% if request.endpoint == 'delete_user' %}active{% endif %}" href="{{ url_for('delete_user') }}"
                   >Delete Account</a
                 >
               </li>
               {% else %}
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('add_user') }}"
+                <a class="nav-link {% if request.endpoint == 'add_user' %}active{% endif %}" href="{{ url_for('add_user') }}"
                   >Add user</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                <a class="nav-link {% if request.endpoint == 'login' %}active{% endif %}" href="{{ url_for('login') }}">Login</a>
               </li>
               {% endif %}
             </ul>
@@ -96,10 +102,34 @@
 
     <main class="container">{% block content%} {% endblock %}</main>
 
-    <footer class="footer mt-auto py-3 bg-light">
-      <div class="container">
-        <span class="text-muted">Social media links</span>
-      </div>
+    <footer class="footer">
+      
+        
+          <ul class="socials">
+            
+            <!-- instaram logo link-->
+            <li>
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                class="icon"
+                aria-label="link to out instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </li>
+            <!--facebook logo link-->
+            <li>
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                class="icon"
+                aria-label="link to our facebook"
+                ><i class="fab fa-facebook"></i
+              ></a>
+            </li>
+          </ul>
+        
+      
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>

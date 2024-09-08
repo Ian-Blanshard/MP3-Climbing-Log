@@ -24,19 +24,54 @@ const grades = [
   "9A",
 ];
 // assign difficulty dropdown element to v variable
-const gradeDropdown = document.getElementById('difficulty');
+const gradeDropdown = document.getElementById("difficulty");
 // for loop to populate dropdown
 if (gradeDropdown) {
-  grades.forEach(grade => {
-    const option = document.createElement('option');
+  grades.forEach((grade) => {
+    const option = document.createElement("option");
     option.textContent = grade;
     gradeDropdown.appendChild(option);
-});
+  });
 }
 
+// code for confirmation of delete user modal
+// create variables for two elements involved in modal/form
+const submitDeleteUserFormButton = document.getElementById(
+  "submitDeleteUserForm"
+);
+const deleteUserForm = document.getElementById("deleteUserForm");
+//check if elements exist before adding event listeners - stops errors if not on this page
+if (submitDeleteUserFormButton && deleteUserForm) {
+  //add event listener to modal button so this button can submit delete user form
+  submitDeleteUserFormButton.addEventListener("click", function () {
+    deleteUserForm.submit();
+  });
+}
 
-// to allow deleteUserModal to submit the deleteUserForm
-document.getElementById('submitDeleteUserForm').addEventListener('click', function() {
-  document.getElementById('deleteUserForm').submit();});
+// code for confirmation of delete session modal
+// create variables for two elements involved in modal/form
+const submitDeleteSessionFormButton = document.getElementById(
+  "submitDeleteSessionForm"
+);
+const deleteSessionForm = document.getElementById("deleteSessionForm");
+//check if elements exist before adding event listeners - stops errors if not on this page
+if (submitDeleteSessionFormButton && deleteSessionForm) {
+  //add event listener to modal button so this button can submit delete session form
+  submitDeleteSessionFormButton.addEventListener("click", function () {
+    deleteSessionForm.submit();
+  });
+}
 
-
+// code for confirmation of delete climb modal
+// create variables for two elements involved in modal/form
+const submitDeleteClimbFormButton = document.getElementById(
+  "submitDeleteClimbForm"
+);
+const deleteClimbForm = document.getElementById("deleteClimbForm");
+//check if elements exist before adding event listeners - stops errors if not on this page
+if (submitDeleteClimbFormButton && deleteClimbForm) {
+  //add event listener to modal button so this button can submit delete session form
+  submitDeleteClimbFormButton.addEventListener("click", function () {
+    deleteClimbForm.submit();
+  });
+}

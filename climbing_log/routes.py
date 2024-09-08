@@ -38,7 +38,7 @@ def login():
             if is_valid:
                 # Use the login_user method to log in the user
                 login_user(user)
-                flash('/nYou are logged in as {current_user.username}')
+                flash('You are logged in as {current_user.username}')
                 return redirect(url_for("home"))
             else:
                 flash('Password incorrect please re-enter')
@@ -52,6 +52,7 @@ def login():
 @app.route("/logout")
 def logout():
     logout_user()
+    flash('You are logged out')
     return redirect(url_for("home"))
 
 
@@ -85,6 +86,7 @@ def add_user():
                 user.password).decode('utf-8')
             db.session.add(user)
             db.session.commit()
+            flash('User account created')
         return redirect(url_for("login"))
     return render_template("add_user.html")
 
@@ -106,6 +108,7 @@ def delete_user():
             if is_valid:
                 db.session.delete(user)
                 db.session.commit()
+                flash('User account deleted')
                 return redirect(url_for('home'))
             else:
                 flash('Password incorrect')
@@ -129,6 +132,7 @@ def add_session():
         )
         db.session.add(session)
         db.session.commit()
+        flash('New session created')
         return redirect(url_for("log_climb"))
     return render_template('new_session.html')
 
@@ -161,6 +165,7 @@ def log_climb():
 
         db.session.add(climb)
         db.session.commit()
+        flash('Climb logged')
 
         if request.form.get('action') == 'log_and_redirect':
             return redirect(url_for("sessions"))
@@ -193,23 +198,26 @@ def edit_climb(climb_id):
         climb.length = request.form.get('length')
         climb.completed = request.form.get('completed') == 'True'
         db.session.commit()
+        flash('Climb updated')
         return redirect(url_for("sessions"))
     return render_template("edit_climb.html", climb=climb, climb_id=climb_id)
 
 
-@app.route("/delete_climb/<int:climb_id>")
+@app.route("/delete_climb/<int:climb_id>", methods=["GET", "POST"])
 def delete_climb(climb_id):
     climb = Climb.query.get_or_404(climb_id)
     db.session.delete(climb)
     db.session.commit()
+    flash('Climb deleted')
     return redirect(url_for("sessions"))
 
 
-@app.route("/delete_session/<int:session_id>")
+@app.route("/delete_session/<int:session_id>", methods=["GET", "POST"])
 def delete_session(session_id):
     session = Sessions.query.get_or_404(session_id)
     db.session.delete(session)
     db.session.commit()
+    flash('Session deleted')
     return redirect(url_for("sessions"))
 
 

@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %} {% if
 current_user.is_authenticated %}
 <!-- <h5>logged in as: {{ current_user.username }}</h5> -->
-<div class="homepage-spacer"></div>
+<div class="spacer"></div>
 <!-- homepage new session div-->
 <div class="card">
   <br />
@@ -22,7 +22,7 @@ current_user.is_authenticated %}
     </ul>
   </div>
 </div>
-<div class="homepage-spacer"></div>
+<div class="spacer"></div>
 <!-- homepage view sessions div-->
 <div class="card">
   <br />
@@ -43,7 +43,7 @@ current_user.is_authenticated %}
     </ul>
   </div>
 </div>
-<div class="homepage-spacer"></div>
+<div class="spacer"></div>
 <!-- homepage recent sessions div-->
 <div class="card">
   <h2 class="card-header">Your recent<br />sessions</h2>
@@ -70,13 +70,13 @@ current_user.is_authenticated %}
         >
       </li>
     </ul>
-    <div class="homepage-spacer"></div>
+    <div class="spacer"></div>
   </div>
   {% endif %}{% endfor %}
   <div class="spacer-l"></div>
 </div>
 {% else %}
-<div class="homepage-spacer"></div>
+<div class="spacer"></div>
 <!--  homepage intro div -->
 <div class="card">
   <br />
@@ -92,8 +92,8 @@ current_user.is_authenticated %}
     </ul>
   </div>
 </div>
-<div class="homepage-spacer"></div>
-<div class="homepage-spacer"></div>
+<div class="spacer"></div>
+<div class="spacer"></div>
 <!-- homepage create new user div -->
 <div class="card">
   <h2 class="card-header">New to <br />Climbing Log?</h2>
@@ -109,7 +109,7 @@ current_user.is_authenticated %}
   </div>
 </div>
 
-<div class="homepage-spacer"></div>
+<div class="spacer"></div>
 <!-- homepage login div -->
 <div class="card">
   <h2 class="card-header">Already have <br />an account?</h2>

@@ -1,10 +1,74 @@
 {% extends 'base.html' %} {% block content %} {% if
 current_user.is_authenticated %}
+<div
+  class="modal fade"
+  id="deleteSessionModal"
+  tabindex="-1"
+  aria-labelledby="deleteSessionModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content card">
+      <div class="card-header">
+        Are you sure you wish to delete your session?
+      </div>
+      <div class="card-body">
+        <p class="card-text text-end">
+          <button type="button" id="submitDeleteSessionForm">
+            Delete Session
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            No
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="deleteClimbModal"
+  tabindex="-1"
+  aria-labelledby="deleteClimbModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content card">
+      <div class="card-header">
+        Are you sure you wish to delete this climb?
+      </div>
+      <div class="card-body">
+        <p class="card-text text-end">
+          <button type="button" id="submitDeleteClimbForm">
+            Delete Climb
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            No
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <h1 class="sessions-header">Your sessions</h1>
 <!-- session details as table for larger screen sizes -->
 {% for session in sessions %} {% if session.climbs %}
-<div class="card" id="climbs-as-table">
+
+<div
+  class="card"
+  id="climbs-as-table"
+  data-session-id="{{ session.session_id }}"
+>
   <br />
   <h2 class="card-header">
     Session on <br />
@@ -46,12 +110,20 @@ current_user.is_authenticated %}
             >
           </td>
           <td>
-            <a
-              href="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
-              class="btn btn-primary climbs-as-table-button"
-              onclick="return confirm('Are you sure you wish to delete?');"
-              >Delete climb</a
+            <form
+              method="POST"
+              action="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
+              id="deleteClimbForm"
             >
+              <button
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#deleteClimbModal"
+                class="btn btn-primary"
+              >
+                Delete climb
+              </button>
+            </form>
           </td>
         </tr>
 
@@ -59,12 +131,20 @@ current_user.is_authenticated %}
       </tbody>
     </table>
     <div class="climbs-as-table-button">
-      <a
-        href="{{ url_for('delete_session', session_id=session.session_id) }}"
-        class="btn btn-primary delete-session-table-btn"
-        onclick="return confirm('Are you sure you wish to delete?');"
-        >Delete session</a
+      <form
+        method="POST"
+        action="{{ url_for('delete_session', session_id=session.session_id) }}"
+        id="deleteSessionForm"
       >
+        <button
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#deleteSessionModal"
+          class="btn btn-primary"
+        >
+          Delete Session
+        </button>
+      </form>
       <a
         href="{{ url_for('session_info', session_id=session.session_id) }}"
         class="btn btn-primary edit-session-table-btn"
@@ -150,12 +230,20 @@ current_user.is_authenticated %}
                           </li>
                           <!-- edit/delete climb buttons -->
                           <li class="list-group-item">
-                            <a
-                              href="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
-                              onclick="return confirm('Are you sure you wish to delete?');"
-                              class="btn btn-primary delete-climb-list-btn"
-                              >Delete</a
+                            <form
+                              method="POST"
+                              action="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
+                              id="deleteClimbForm"
                             >
+                              <button
+                                type="button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deleteClimbModal"
+                                class="btn btn-primary"
+                              >
+                                Delete climb
+                              </button>
+                            </form>
                             <a
                               href="{{ url_for('edit_climb', climb_id=climb.climb_id) }}"
                               class="btn btn-primary edit-climb-list-btn text-end"
@@ -175,12 +263,20 @@ current_user.is_authenticated %}
       </li>
       <!-- edit/delete session div -->
       <div class="climbs-as-list-button text-start">
-        <a
-          href="{{ url_for('delete_session', session_id=session.session_id) }}"
-          onclick="return confirm('Are you sure you wish to delete?');"
-          class="btn btn-primary btn-climb-as-list"
-          >Delete session</a
+        <form
+          method="POST"
+          action="{{ url_for('delete_session', session_id=session.session_id) }}"
+          id="deleteSessionForm"
         >
+          <button
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteSessionModal"
+            class="btn btn-primary"
+          >
+            Delete Session
+          </button>
+        </form>
         <a
           href="{{ url_for('session_info', session_id=session.session_id) }}"
           class="btn btn-primary btn-climb-as-list"
@@ -189,11 +285,9 @@ current_user.is_authenticated %}
       </div>
     </ul>
   </div>
-      {% endif %} {% endfor %} {% else %}
-      <div>
-        <p>You need to log in to view this page.</p>
-        {% endif %} {% endblock %}
-      </div>
-    
-  
+  {% endif %} {% endfor %} {% else %}
+  <div>
+    <p>You need to log in to view this page.</p>
+    {% endif %} {% endblock %}
+  </div>
 </div>

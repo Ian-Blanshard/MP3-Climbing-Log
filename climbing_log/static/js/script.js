@@ -35,3 +35,8 @@ if (gradeDropdown) {
 }
 
 
+// to allow deleteUserModal to submit the deleteUserForm
+document.getElementById('submitDeleteUserForm').addEventListener('click', function() {
+  document.getElementById('deleteUserForm').submit();});
+
+

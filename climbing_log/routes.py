@@ -38,6 +38,7 @@ def login():
             if is_valid:
                 # Use the login_user method to log in the user
                 login_user(user)
+                flash('/nYou are logged in as {current_user.username}')
                 return redirect(url_for("home"))
             else:
                 flash('Password incorrect please re-enter')

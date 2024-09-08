@@ -32,6 +32,7 @@ body {
   font-family: "Kanit", sans-serif;
 }
 body {
+  margin-top: 56px;
   display: flex;
   flex-direction: column;
   background-color: rgb(60, 60, 60);
@@ -120,6 +121,23 @@ textarea:focus {
   font-size: small !important;
   background-color: rgb(0, 0, 0);
 }
+
+/*============================================================================
+============================= flash alert styles =============================
+============================================================================*/
+
+.alert-warning {
+  background-color: black;
+  color: white;
+  border: 0;
+}
+.alert-warning ul {
+  list-style: none;
+  text-align: center;
+  padding: 0;
+}
+
+
 /*============================================================================
 ============================= Homepage styles ================================
 ============================================================================*/
@@ -130,6 +148,9 @@ textarea:focus {
 }
 .homepage-spacer {
   height: 20px;
+}
+.spacer-l {
+  height: 200px;
 }
 .btn-homepage {
   margin: 0 !important;
@@ -280,6 +301,21 @@ ul {
 .icon:hover {
   color: rgb(255, 255, 255)
 }
+
+/*============================================================================
+============================= modal styles ==================================
+============================================================================*/
+
+.SessionLocationModal {
+  background-color: black;
+  
+  padding: 2%;
+ 
+  cursor: pointer;
+  
+  border: 15px solid rgb(235, 235, 235,0);
+}
+
 
 
 /*-----------------------Effects------------------------------*/

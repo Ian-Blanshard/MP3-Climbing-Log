@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %} {% if
 current_user.is_authenticated %}
 <!-- <h5>logged in as: {{ current_user.username }}</h5> -->
-
+<div class="homepage-spacer"></div>
 <!-- homepage new session div-->
 <div class="card">
   <br />
@@ -22,6 +22,7 @@ current_user.is_authenticated %}
     </ul>
   </div>
 </div>
+<div class="homepage-spacer"></div>
 <!-- homepage view sessions div-->
 <div class="card">
   <br />
@@ -72,8 +73,10 @@ current_user.is_authenticated %}
     <div class="homepage-spacer"></div>
   </div>
   {% endif %}{% endfor %}
+  <div class="spacer-l"></div>
 </div>
 {% else %}
+<div class="homepage-spacer"></div>
 <!--  homepage intro div -->
 <div class="card">
   <br />
@@ -89,6 +92,7 @@ current_user.is_authenticated %}
     </ul>
   </div>
 </div>
+<div class="homepage-spacer"></div>
 <div class="homepage-spacer"></div>
 <!-- homepage create new user div -->
 <div class="card">
@@ -119,5 +123,6 @@ current_user.is_authenticated %}
       </li>
     </ul>
   </div>
+  <div class="spacer-l"></div>
   {% endif %} {% endblock %}
 </div>

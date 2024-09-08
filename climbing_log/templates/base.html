@@ -15,7 +15,8 @@
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
       integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-      crossorigin="anonymous">
+      crossorigin="anonymous"
+    />
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
@@ -24,6 +25,31 @@
     <title>Climbing Log</title>
   </head>
   <body>
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      aria-labelledby="logoutModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content card">
+          <div class="card-header">Are you sure you wish to log out?</div>
+          <div class="card-body">
+            <p class="card-text text-end">
+              <a href="{{ url_for('logout') }}">Logout</a>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                No
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-body-tertiary">
         <div class="container-fluid">
@@ -52,12 +78,16 @@
 
               {% if current_user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link {% if request.endpoint == 'sessions' %}active{% endif %}" href="{{ url_for('sessions') }}"
+                <a
+                  class="nav-link {% if request.endpoint == 'sessions' %}active{% endif %}"
+                  href="{{ url_for('sessions') }}"
                   >View Sessions</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link {% if request.endpoint == 'add_session' %}active{% endif %}" href="{{ url_for('add_session') }}"
+                <a
+                  class="nav-link {% if request.endpoint == 'add_session' %}active{% endif %}"
+                  href="{{ url_for('add_session') }}"
                   >Record Session</a
                 >
               </li>
@@ -65,24 +95,32 @@
               <li class="nav-item">
                 <a
                   class="nav-link"
-                  onclick="return confirm('Are you sure you wish to logout?');"
-                  href="{{ url_for('logout') }}"
+                  data-bs-toggle="modal"
+                  data-bs-target="#logoutModal" 
                   >Logout</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link {% if request.endpoint == 'delete_user' %}active{% endif %}" href="{{ url_for('delete_user') }}"
+                <a
+                  class="nav-link {% if request.endpoint == 'delete_user' %}active{% endif %}"
+                  href="{{ url_for('delete_user') }}"
                   >Delete Account</a
                 >
               </li>
               {% else %}
               <li class="nav-item">
-                <a class="nav-link {% if request.endpoint == 'add_user' %}active{% endif %}" href="{{ url_for('add_user') }}"
+                <a
+                  class="nav-link {% if request.endpoint == 'add_user' %}active{% endif %}"
+                  href="{{ url_for('add_user') }}"
                   >Add user</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link {% if request.endpoint == 'login' %}active{% endif %}" href="{{ url_for('login') }}">Login</a>
+                <a
+                  class="nav-link {% if request.endpoint == 'login' %}active{% endif %}"
+                  href="{{ url_for('login') }}"
+                  >Login</a
+                >
               </li>
               {% endif %}
             </ul>
@@ -103,33 +141,28 @@
     <main class="container">{% block content%} {% endblock %}</main>
 
     <footer class="footer">
-      
-        
-          <ul class="socials">
-            
-            <!-- instaram logo link-->
-            <li>
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                class="icon"
-                aria-label="link to out instagram"
-                ><i class="fab fa-instagram"></i
-              ></a>
-            </li>
-            <!--facebook logo link-->
-            <li>
-              <a
-                href="https://www.facebook.com/"
-                target="_blank"
-                class="icon"
-                aria-label="link to our facebook"
-                ><i class="fab fa-facebook"></i
-              ></a>
-            </li>
-          </ul>
-        
-      
+      <ul class="socials">
+        <!-- instaram logo link-->
+        <li>
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            class="icon"
+            aria-label="link to out instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </li>
+        <!--facebook logo link-->
+        <li>
+          <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            class="icon"
+            aria-label="link to our facebook"
+            ><i class="fab fa-facebook"></i
+          ></a>
+        </li>
+      </ul>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>

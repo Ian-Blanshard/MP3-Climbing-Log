@@ -9,13 +9,14 @@ current_user.is_authenticated %}
 >
   <div class="modal-dialog">
     <div class="modal-content card">
-      <div class="card-header">
-        Are you sure you wish to delete your account? This is irreversable and all your
-        logged sessions will be permenatly deleted!
+      <div class="modal-header">
+        Are you sure you wish to delete your account? This action is irreversable 
       </div>
       <div class="card-body">
         <p class="card-text text-end">
-          <button type="button" id="submitDeleteUserForm">Delete account</button>
+          <button type="button" id="submitDeleteUserForm" class="btn btn-secondary">
+            Delete account
+          </button>
           <button
             type="button"
             class="btn btn-secondary"
@@ -29,6 +30,7 @@ current_user.is_authenticated %}
   </div>
 </div>
 <div class="card">
+  <br>
   <div class="card-header">Delete account</div>
   <div class="card-body">
     <h5 class="card-title">
@@ -66,8 +68,14 @@ current_user.is_authenticated %}
         />
       </div>
 
-      <button type="button" data-bs-toggle="modal"
-      data-bs-target="#deleteUserModal" class="btn btn-primary">Delete User</button>
+      <button
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#deleteUserModal"
+        class="btn btn-primary"
+      >
+        Delete User
+      </button>
     </form>
   </div>
 </div>

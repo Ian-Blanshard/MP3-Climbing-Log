@@ -1,32 +1,42 @@
 {% extends 'base.html' %} {% block content %} {% if
 current_user.is_authenticated %}
 <div
-  class="modal fade SessionLocationModal"
+  class="modal fade"
   id="myModal"
   tabindex="-1"
   aria-labelledby="SessionLocationModal"
   aria-hidden="true"
 >
   <div class="modal-dialog">
-    <div class="modal-content card">
-      
-        <div class="card-header">How to add location</div>
-        <div class="card-body">
-        <p class="card-text text-end">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-        </p>
+        <div class="modal-header text-center">How to add location</div>
+        <div class="modal-body text-center">
+          <ul class="list-unstyled">
+            <li>
+              Record the location of your climbing session in the box below
+            </li>
+            <br>
+            <li>
+              Once the location is recorded you will be taken to the page to record your individual climbs
+            </li>
+            <br>
+            <li>
+              Keeping track of the location of your climbs will allow you to track your performance at different locations
+            </li>
+          </ul>
       </div>
-      
-    </div>
   </div>
+  <p class="text-end">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      data-bs-dismiss="modal"
+    >
+      Close
+    </button>
+  </p>
 </div>
 <div class="card">
+  <br>
   <div class="card-header d-flex">Session details
     <p class="card-text ms-auto">
       <button
@@ -40,6 +50,7 @@ current_user.is_authenticated %}
       </p>
   </div>
   <div class="card-body">
+    <br>
     <h5 class="card-title">
       Add the location of the session to begin logging climbs
     </h5>

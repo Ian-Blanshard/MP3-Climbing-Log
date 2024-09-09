@@ -32,7 +32,6 @@ body {
   font-family: "Kanit", sans-serif;
 }
 body {
-  
   display: flex;
   flex-direction: column;
   background-color: rgb(60, 60, 60);
@@ -52,7 +51,6 @@ p {
 }
 
 /* nav bar styles */
-
 
 .navbar,
 .footer {
@@ -101,7 +99,7 @@ p {
 /* form styles */
 .form-control,
 textarea:focus {
-  background-color: rgb(99, 99, 99,.8) !important;
+  background-color: rgb(99, 99, 99, 0.8) !important;
   color: white !important;
 }
 
@@ -139,9 +137,8 @@ textarea:focus {
   color: white;
   border: 0;
   position: fixed;
-  top: 40px; 
+  top: 40px;
   width: 100%;
-  
 }
 .alert-warning ul {
   list-style: none;
@@ -168,23 +165,18 @@ textarea:focus {
 
 .sessions-header {
   font-size: 40px;
-  margin-top: 5%;
-  
+  margin-top: 100px;
 }
-
 
 /* accordian styles */
 
 .accordion-button,
 .accordion-collapse,
-.accordion-button:not(.collapsed)
-.list-group-item,
+.accordion-button:not(.collapsed) .list-group-item,
 .accordion-item {
-  background-color: rgb(99, 99, 99,0.35) !important;
+  background-color: rgb(99, 99, 99, 0.35) !important;
   border: 0;
 }
-
-
 
 /* climbs as table styes*/
 
@@ -209,25 +201,17 @@ td {
 
 /* climbs as list styles */
 
-.list-text-title {
-  font-size: 20px;
+/* ensures last item is visible above footer */
+#climbs-as-list {
+  margin-bottom: 100px;
 }
 .climbs-as-list-button {
   text-align: center;
   margin-top: 5%;
 }
 
-.edit-climb-list-btn,
-.delete-climb-list-btn {
-  border: white 1px;
-}
-
-.btn-climb-as-list {
-  margin-left: 0;
-}
-
 .list-group-item {
-  background-color: rgb(68, 68, 68,0.2);
+  background-color: rgb(68, 68, 68, 0.2);
   padding: 4%;
 }
 
@@ -301,30 +285,28 @@ ul {
   margin-bottom: 0;
 }
 .icon {
-  
   color: rgb(235, 235, 235);
   text-decoration: none;
 }
 
 .icon:hover {
-  color: rgb(255, 255, 255)
+  color: rgb(255, 255, 255);
 }
 
 /*============================================================================
 ============================= modal styles ==================================
 ============================================================================*/
 
-.SessionLocationModal {
-  background-color: black;
-  
-  padding: 2%;
- 
-  cursor: pointer;
-  
-  border: 15px solid rgb(235, 235, 235,0);
+.modal {
+  background-color:rgba(0, 0, 0);
+  padding: 15% 10%;
 }
 
-
+.modal-header {
+  font-size: 40px;
+  font-weight: 500;
+  border: none;
+}
 
 /*-----------------------Effects------------------------------*/
 
@@ -361,9 +343,10 @@ ul {
 }
 @keyframes neon {
   from {
-    box-shadow: 0 0 3px #fff, 0 0 3.5px #fff, 0 0 4.5px #fff, 0 0 6px #ffffff
+    box-shadow: 0 0 3px #fff, 0 0 3.5px #fff, 0 0 4.5px #fff, 0 0 6px #ffffff;
   }
   to {
-    box-shadow: 0 0 1.5px #fff, 0 0 1.75px #fff, 0 0 2.25px #fff, 0 0 3px #ffffff
+    box-shadow: 0 0 1.5px #fff, 0 0 1.75px #fff, 0 0 2.25px #fff,
+      0 0 3px #ffffff;
   }
 }

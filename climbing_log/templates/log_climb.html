@@ -8,22 +8,34 @@ current_user.is_authenticated %}
   aria-hidden="true"
 >
   <div class="modal-dialog">
-    <div class="modal-content card">     
-        <div class="card-header">How to log a climb</div>
-        <div class="card-body">
-        <p class="card-text text-end">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-        </p>
+        <div class="modal-header text-center">How to log your climbs</div>
+        <div class="modal-body text-center">
+          <ul class="list-unstyled">
+            <li>
+              During your climbing session record details of each climb using the form provided
+            </li>
+            <br>
+            <li>
+              After each attempt, log the climb details, whether you completed it or not, this will collect the details along with the time you log your climb
+            </li>
+            <br>
+            <li>
+              Once you are finished click end session and analysis and details of all the climbs will be viewable on the view sessions page
+            </li>
+          </ul>
       </div>
     </div>
-  </div>
+    <p class="text-end">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        data-bs-dismiss="modal"
+      >
+        Close
+      </button>
+    </p>
 </div>
+<br>
 <div class="card">
   <div class="card-header d-flex">Current session
     <p class="card-text ms-auto">
@@ -99,9 +111,9 @@ current_user.is_authenticated %}
         </div>
       </div>
       <p class="card-text d-flex"> 
-        <button type="submit" class="btn btn-primary" name="action" value="log_and_redirect">
+        <a  class="btn btn-primary" href="{{ url_for('sessions')}}">
           End Session
-        </button>
+        </a>
         <button type="submit" class="btn btn-primary ms-auto" name="action" value="log_climb">
           Add Climb
         </button>

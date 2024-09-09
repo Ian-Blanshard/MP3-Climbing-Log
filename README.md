@@ -207,7 +207,8 @@ https://plot.ly/python/reference/#layout-margin
 
 https://stackoverflow.com/questions/11178426/how-can-i-pass-data-from-flask-to-javascript-in-a-template
 
-
+for deleteclimb/session buttons in sessions.html
+https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
 
 https://www.webfx.com/blog/web-design/responsive-background-image/
 

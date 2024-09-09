@@ -39,14 +39,10 @@ current_user.is_authenticated %}
 >
   <div class="modal-dialog">
     <div class="modal-content card">
-      <div class="card-header">
-        Are you sure you wish to delete this climb?
-      </div>
+      <div class="card-header">Are you sure you wish to delete this climb?</div>
       <div class="card-body">
         <p class="card-text text-end">
-          <button type="button" id="submitDeleteClimbForm">
-            Delete Climb
-          </button>
+          <button type="button" id="submitDeleteClimbForm">Delete Climb</button>
           <button
             type="button"
             class="btn btn-secondary"
@@ -92,9 +88,9 @@ current_user.is_authenticated %}
           <th scope="col"></th>
         </tr>
       </thead>
-
       <tbody>
         {% for climb in session.climbs %}
+
         <tr>
           <td scope="row">
             {{ climb.name if climb.name else 'Unnamed Climb' }}
@@ -113,12 +109,13 @@ current_user.is_authenticated %}
             <form
               method="POST"
               action="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
-              id="deleteClimbForm"
+              id="deleteClimbForm-{{ climb.climb_id }}"
             >
               <button
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#deleteClimbModal"
+                data-climb-id="{{ climb.climb_id }}"
                 class="btn btn-primary"
               >
                 Delete climb
@@ -134,12 +131,13 @@ current_user.is_authenticated %}
       <form
         method="POST"
         action="{{ url_for('delete_session', session_id=session.session_id) }}"
-        id="deleteSessionForm"
+        id="deleteSessionForm-{{ session.session_id }}"
       >
         <button
           type="button"
           data-bs-toggle="modal"
           data-bs-target="#deleteSessionModal"
+          data-session-id="{{ session.session_id }}"
           class="btn btn-primary"
         >
           Delete Session
@@ -151,15 +149,15 @@ current_user.is_authenticated %}
         >View sessions analysis charts</a
       >
     </div>
-    {% endif %}
   </div>
 </div>
+{% endif %} {% endfor %}
 <!-- session details as list for smaller screen sizes -->
-{% if session.climbs %}
+{% for session in sessions %} {% if session.climbs %}
 <!-- session details div -->
 <div class="card" id="climbs-as-list">
   <br />
-  <h2 class="card-header">
+  <h2 class="card-title">
     Session from <br />
     {{ session.date }}
   </h2>
@@ -229,16 +227,17 @@ current_user.is_authenticated %}
                             </p>
                           </li>
                           <!-- edit/delete climb buttons -->
-                          <li class="list-group-item">
+                          <li class="list-group-item text-end">
                             <form
                               method="POST"
                               action="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
-                              id="deleteClimbForm"
+                              id="deleteClimbForm-{{ climb.climb_id }}"
                             >
                               <button
                                 type="button"
                                 data-bs-toggle="modal"
                                 data-bs-target="#deleteClimbModal"
+                                data-climb-id="{{ climb.climb_id }}"
                                 class="btn btn-primary"
                               >
                                 Delete climb
@@ -246,8 +245,8 @@ current_user.is_authenticated %}
                             </form>
                             <a
                               href="{{ url_for('edit_climb', climb_id=climb.climb_id) }}"
-                              class="btn btn-primary edit-climb-list-btn text-end"
-                              >Edit</a
+                              class="btn btn-primary"
+                              >Edit climb</a
                             >
                           </li>
                         </ul>
@@ -266,12 +265,13 @@ current_user.is_authenticated %}
         <form
           method="POST"
           action="{{ url_for('delete_session', session_id=session.session_id) }}"
-          id="deleteSessionForm"
+          id="deleteSessionForm-{{ session.session_id }}"
         >
           <button
             type="button"
             data-bs-toggle="modal"
             data-bs-target="#deleteSessionModal"
+            data-session-id="{{ session.session_id }}"
             class="btn btn-primary"
           >
             Delete Session
@@ -279,7 +279,7 @@ current_user.is_authenticated %}
         </form>
         <a
           href="{{ url_for('session_info', session_id=session.session_id) }}"
-          class="btn btn-primary btn-climb-as-list"
+          class="btn btn-primary"
           >View charts</a
         >
       </div>

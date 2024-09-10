@@ -2,14 +2,16 @@
 <div class="spacer"></div>
 <div class="card">
   <br />
-  <h1 class="card-header">Add user</h1>
+  <h1 class="card-header add-user-header">Add user</h1>
   <br />
-  <div class="card-body">
+  <div class="card-body form-div">
     <h5 class="card-title">
       Add your details below to create your user profile
     </h5>
     <br />
+    <!-- form for new user details-->
     <form method="POST" action="{{ url_for('add_user') }}">
+      <!-- username div -->
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
         <input
@@ -23,6 +25,7 @@
           required
         />
       </div>
+      <!-- email address div -->
       <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
         <input
@@ -39,6 +42,7 @@
           We'll never share your email with anyone else.
         </div>
       </div>
+      <!-- password div -->
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
         <input
@@ -50,6 +54,7 @@
           maxlength="50"
           required
         />
+        <!-- enter password twice to ensure correct -->
         <div class="mb-3">
           <label for="password_check" class="form-label"
             >Re-enter Password</label
@@ -64,6 +69,7 @@
             required
           />
         </div>
+        <!-- date of birth div -->
         <div class="mb-3">
           <label for="date_of_birth" class="form-label">Date of birth</label>
           <input
@@ -75,6 +81,7 @@
             required
           />
         </div>
+        <!-- sex radio buttons divs -->
         <div class="d-flex">
           <div class="form-check me-3">
             <input
@@ -98,6 +105,7 @@
             <label class="form-check-label" for="sexF">Female</label>
           </div>
         </div>
+        <!-- height div -->
         <div class="mb-3">
           <label for="height" class="form-label">Height in cm</label>
           <input
@@ -112,6 +120,7 @@
             required
           />
         </div>
+        <!-- weight div -->
         <div class="mb-3">
           <label for="weight" class="form-label">Weight in kg</label>
           <input
@@ -126,6 +135,7 @@
             required
           />
         </div>
+        <!-- button to submit form -->
         <p class="card-text text-end">
           <button type="submit" class="btn btn-primary">Create User</button>
         </p>

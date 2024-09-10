@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %} {% if
 current_user.is_authenticated %}
+<!-- modal for confirmation of deleting account -->
 <div
   class="modal fade"
   id="deleteUserModal"
@@ -10,13 +11,20 @@ current_user.is_authenticated %}
   <div class="modal-dialog">
     <div class="modal-content card">
       <div class="modal-header">
-        Are you sure you wish to delete your account? This action is irreversable 
+        Are you sure you wish to delete your account? This action is
+        irreversable
       </div>
       <div class="card-body">
         <p class="card-text text-end">
-          <button type="button" id="submitDeleteUserForm" class="btn btn-secondary">
+          <!-- modal button which confirms and submits form -->
+          <button
+            type="button"
+            id="submitDeleteUserForm"
+            class="btn btn-secondary"
+          >
             Delete account
           </button>
+          <!-- close modal button -->
           <button
             type="button"
             class="btn btn-secondary"
@@ -29,20 +37,22 @@ current_user.is_authenticated %}
     </div>
   </div>
 </div>
+
 <div class="card">
-  <br>
+  <br />
   <div class="card-header">Delete account</div>
-  <div class="card-body">
+  <div class="card-body form-div">
     <h5 class="card-title">
       Deleting your account will permenantly remove all logged sessions, this
       will be permenant, there is no way to recover this information.
     </h5>
-
+    <!-- from to take user input to ensure they want to delete account -->
     <form
       method="POST"
       action="{{url_for('delete_user') }}"
       id="deleteUserForm"
     >
+      <!-- enter password div  -->
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
         <input
@@ -55,6 +65,7 @@ current_user.is_authenticated %}
           required
         />
       </div>
+      <!-- check password div -->
       <div class="mb-3">
         <label for="password_check" class="form-label">Re-enter Password</label>
         <input
@@ -67,7 +78,7 @@ current_user.is_authenticated %}
           required
         />
       </div>
-
+      <!-- button which launches confirmation modal -->
       <button
         type="button"
         data-bs-toggle="modal"

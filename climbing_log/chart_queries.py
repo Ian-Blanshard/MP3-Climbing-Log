@@ -55,8 +55,8 @@ def get_completed_uncompleted_climbs(session_id):
         font_color='rgb(255, 255, 255)',
         font_family="Kanit",
         # change background colors
-        paper_bgcolor='rgb(68, 68, 68)',
-        plot_bgcolor='rgb(68, 68, 68)',
+        paper_bgcolor='rgb(68, 68, 68, 0.7)',
+        plot_bgcolor='rgb(68, 68, 68, 0.7)',
         # set white space around plot
         margin_l=10,
         margin_r=20,
@@ -65,7 +65,8 @@ def get_completed_uncompleted_climbs(session_id):
             yanchor="bottom",
             y=-0.5,
             xanchor="right",
-            x=0.95))
+            x=0.95,
+            bgcolor = 'rgba(68, 68, 68, 0.0)'))
     # remove text from pie
     fig.update_traces(textinfo='none')
     # convert the plotly figure to JSON
@@ -95,12 +96,20 @@ def get_range_of_difficulty_climbed(session_id):
             font_color='rgb(255, 255, 255)',
             font_family="Kanit",
             # change background colors
-            paper_bgcolor='rgb(68, 68, 68)',
-            plot_bgcolor='rgb(68, 68, 68)',
+            paper_bgcolor='rgb(68, 68, 68, 0.7)',
+            plot_bgcolor='rgb(68, 68, 68, 0.7)',
             # set white space around plot
             margin_l=10,
-            margin_r=20
-        )
+            margin_r=20,
+            # set legend background color
+            legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=-0.5,
+            xanchor="right",
+            x=0.95,
+            bgcolor = 'rgba(68, 68, 68, 0.0)'))
+        
         fig.update_yaxes(showgrid=False)
 
         # this code filters the grade list for ones which have a value
@@ -143,8 +152,8 @@ def get_range_of_difficulty_not_climbed(session_id):
             font_color='rgb(255, 255, 255)',
             font_family="Kanit",
             # change background colors
-            paper_bgcolor='rgb(68, 68, 68)',
-            plot_bgcolor='rgb(68, 68, 68)',
+            paper_bgcolor='rgb(68, 68, 68, 0.7)',
+            plot_bgcolor='rgb(68, 68, 68, 0.7)',
             # set white space around plot
             margin_l=10,
             margin_r=20
@@ -203,8 +212,8 @@ def get_range_of_length_climbs(session_id):
         font_color='rgb(255, 255, 255)',
         font_family="Kanit",
         # change background colors
-        paper_bgcolor='rgb(68, 68, 68)',
-        plot_bgcolor='rgb(68, 68, 68)',
+        paper_bgcolor='rgb(68, 68, 68, 0.7)',
+        plot_bgcolor='rgb(68, 68, 68, 0.7)',
         # set white space around plot
         margin_l=10,
         margin_r=20,

@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %} {% if
 current_user.is_authenticated %}
+<!-- help modal -->
 <div
   class="modal fade"
   id="myModal"
@@ -38,9 +39,11 @@ current_user.is_authenticated %}
       </button>
     </p>
   </div>
-  <div class="card-body">
+  <!-- edit climb div -->
+  <div class="card-body form-div">
     <h5 class="card-title">Edit climb</h5>
-
+    <!-- edit climb form -->
+    <!-- submitting form passes current climb id to route -->
     <form method="POST" action="{{ url_for('edit_climb', climb_id=climb_id) }}">
       <div class="mb-3">
         <label for="climbname" class="form-label">Climb name (optional)</label>
@@ -112,6 +115,7 @@ current_user.is_authenticated %}
 </div>
 
 {% else %}
+<!-- div to be dislayed if user is not logged in and page is accessed -->
 <div class="card">
   <div class="card-header">You are not logged into</div>
   <div class="card-body">

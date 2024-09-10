@@ -1,38 +1,35 @@
 {% extends 'base.html' %} {% block content %}
+<br>
 <div class="card">
-  <div class="card-header">
-    What percentage of climbs did you complete in this session?
-  </div>
   <div class="card-body">
-    <p class="card-text"></p>
+    <p class="card-text chart-title">
+      What percentage of climbs did you complete in this session?
+    </p>
     <div id="pie-chart"></div>
   </div>
 </div>
 <div class="card">
-  <div class="card-header">Grade of climbs vs length</div>
   <div class="card-body">
-    <p class="card-text"></p>
+    <p class="card-text chart-title">Grade of climbs vs length</p>
     <div id="scatter-chart"></div>
   </div>
 </div>
 {% if graph1JSON %}
 <div class="card">
-  <div class="card-header">
-    Grade spread of climbs completed from his session
-  </div>
   <div class="card-body">
-    <p class="card-text"></p>
+    <p class="card-text chart-title">Grade spread of climbs completed from his session</p>
     <div id="bar-chart"></div>
   </div>
 </div>
 {% endif %} {% if graph_grades_not_climbedJSON %}
 <div class="card">
-  <div class="card-header">Grade spread of climbs failed on</div>
   <div class="card-body">
-    <p class="card-text"></p>
+    <p class="card-text chart-title">Grade spread of climbs failed on</p>
     <div id="bar-chart-not-grade"></div>
   </div>
 </div>
+<div class="spacer"></div>
+<br>
 {% endif %}
 
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>

@@ -1,6 +1,5 @@
 {% extends 'base.html' %} {% block content %} {% if
 current_user.is_authenticated %}
-<!-- <h5>logged in as: {{ current_user.username }}</h5> -->
 <div class="spacer"></div>
 <!-- homepage new session div-->
 <div class="card">
@@ -52,21 +51,11 @@ current_user.is_authenticated %}
   <div class="card-text card-text-homepage">
     <ul>
       <li>Your session from {{ session.date }}</li>
-      
       <li>
         <a
           href="{{ url_for('session_info', session_id=session.session_id) }}"
           class="btn btn-primary"
           >View sessions analysis charts</a
-        >
-      </li>
-      
-      <li>
-        <a
-          href="{{ url_for('delete_session', session_id=session.session_id) }}"
-          class="btn btn-primary"
-          onclick="return confirm('Are you sure you wish to delete?');"
-          >Delete session</a
         >
       </li>
     </ul>

@@ -36,8 +36,8 @@ current_user.is_authenticated %}
     </p>
 </div>
 <br>
-<div class="card">
-  <div class="card-header d-flex">Current session
+<div class="card ">
+  <div class="card-header add-climb-header d-flex form-div">Add climb
     <p class="card-text ms-auto">
       <button
         type="button"
@@ -84,6 +84,7 @@ current_user.is_authenticated %}
           aria-describedby="enter number of moves for this climb"
           required
         />
+        <br>
         <div class="d-flex">
           <div class="form-check me-3">
             <input
@@ -111,7 +112,7 @@ current_user.is_authenticated %}
         </div>
       </div>
       <p class="card-text d-flex"> 
-        <a  class="btn btn-primary" href="{{ url_for('sessions')}}">
+        <a  class="btn btn-primary" href="{{ url_for('end_session')}}">
           End Session
         </a>
         <button type="submit" class="btn btn-primary ms-auto" name="action" value="log_climb">

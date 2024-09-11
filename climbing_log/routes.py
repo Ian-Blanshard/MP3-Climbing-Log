@@ -174,6 +174,10 @@ def log_climb():
 
     return render_template('log_climb.html')
 
+@app.route('/end_session')
+def end_session():
+    flash('Session logged')
+    return redirect(url_for('sessions'))
 
 @app.route("/session_info/<int:session_id>")
 def session_info(session_id):

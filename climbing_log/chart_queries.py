@@ -86,7 +86,7 @@ def get_range_of_difficulty_climbed(session_id):
     count_grades = Counter(grades)
     grades = list(count_grades.keys())
     number_of_each_grade = list(count_grades.values())
-
+    #labels as dict to pass to fig
     bar_labels = {'x': 'Grade', 'y': 'Number Climbed'}
     # create bar chart using data
     if grades:
@@ -107,8 +107,7 @@ def get_range_of_difficulty_climbed(session_id):
             yanchor="bottom",
             y=-0.5,
             xanchor="right",
-            x=0.95,
-            bgcolor = 'rgba(68, 68, 68, 0.0)'))
+            x=0.95))
         
         fig.update_yaxes(showgrid=False)
 
@@ -217,7 +216,7 @@ def get_range_of_length_climbs(session_id):
         # set white space around plot
         margin_l=10,
         margin_r=20,
-        # customise legend text/position
+        # customise legend text/position/ background color
         legend=dict(
             title='Climbed succesfully?',
             orientation="h",
@@ -225,6 +224,7 @@ def get_range_of_length_climbs(session_id):
             y=1.05,
             xanchor="center",
             x=0.5,
+            bgcolor = 'rgba(68, 68, 68, 0.0)'
         )
     )
     # change style of markers

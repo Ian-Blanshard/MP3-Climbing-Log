@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %} {% if
 current_user.is_authenticated %}
+<!-- modal for confirmation of deleting session-->
 <div
   class="modal fade"
   id="deleteSessionModal"
@@ -14,7 +15,7 @@ current_user.is_authenticated %}
       </div>
       <div class="card-body">
         <p class="card-text text-end">
-          <button type="button" id="submitDeleteSessionForm">
+          <button type="button btn btn-secondary" class="btn btn-secondary" id="submitDeleteSessionForm">
             Delete Session
           </button>
           <button
@@ -42,7 +43,7 @@ current_user.is_authenticated %}
       <div class="card-header">Are you sure you wish to delete this climb?</div>
       <div class="card-body">
         <p class="card-text text-end">
-          <button type="button" id="submitDeleteClimbForm">Delete Climb</button>
+          <button type="button" class="btn btn-secondary" id="submitDeleteClimbForm">Delete Climb</button>
           <button
             type="button"
             class="btn btn-secondary"
@@ -66,7 +67,7 @@ current_user.is_authenticated %}
   data-session-id="{{ session.session_id }}"
 >
   <br />
-  <h2 class="card-header">
+  <h2 class="card-header climbs-as-table-header">
     Session on <br />
     {{ session.date }}
   </h2>

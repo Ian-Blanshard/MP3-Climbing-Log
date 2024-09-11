@@ -9,24 +9,36 @@ current_user.is_authenticated %}
   aria-hidden="true"
 >
   <div class="modal-dialog">
-    <div class="modal-content card">
-      <div class="card-header">How to edit a climb</div>
-      <div class="card-body">
-        <p class="card-text text-end">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-        </p>
+        <div class="modal-header text-center">How to edit your climb</div>
+        <div class="modal-body text-center">
+          <ul class="list-unstyled">
+            <li>
+              The previous details from the climb you logged will be displayed in the form
+            </li>
+            <br>
+            <li>
+              Choose the details which you wish to change and replace them, then click edit climb
+            </li>
+            <br>
+            <li>
+              You must recheck one of the options, completed or not completed to confirm whether you completed the climb
+            </li>
+          </ul>
       </div>
     </div>
-  </div>
+    <p class="text-end">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        data-bs-dismiss="modal"
+      >
+        Close
+      </button>
+    </p>
 </div>
+<br>
 <div class="card">
-  <div class="card-header d-flex">
+  <div class="card-header edit-climb-header form-div d-flex">
     Edit climb details
     <p class="card-text ms-auto">
       <button
@@ -80,6 +92,7 @@ current_user.is_authenticated %}
           aria-describedby="enter number of moves for this climb"
           required
         />
+        <br>
         <div class="d-flex">
           <div class="form-check me-3">
             <input

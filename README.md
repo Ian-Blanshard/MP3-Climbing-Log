@@ -418,14 +418,17 @@ pip freeze --local > requirements.txt
 
 4. Create a new app on the [Heroku website](https://dashboard.heroku.com/apps) by clicking the new button in your dashboard. 
 
-5. From the Heroku dashboard of your newly created application, click deploy then deployment Method and select GitHub.
+5. Confirm the linking of the Heroku app to the correct GitHub repository.
 
-6. Confirm the linking of the Heroku app to the correct GitHub repository.
+6. In the Heroku dashboard for the application, click on settings then reveal config vars and set up the configs.
 
-7. In the Heroku dashboard for the application, click on settings then reveal config vars.
+7. From the Heroku dashboard of your newly created application, click deploy then deployment Method and select GitHub.
 
-8. Set up the config
+8. In the manual deployment section of this page, make sure the master branch is selected and then click deploy branch.
 
 9. On the Heroku dashboard, click deploy.
 
-10. In the manual deployment section of this page, make sure the master branch is selected and then click deploy branch.
+10. Open the console on heroku and run a python3 terminal, create the db using db.create_all()
+
+
+

@@ -19,3 +19,6 @@
 Fix the bug throws error when trying to log in with a username that doesn't exist in database
 
 incorrect button styling delete climb modal sessions page
+
+
+url(/static/images/climbing.jpg)

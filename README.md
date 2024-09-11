@@ -410,6 +410,7 @@ The final Live version of site is hosted on Heroku and can be found [here]()
 The project was deployed to Heroku, below are the steps taken:
 
 1. Create a requirements.txt file.
+pip freeze --local > requirements.txt
 
 2. Create a Procfile details on [heroku here](https://devcenter.heroku.com/articles/procfile#:~:text=The%20Procfile%201%20Procfile%20naming%20and%20location%20The,type%20examples%20...%207%20Procfile%20and%20heroku.yml%20).
 

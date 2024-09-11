@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %} 
+<div class="spacer"></div>
+<!-- homepage new session div-->
+<div class="card">
+  <br>
+  <h1 class="card-header">
+    Page Doesnt exist
+  </h1>
+  <br>
+  <div class="card-text card-text-homepage">
+    <ul>
+      <li>Click here to return home</li>
+      <br>
+      <li>
+        <a href="{{ url_for('home') }}" class="btn btn-primary"
+          >Log a session</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+
+ {% endblock %}
+

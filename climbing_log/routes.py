@@ -339,3 +339,9 @@ def sessions():
 
     # return template with current logged in user session history
     return render_template('sessions.html', sessions=sessions, session_lengths=session_lengths)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """displays 404 page"""
+    # note that we set the 404 status explicitly
+    return render_template('404.html'), 404

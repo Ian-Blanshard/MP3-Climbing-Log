@@ -303,8 +303,15 @@ flash new session created
 
 session logged flash message
 
+### session info Page Features
 
+![session_info page](/climbing_log/static/images/session_info_page.jpg)
 
+![session_info page](/climbing_log/static/images/session_info_page1.jpg)
+
+![session_info page](/climbing_log/static/images/session_info_page2.jpg)
+
+![session_info page](/climbing_log/static/images/session_info_page3.jpg)
 
 ###  <a name=""></a>
 

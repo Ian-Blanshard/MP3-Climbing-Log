@@ -1,4 +1,13 @@
 # MP3-Climbing-Log
+
+
+![Screenshot of game on different devices](/climbing_log/static/images/climbing_log.jpg)
+
+Climbing log is an activity tracker site for climbing. 
+
+Live version of site hosted on Heroku [here](https://climbing-log-c3c4ad26055c.herokuapp.com/)
+
+***
 ***
 
 ## Contents
@@ -139,8 +148,9 @@ The layout and design for tablet/desktop will be the same with desktop having la
 
 ## Features <a name="features"></a>
 
+### Database
 
-### Relational vs Non-Relational Databases
+#### Relational vs Non-Relational Databases
 
 For this project I was required to use a database and implement CRUD functionality.
 
@@ -153,7 +163,7 @@ There are two types of database structures relational and non-relational, i deci
 
 Below is a summary of the two types: 
 
-1. Relational Databases
+#### 1. Relational Databases
 
 Structured Model: Utilize a table-based format, organizing data into rows and columns.
 
@@ -164,7 +174,7 @@ relationships between data.
 
 Consistency: Ensure strong data consistency and integrity.
 
-2. Non-Relational Databases
+#### 2. Non-Relational Databases
 
 Flexible Models: Offer various data models like documents, key-value pairs, or graphs.
 
@@ -172,12 +182,12 @@ Scalability: Designed to scale horizontally and handle dynamic, unstructured dat
 
 Adaptability: Well-suited for applications with rapidly changing data requirements and unstructured content.
 
-### CRUD Functionality <a name="crud-functionality"></a>
+#### CRUD Functionality <a name="crud-functionality"></a>
 
 My app demonstrates CRUD functionality as outlined below:
 
 #### Create:
-  
+
 #### Read:
 
 #### Update:

@@ -31,6 +31,20 @@ After removing this my script.js file passed valiation with no errors.
 
 ![JavaScript validation pass](/climbing_log/static/images/javascript_validation_pass.jpg)
 
+#### Python validation
+
+The [Code Institute](https://pep8ci.herokuapp.com/#) python linter was used to ensure my
+python code was PEP8 compliant
+
+This highlighted a number of issues with trailing whitespace and lines being greater than 79 characters long
+
+![python validation](/climbing_log/static/images/python_validation.jpg)
+
+These were rectified and my code passed with no errors.
+
+![python validation pass](/climbing_log/static/images/python_validation_passed.jpg)
+
+
 ### Manual testing <a name="manual-testing"></a>
 
 #### Testing across different devices and browsers  <a name="testing-devices-browsers"></a>

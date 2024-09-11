@@ -35,15 +35,16 @@ grades_correct_order = [
 
 
 def get_completed_uncompleted_climbs(session_id):
-    """Queries database for all the climbs from the passed session , returns 
-    plotly pie chart showing climbs completed vs not completed in JSON format"""
+    """Queries database for all the climbs from the passed session , returns
+    plotly pie chart showing climbs completed v not completed in JSON format"""
     # get data from database for chart
     last_session = Sessions.query.filter_by(session_id=session_id).first()
     # get number of climbs completed from most recent session
     completed_count = db.session.query(func.count(Climb.climb_id)).filter_by(
         session_id=last_session.session_id, completed=True).scalar()
     # get number of climbs not completed from most recent session
-    not_completed_count = db.session.query(func.count(Climb.climb_id)).filter_by(
+    not_completed_count = db.session.query(
+        func.count(Climb.climb_id)).filter_by(
         session_id=last_session.session_id, completed=False).scalar()
     # use pandas to create the dataframe
     df = pd.DataFrame({
@@ -77,7 +78,7 @@ def get_completed_uncompleted_climbs(session_id):
 
 
 def get_range_of_difficulty_climbed(session_id):
-    """Queries database for all the completed climbs from the passed session 
+    """Queries database for all the completed climbs from the passed session
     , returns plotly bar chart showing climbs, per grade, in JSON format"""
     # get data of all completed climbs from the session
     climbs = Climb.query.filter_by(
@@ -130,7 +131,7 @@ def get_range_of_difficulty_climbed(session_id):
 
 
 def get_range_of_difficulty_not_climbed(session_id):
-    """Queries database for all the not completed climbs from the passed session 
+    """Queries database for the not completed climbs from the passed session
     , returns plotly bar chart showing climbs, per grade, in JSON format"""
     # get data of all completed climbs from the session
     climbs = Climb.query.filter_by(
@@ -177,7 +178,7 @@ def get_range_of_difficulty_not_climbed(session_id):
 
 
 def get_range_of_length_climbs(session_id):
-    """Queries database for all the climbs logged from the passed session 
+    """Queries database for all the climbs logged from the passed session
     , returns plotly scatter chart showing climbs spread of climbs and whether
      or not they were completed, in JSON format"""
     # query database for climb details from the relevant session

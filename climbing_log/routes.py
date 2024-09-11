@@ -4,18 +4,29 @@ from climbing_log import app, db, login_manager, bcrypt
 from climbing_log.models import Users, Sessions, Climb
 from datetime import datetime
 from sqlalchemy.orm import joinedload
-from climbing_log.chart_queries import get_completed_uncompleted_climbs, get_range_of_difficulty_climbed, get_range_of_length_climbs, get_range_of_difficulty_not_climbed
+from climbing_log.chart_queries import (
+    get_completed_uncompleted_climbs,
+    get_range_of_difficulty_climbed,
+    get_range_of_length_climbs,
+    get_range_of_difficulty_not_climbed
+)
 
 
 @app.route("/")
 def home():
-    """returns home page, if user is authenticated also returns 10 most recent 
-    sessions"""
+    """returns home page, if user is authenticated also returns 10 most recent
+        sessions"""
     # if user is logged in
     if current_user.is_authenticated:
         # query database for 10 most recent sessions
-        sessions = Sessions.query.options(joinedload(Sessions.climbs)).filter_by(
-            user_id=current_user.user_id).order_by(Sessions.session_id.desc()).limit(10).all()
+        sessions = (
+            Sessions.query
+            .options(joinedload(Sessions.climbs))
+            .filter_by(user_id=current_user.user_id)
+            .order_by(Sessions.session_id.desc())
+            .limit(10)
+            .all()
+        )
         # return homepage with sessions
         return render_template("home.html", sessions=sessions)
     # user not logged in return homepage
@@ -31,8 +42,8 @@ def loader_user(user_id):
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    """handles the user form for logging in using GET/POST, GET will present 
-    login form to user, POST will deal with user submiting form and check 
+    """handles the user form for logging in using GET/POST, GET will present
+    login form to user, POST will deal with user submiting form and check
     validity of password with bcrypt, flashed messages for user info"""
     # If a post request was made, find the user by
     # filtering for the username
@@ -78,9 +89,9 @@ def logout():
 
 @app.route("/add_user", methods=["GET", "POST"])
 def add_user():
-    """handles the user form for creating account using GET/POST, 
-    GET will present add user form to user, POST will deal with user 
-    submiting form and check validity of details added, bcrypt will hash 
+    """handles the user form for creating account using GET/POST,
+    GET will present add user form to user, POST will deal with user
+    submiting form and check validity of details added, bcrypt will hash
      password before sending to database, flashed messages for user info"""
     # if POST request / user submitting for
     if request.method == 'POST':
@@ -125,9 +136,9 @@ def add_user():
 
 @app.route("/delete_user", methods=["GET", "POST"])
 def delete_user():
-    """handles the user form for deleting account using GET/POST, 
-    GET will present delete user form to user, POST will deal with user 
-    submiting form and check password entered twice is the same and matches 
+    """handles the user form for deleting account using GET/POST,
+    GET will present delete user form to user, POST will deal with user
+    submiting form and check password entered twice is the same and matches
     hashed password in database, flashed messages for user info"""
     # if from submitted
     if request.method == 'POST':
@@ -162,9 +173,9 @@ def delete_user():
 
 @app.route("/new_session", methods=["GET", "POST"])
 def add_session():
-    """handles the user form for creating new session using GET/POST, 
-    GET will present new session form to user, POST will deal with user 
-    submiting form and create new session for that user, flashed messages 
+    """handles the user form for creating new session using GET/POST,
+    GET will present new session form to user, POST will deal with user
+    submiting form and create new session for that user, flashed messages
     for user info"""
     # POST request deals with user submitting new session form
     if request.method == 'POST':
@@ -192,16 +203,17 @@ def add_session():
 
 @app.route("/log_climb", methods=["GET", "POST"])
 def log_climb():
-    """handles the user form for logging a climb using GET/POST, GET will 
-    present log climb form to user, POST will deal with user submiting form 
+    """handles the user form for logging a climb using GET/POST, GET will
+    present log climb form to user, POST will deal with user submiting form
     and add new climb details to database for current session
     , flashed messages for user info"""
     # POST request deals with form submission
     if request.method == 'POST':
         # gets current session from database to add climb to this
         current_session = Sessions.query.filter_by(
-            user_id=current_user.user_id).order_by(Sessions.time.desc()).first()
-        # so that code works if first session and no session to find in database
+            user_id=current_user.user_id).order_by(Sessions.time.desc()
+                                                   ).first()
+        # so code works if first session and no session to find in database
         if not current_session:
             current_session = 0
         # create climb variable from form
@@ -246,8 +258,8 @@ def end_session():
 
 @app.route("/session_info/<int:session_id>")
 def session_info(session_id):
-    """Displays page and creates plotly charts for page from session_id passed"""
-    # if current user is logged in pass session id to methods for chart creation
+    """Displays page and creates plotly charts from session_id passed"""
+    # if current user is logged in pass session id to methods for charts
     if current_user.is_authenticated:
         pie_json = get_completed_uncompleted_climbs(session_id)
         bar_json = get_range_of_difficulty_climbed(session_id)
@@ -255,15 +267,21 @@ def session_info(session_id):
             session_id)
         scatter_json = get_range_of_length_climbs(session_id)
         # return page and JSON represntations of plotly charts
-        return render_template('session_info.html', graphJSON=pie_json, graph1JSON=bar_json, graph_grades_not_climbedJSON=bar_uncompleted_grades, scatterJSON=scatter_json)
+        return render_template(
+            'session_info.html',
+            graphJSON=pie_json,
+            graph1JSON=bar_json,
+            graph_grades_not_climbedJSON=bar_uncompleted_grades,
+            scatterJSON=scatter_json
+        )
     # render session info without charts JSONs
     return render_template('session_info.html')
 
 
 @app.route("/edit_climb/<int:climb_id>", methods=["GET", "POST"])
 def edit_climb(climb_id):
-    """handles the user form for editing a climb using GET/POST, GET will 
-    present edit climb form to user filling in the climb details for the passed 
+    """handles the user form for editing a climb using GET/POST, GET will
+    present edit climb form to user filling in the climb details for the passed
     id, POST will deal with user submiting form and update climb details
     , flashed messages for user info"""
     # query database for climb details to fill form
@@ -313,13 +331,15 @@ def delete_session(session_id):
 
 @app.route('/sessions')
 def sessions():
-    """returns sessions page, contains logged in users sessions and 
+    """returns sessions page, contains logged in users sessions and
     climbs from these sessions """
     if current_user.is_authenticated:
         # query database for all sessions from user which is logged in
         # plus all the climbs from the sessions using the joinedload
-        sessions = Sessions.query.options(joinedload(Sessions.climbs)).filter_by(
-            user_id=current_user.user_id).order_by(Sessions.session_id.desc()).all()
+        sessions = Sessions.query.options(
+            joinedload(Sessions.climbs)).filter_by(
+                user_id=current_user.user_id).order_by(
+                    Sessions.session_id.desc()).all()
         # empty dictionary to hold session lengths
         session_lengths = {}
         # loop through all the sessions for user
@@ -338,7 +358,9 @@ def sessions():
                 session_minutes} mins {session_seconds} secs'
 
     # return template with current logged in user session history
-    return render_template('sessions.html', sessions=sessions, session_lengths=session_lengths)
+    return render_template(
+        'sessions.html', sessions=sessions, session_lengths=session_lengths)
+
 
 @app.errorhandler(404)
 def page_not_found(e):

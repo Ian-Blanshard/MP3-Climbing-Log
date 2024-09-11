@@ -22,7 +22,7 @@ else:
         uri = uri.replace("postgres://", "postgresql://", 1)
     app.config["SQLALCHEMY_DATABASE_URI"] = uri
 
-#create a Bcrypt object
+# create a Bcrypt object
 bcrypt = Bcrypt(app)
 
 # initialise flask-sqlalchemy extension

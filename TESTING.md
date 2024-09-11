@@ -11,6 +11,14 @@
 
 
 
+#### html validation
+
+![](/climbing_log/static/images/html_validation.jpg)
+
+
+
+
+
 
 ### Bugs <a name="bugs"></a>
 

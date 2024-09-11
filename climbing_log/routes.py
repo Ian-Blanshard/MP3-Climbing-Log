@@ -21,8 +21,6 @@ def home():
     # user not logged in return homepage
     return render_template('home.html')
 
-# Creates a user loader callback that returns the user object given an id
-
 
 @login_manager.user_loader
 def loader_user(user_id):

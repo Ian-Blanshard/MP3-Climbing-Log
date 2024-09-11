@@ -3,11 +3,18 @@
 
 ![Screenshot of game on different devices](/climbing_log/static/images/climbing_log.jpg)
 
-Climbing log is an activity tracker site for climbing. 
+Climbing log is an activity tracker site for climbing. It allows users to track their climbs through sessions and view past session information and stats through interactive charts/graphs. 
 
 Live version of site hosted on Heroku [here](https://climbing-log-c3c4ad26055c.herokuapp.com/)
 
-***
+You can view an account which already has some logged activities by Logging in with:
+
+ Username: ian
+
+ Password: password
+
+ 
+
 ***
 
 ## Contents
@@ -20,15 +27,16 @@ Live version of site hosted on Heroku [here](https://climbing-log-c3c4ad26055c.h
   * [Wireframes](#wireframes)
   * [Colour Scheme and Font](#styles)
 
+
 2 [Features](#features)
 
- * [CRUD functionality](#crud-functionality)
+ * [Database](#database)
  * [NavBar](#navbar)
  * [Footer](#footer)
  * [Flash Messages](#flash-messages)
- * [Home Page](#home-page)
- * [Create Account Page](#create-account-page)
- * []()
+ * [Page Features](#page-features)
+ * [404 page](#404-page)
+
 
 3 [Technologies Used](#technologies-used)
 
@@ -39,7 +47,9 @@ Live version of site hosted on Heroku [here](https://climbing-log-c3c4ad26055c.h
 6 [Finished Site](#finished-site)
 
 ***
+
 ## User Experience (UX) <a name="UX"></a>
+
 ### Project Goals <a name="project-goals"></a>
 
  * Create a activity tracker for climbing
@@ -148,16 +158,53 @@ The layout and design for tablet/desktop will be the same with desktop having la
 
 ## Features <a name="features"></a>
 
-### Database
+***
+
+### Database <a name="database"></a>
 
 #### Relational vs Non-Relational Databases
 
 For this project I was required to use a database and implement CRUD functionality.
 
 - Create: Adding new data or records to the database.
+
 - Read: Retrieving or querying data from the database.
+
 - Update: Modifying or editing existing data or records.
+
 - Delete: Removing data or records from the database.
+
+#### CRUD Functionality 
+
+My app demonstrates CRUD functionality as outlined below:
+
+#### Create:
+
+- Creating user account
+- Creating climbing sessions
+- Creating individual climbs
+
+#### Read:
+
+- Reading from Sessions table to display recent sessions on homepage and sessions page
+- Reading from Users table for logging in
+- Reading from Climbs table for displaying climb information on sessions page and for creating interactive graphs/charts on sessions info page
+- Reading from Climbs table to populate form on edit climb page
+
+#### Update:
+
+- Edit climb form allows users to edit the details of previously logged climbs
+- Removing climbs from sessions updates Sessions table and updated session can be viewed
+
+#### Delete:
+
+- Deleting climbs from sessions using the delete climb button on sessions page
+- Deleting whole Sessions on the session page
+- Deleteing User account
+
+***
+
+### Database types
 
 There are two types of database structures relational and non-relational, i decided a relational database was the best choice for my project, as the primary key/ foreign key features would be useful in the relationships between my users, their sessions and climbs from these sessions
 
@@ -182,18 +229,7 @@ Scalability: Designed to scale horizontally and handle dynamic, unstructured dat
 
 Adaptability: Well-suited for applications with rapidly changing data requirements and unstructured content.
 
-#### CRUD Functionality <a name="crud-functionality"></a>
-
-My app demonstrates CRUD functionality as outlined below:
-
-#### Create:
-
-#### Read:
-
-#### Update:
-
-#### Delete:
-
+***
 
 ### NavBar <a name="navbar"></a>
 
@@ -213,169 +249,275 @@ Larger screen size navbar for when users are logged in, displaying the pages ava
 
 ![NavBar logged in](/climbing_log/static/images/navbar_logged_in.jpg)
 
-### Footer  <a name="footer"></a>
-
-![Footer](/climbing_log/static/images/footer.jpg)
-
-### Flash Messages <a name="flash-messages"></a>
-
-![logged out flash message](/climbing_log/static/images/flash_message_logout.jpg)
-
-![logged out flash message](/climbing_log/static/images/flash_message_logged_in.jpg)
-
-![no username flash message](/climbing_log/static/images/flash_message_no_username.jpg)
-
-![incorrect password flash message](/climbing_log/static/images/flash_message_incorrect_password.jpg)
-
-![session created flash message](/climbing_log/static/images/flash_new_session_created.jpg)
-
-![session logged flash message](/climbing_log/static/images/flash_message_session_logged.jpg)
-
-![duplicate user flash message](/climbing_log/static/images/flash_duplicate_user.jpg)
-
-### Home Page <a name="home-page"></a>
-
-Home page when user not logged in
-
-![Home page not logged in](/climbing_log/static/images/homepage_not_logged_in.jpg)
-
-Homepage when user logged in
-
-![Home page logged in](/climbing_log/static/images/homepage_logged_in.jpg)
-
-
-### Home Page Features
-
-The Home page contains the following:
-
-#### Hero Image.
-
-  - The main image used for the site.
-  - navbar/footer discussed above
-
-#### scrollable page when not logged in contains:
-
-  - details on page purpose
-
-  ![Details of page purpose](/climbing_log/static/images/page_purpose.jpg)
-
-  - link to create account, also available in navbar
-
-  ![Home page link to create account](/climbing_log/static/images/home_page_create_account.jpg)
-
-  - link to login, also available in navbar
-
-  ![Home page link to login](/climbing_log/static/images/home_page_login.jpg)
-
-  - list of most recent sessions and links to view charts from these
-
-  ![Home page recent sessions link](/climbing_log/static/images/home_page_recent_sessions.jpg)
-
-#### scrollable page when logged in contains:
-
-  - link to log a new climbing session
-
-  ![link to log a new climbing session](/climbing_log/static/images/home_page_new_session.jpg)
-
-  - link to view all sessions 
-
-  ![link to view all sessions](/climbing_log/static/images/home_page_view_sessions.jpg)
-
-#### logout button
-
 - the logout button appears in the navbar on the homepage and all pages visible when the user is logged in, it allows the user to logout
 
 - logout confirmation modal, when user is logged in and clicks the logout button in the navbar, this confirmation appears, this prevents the user logging out accidentally
 
   ![Logout Modal](/climbing_log/static/images/logout_modal.jpg)
 
-### Create account Page <a name="create-account-page"></a>
+***
 
-#### Create user form
+### Footer  <a name="footer"></a>
 
-![](/climbing_log/static/images/add_user_page.jpg)
+Footer contains icons for social media, which are clickable links opening up these pages in new tabs
 
-![](/climbing_log/static/images/add_user_page2.jpg)
+![Footer](/climbing_log/static/images/footer.jpg)
 
-### Login Page Features
+***
 
-#### Login form
+### Flash Messages <a name="flash-messages"></a>
 
-- allows user to enter their login details to access the site features which require login
+The site contains a number of flash messages which diplay as a banner under the navbar, these provide feedback to the user to let them know that operations have been performed succesfully when they interact with the page
 
-- has flash messages, discussed in details above, which appear to provide feedback to the user. To notify them of using an incorrect password, using and incorrect username and when they succesfully log in
+- flash message for when user logs out of their profile
+
+![logged out flash message](/climbing_log/static/images/flash_message_logout.jpg)
+
+- flash message for when the user logs into their profile
+
+![logged out flash message](/climbing_log/static/images/flash_message_logged_in.jpg)
+
+- flash message for when the user attempts to login with a username which is not present in the database
+
+![no username flash message](/climbing_log/static/images/flash_message_no_username.jpg)
+
+- flash message for when the user enters an incorrect password
+
+![incorrect password flash message](/climbing_log/static/images/flash_message_incorrect_password.jpg)
+
+- flash message for when the user starts logging a new climbing session
+
+![session created flash message](/climbing_log/static/images/flash_new_session_created.jpg)
+
+- flash message for when the user finishes logging their current climbing session
+
+![session logged flash message](/climbing_log/static/images/flash_message_session_logged.jpg)
+
+- flash message for when the user attempts to create a user profile with a username which is already taken
+
+![duplicate user flash message](/climbing_log/static/images/flash_duplicate_user.jpg)
+
+***
+
+### Page Features <a name="page-features"></a>
+
+***
+
+#### Homepage
+
+The homepage features the hero image, this is present accross the whole site.
+
+The homepage is the first page the user is presented with when visiting the site, it contains three cards, one has a short explaination of the site, one prompts them to create a user profile and the other to log in if they already have an account.
+Both of these options are also displayed for quick access on the navbar.
+
+Once the user is logged in the cards then change one for creating a new session, one for viewing all their sessions and one contains a list of up to 10 of their recent sessions with a link to view the session charts/graphs.
+
+##### Home page when user not logged in
+
+![Home page not logged in](/climbing_log/static/images/homepage_not_logged_in.jpg)
+
+##### Homepage when user logged in
+
+![Home page logged in](/climbing_log/static/images/homepage_logged_in.jpg)
+
+
+##### page purpose card
+
+  ![Details of page purpose](/climbing_log/static/images/page_purpose.jpg)
+
+##### link to create account card
+
+  ![Home page link to create account](/climbing_log/static/images/home_page_create_account.jpg)
+
+##### link to login card
+
+  ![Home page link to login](/climbing_log/static/images/home_page_login.jpg)
+
+##### most recent session cards
+
+  ![Home page recent sessions link](/climbing_log/static/images/home_page_recent_sessions.jpg)
+
+
+##### link to log a new climbing session card
+
+  ![link to log a new climbing session](/climbing_log/static/images/home_page_new_session.jpg)
+
+##### link to view all sessions card
+
+  ![link to view all sessions](/climbing_log/static/images/home_page_view_sessions.jpg)
+
+***
+
+#### Create user page
+
+The create user page contains a form which gathers information required to set up an account, the page layout revolves around the hero image.
+It has features which ensure the password must be entered twice and match before the form can be submitted. The date of birth field can utalise a calendar to enter the users DOB. There is also user feedback through flash messages discussed above, these ensure already existing usernames/emails cannot be used again. There is alsoe feedback when to tell the user when they have successfully created an account. 
+
+##### Create userpage 
+
+![create user page form](/climbing_log/static/images/add_user_page.jpg)
+
+![create user page form 2](/climbing_log/static/images/add_user_page2.jpg)
+
+***
+
+#### Login Page 
+
+
+The login page allows user to enter their login details to access the site features which require login.
+It has flash messages, discussed in details above, which appear to provide feedback to the user. To notify them of using an incorrect password, using and incorrect username and when they succesfully log in.
+
+##### login page
 
 ![Login page](/climbing_log/static/images/login_page.jpg)
 
-### Delete Account Page Features
+***
 
-- allows user to delete their account removing all their information from the database
+#### Delete Account Page
 
-- page contains explanation that doing so will be permenant and that logged data will not be able to be retreived
+The delete user account page allows user to delete their account removing all their information from the database
+It also contains explanation that doing so will be permenant and that logged data will not be able to be retreived and password confirmation is required for this step to protect the user.
 
-- password confirmation is required for this step to protect the user
+
+##### Delete account page
 
 ![Delete account page](/climbing_log/static/images/delete_account_page.jpg)
 
-- upon submitting the form a modal appears and requires confirmation, this ensures it is clear to the user the action they are about to take
+Upon submitting the form a modal appears and requires confirmation, this ensures it is clear to the user the action they are about to take. 
 
-- the form also contains flash messages, as discussed above in detail, if the user was to enter an incorrect password into the form, or if the passwords entered do not match.
+The form also contains flash messages, as discussed above in detail, which will show if the user was to enter an incorrect password into the form, or if the passwords entered do not match.
+
+##### Delete account page modal
 
 ![Delete account confirmation modal](/climbing_log/static/images/delete_account_modal.jpg)
 
-### View Sessions Page Features
+***
+
+#### View Sessions Page
+
+The view sessions page allows users to view their logged sessions, each session displays the basic information of session date, session length and number of climbs in the session.
+
+Depending upon screen size the climbs from the session are viewed in different ways, on large screen sizes all the climbs are visible in a table, but on smaller screen sizes these are moved into accordians which can be collapsed or expanded to view the climb information.
+
+There are buttons available to the user which allow them to edit/delete climbs and delete sessions. There is also a button for each session which takes them the the session info page which contains charts/graphs with details on that session.
+
+There are also modals which launch when the user clicks the delete session or climb buttons, which require confirmation of deletion. This protects the user from mistakenly deleting information.
+
+##### view sessions page large screen sizes
 
 ![View session page on large screens](/climbing_log/static/images/view_sessions_large_page.jpg)
 
+##### view sessions page small screen sizes
+
 ![View session page on small screens](/climbing_log/static/images/view_sessions_small_page.jpg)
+
+
+##### small screen accordian 
 
 ![View session small screen accordian](/climbing_log/static/images/view_sessions_small_page_accordian.jpg)
 
+##### Delete climb modal
+
 ![View session delete climb modal](/climbing_log/static/images/session_delete_climb_modal.jpg)
+
+##### Delete session modal
 
 ![View session delete climb modal](/climbing_log/static/images/delete_session_modal.jpg)
 
-### Edit Climb Page Features
+***
+
+#### Edit Climb Page
+
+The edit climb page is accessible from the sessions page, if the user clicks the button next to a climb it loads the edit climb page for that specific climb.
+
+The existing climb details are loaded from the database into the form, and can be changed by the user. There is a help button present which launches a modal which explains to the user the function of the edit climb page.
+
+##### Edit climb page
 
 ![Edit climb page](/climbing_log/static/images/edit_climb_page.jpg)
 
+##### Edit climb help modal
+
 ![Edit climb help modal](/climbing_log/static/images/edit_climb_help_modal.jpg)
 
-### Record Session Page Features
+***
+
+#### Record Session Page
+
+The record session page is the first page a user is presented with when they want to start a new session. It contains a form which collects the location of the session, this will be used in future version when I would like to add features to compare sessions from different locations.
+
+It also contains a help button which launches a modal which provides more details to the user on how logging a session works and the start session button which takes them to the climb logging page and creates the session in the database. 
+
+The start session button has a flash message to alert the user that they have successfully started a new session.
+
+##### Record session page
 
 ![Record session page](/climbing_log/static/images/record_session_page.jpg)
 
+##### Record session page help modal
+
 ![Record session help modal](/climbing_log/static/images/record_session_help_modal.jpg)
 
-flash new session created
+*** 
 
-### Add climb Page Features
+#### Add climb Page
+
+The add climb page contains a form which the user can fill in with details of the climb they are attempting, it collects the climb name (which is an optional field), difficulty which is collected by a drop down, length of climb and radio buttons for either completed or not completed.
+
+Once the user has attempted their climb they add the climb to the session by clicking the add climb button, the form reloads and they can log the next climb. This action has feedback via a flash message.
+
+Upon completion of session they can click the end session button which will complete the session, provide them with feedback via a flash message and take them to the sessions page where details of that and their other sessions can be viewed.
+
+The add climb page also has a help button which launches a modal to provide more details on how to user the page.
+
+##### Add climb page
 
 ![Add climb page](/climbing_log/static/images/add_climb_page.jpg)
 
+##### Add clmb help modal
+
 ![Add climb help modal](/climbing_log/static/images/add_climb_help_modal.jpg)
 
-session logged flash message
+***
 
-### Session Info Page Features
+#### Session Info Page
+
+The session info page allows users to look in more details at how they performed in the chosen session, it contains a number of graphs and charts. These are interactive with the legends being clickable to remove or add features from them.
+
+The user can view a pie chart showing the ratio of completed to none completed climbs. A scatter showing the range of difficulty of climbs from the session, with the plots being different colors depending on whether they were completed or not. And two bar charts one showing the grade and number of climbs completed and one showing the same for the none completed climbs.
+
+##### Session info pie chart
 
 ![session_info page](/climbing_log/static/images/session_info_page.jpg)
 
+##### Session info scatter plot
+
 ![session_info page](/climbing_log/static/images/session_info_page1.jpg)
+
+##### Session info bar chart
 
 ![session_info page](/climbing_log/static/images/session_info_page2.jpg)
 
+##### Session info bar chart
+
 ![session_info page](/climbing_log/static/images/session_info_page3.jpg)
 
-###  <a name=""></a>
+***
 
-###  <a name=""></a>
+#### 404 page
 
-###  <a name=""></a>
+The 404 page is designed to show when the page the user is trying to view can't be returned, for example if they enter an incorrect URL, the page has been moved or deleted, or there is a broken link. The 404 page contains the navbar, some simple text and a button to return the user to the homepage. 
 
-###  <a name=""></a>
+##### 404 page
+
+![404 page](/climbing_log/static/images/404page.jpg)
+
+***
+
+
 
 ## Technologies used <a name="technologies-used"></a>
+
 
 This Project uses the following languages:
 
@@ -400,24 +542,24 @@ This Project uses the following languages:
 
 [Google Fonts](https://fonts.google.com/) was used to browse, select and as a source of the font I used on this site.
 
+[FontAwesome](https://fontawesome.com/) was used for social media icons in the footer.
+
+
 ***
 
 ## Credits <a name="credits"></a>
-for learning about database schemas
-https://vertabelo.com/blog/schema-diagram/
-https://www.gleek.io/blog/crows-foot-notation.html#google_vignette
 
-for stopping duplicate enteries into database for unique fields
-https://stackoverflow.com/questions/70997771/is-there-a-way-to-use-python-flask-to-receive-a-unique-input-from-the-user
+I used [this blog post](https://vertabelo.com/blog/schema-diagram/)
+to learn more about database schemas and [this blog post](https://www.gleek.io/blog/crows-foot-notation.html#google_vignette) to better understand crows foot notation schema drawings.
 
-basic tutorial for flask-login
-https://www.geeksforgeeks.org/how-to-add-authentication-to-your-app-with-flask-login/
+I used [this stackoverflow](https://stackoverflow.com/questions/70997771/is-there-a-way-to-use-python-flask-to-receive-a-unique-input-from-the-user) when looking for a solution for stopping duplicate enteries into database for unique fields.
 
-tutorial for hashing passwrod using flask
-https://www.geeksforgeeks.org/password-hashing-with-bcrypt-in-flask/
+[This tutorial](https://www.geeksforgeeks.org/how-to-add-authentication-to-your-app-with-flask-login/) was where i learned about and how to use flask-login.
 
-for learning how to user flask-migrate to apply changes to the database
-https://www.digitalocean.com/community/tutorials/how-to-perform-flask-sqlalchemy-migrations-using-flask-migrate
+[This tutorial](https://www.geeksforgeeks.org/password-hashing-with-bcrypt-in-flask/) was where i learned aboutusing bcrypt for hashing passwords to store in the database using flask.
+
+After making some changes to my database after it was created I used [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-perform-flask-sqlalchemy-migrations-using-flask-migrate) for learning how to use flask-migrate to apply changes to the database.
+
 
 for learning how to create plotly charts and place into html
 https://stackoverflow.com/questions/63616028/how-to-integrate-plotly-express-chart-to-flask-app
@@ -455,7 +597,9 @@ https://www.webfx.com/blog/web-design/responsive-background-image/
 
 ## Testing  <a name="testing"></a>
 
-Testing was performed and documented in a seperate file which can be viewed [here](/TESTING.md)
+Testing was performed and documented in detail in a seperate file.
+
+The testing documentation can be viewed [here](/TESTING.md)
 
 
 ***

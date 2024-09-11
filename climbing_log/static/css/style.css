@@ -9,7 +9,7 @@ body {
       rgba(0, 0, 0, 0),
       rgba(0, 0, 0, 0.73)
     ),
-    url("{{ url_for('static', filename='images/climbing.jpg') }}");
+    url(/static/images/climbing.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;

@@ -3,16 +3,16 @@ current_user.is_authenticated %}
 <div class="spacer"></div>
 <!-- homepage new session div-->
 <div class="card">
-  <br />
+  <br>
   <h1 class="card-header">
-    Log a new <br />
+    Log a new <br>
     Climbing Session
   </h1>
-  <br />
+  <br>
   <div class="card-text card-text-homepage">
     <ul>
       <li>Start recording a new session</li>
-      <br />
+      <br>
       <li>
         <a href="{{ url_for('add_session') }}" class="btn btn-primary"
           >Log a session</a
@@ -24,16 +24,16 @@ current_user.is_authenticated %}
 <div class="spacer"></div>
 <!-- homepage view sessions div-->
 <div class="card">
-  <br />
+  <br>
   <h1 class="card-header">
-    View your <br />
+    View your <br>
     Sessions
   </h1>
-  <br />
+  <br>
   <div class="card-text card-text-homepage">
     <ul>
       <li>View all your logged sessions</li>
-      <br />
+      <br>
       <li>
         <a href="{{ url_for('sessions') }}" class="btn btn-primary"
           >View sessions</a
@@ -46,7 +46,7 @@ current_user.is_authenticated %}
 <!-- homepage recent sessions div-->
 <div class="card">
   <h2 class="card-header">Your recent<br>sessions</h2>
-  <br />
+  <br>
   {% for session in sessions %}{% if session.climbs %}
   <div class="card-text card-text-homepage">
     <ul>
@@ -69,14 +69,14 @@ current_user.is_authenticated %}
 <!--  homepage intro div -->
 <div class="card">
   <br>
-  <h1 class="card-header">Welcome to<br />Climbing Log</h1>
-  <br />
+  <h1 class="card-header">Welcome to<br>Climbing Log</h1>
+  <br>
   <div class="card-text card-text-homepage">
     <ul>
       <li>Track your sessions</li>
-      <div class="spacer"></div>
+      <li><div class="spacer"></div></li>
       <li>View data</li>
-      <div class="spacer"></div>
+      <li><div class="spacer"></div></li>
       <li>Visualise your progress</li>
     </ul>
   </div>

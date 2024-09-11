@@ -35,6 +35,8 @@ grades_correct_order = [
 
 
 def get_completed_uncompleted_climbs(session_id):
+    """Queries database for all the climbs from the passed session , returns 
+    plotly pie chart showing climbs completed vs not completed in JSON format"""
     # get data from database for chart
     last_session = Sessions.query.filter_by(session_id=session_id).first()
     # get number of climbs completed from most recent session
@@ -66,7 +68,7 @@ def get_completed_uncompleted_climbs(session_id):
             y=-0.5,
             xanchor="right",
             x=0.95,
-            bgcolor = 'rgba(68, 68, 68, 0.0)'))
+            bgcolor='rgba(68, 68, 68, 0.0)'))
     # remove text from pie
     fig.update_traces(textinfo='none')
     # convert the plotly figure to JSON
@@ -75,6 +77,8 @@ def get_completed_uncompleted_climbs(session_id):
 
 
 def get_range_of_difficulty_climbed(session_id):
+    """Queries database for all the completed climbs from the passed session 
+    , returns plotly bar chart showing climbs, per grade, in JSON format"""
     # get data of all completed climbs from the session
     climbs = Climb.query.filter_by(
         session_id=session_id).filter_by(completed=True).all()
@@ -86,9 +90,10 @@ def get_range_of_difficulty_climbed(session_id):
     count_grades = Counter(grades)
     grades = list(count_grades.keys())
     number_of_each_grade = list(count_grades.values())
-    #labels as dict to pass to fig
+    # labels as dict to pass to fig
     bar_labels = {'x': 'Grade', 'y': 'Number Climbed'}
     # create bar chart using data
+    # only return chart if session had completed climbs logged
     if grades:
         fig = px.bar(x=grades, y=number_of_each_grade, labels=bar_labels)
         fig.update_layout(
@@ -103,33 +108,30 @@ def get_range_of_difficulty_climbed(session_id):
             margin_r=20,
             # set legend background color
             legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=-0.5,
-            xanchor="right",
-            x=0.95))
-        
-        fig.update_yaxes(showgrid=False)
+                orientation="h",
+                yanchor="bottom",
+                y=-0.5,
+                xanchor="right",
+                x=0.95))
 
+        fig.update_yaxes(showgrid=False)
         # this code filters the grade list for ones which have a value
         # to remove empty grades from x axis but ensure correct order of grades
-
         grades_present_in_chart = []
-
         for grade in grades_correct_order:
             if grade in grades:
                 grades_present_in_chart.append(grade)
-
         fig.update_xaxes(categoryorder='array',
                          categoryarray=grades_present_in_chart)
         bar_grades = json.dumps(fig, cls=PlotlyJSONEncoder)
-
         return bar_grades
     else:
         return None
 
 
 def get_range_of_difficulty_not_climbed(session_id):
+    """Queries database for all the not completed climbs from the passed session 
+    , returns plotly bar chart showing climbs, per grade, in JSON format"""
     # get data of all completed climbs from the session
     climbs = Climb.query.filter_by(
         session_id=session_id).filter_by(completed=False).all()
@@ -141,9 +143,10 @@ def get_range_of_difficulty_not_climbed(session_id):
     count_grades = Counter(grades)
     grades = list(count_grades.keys())
     number_of_each_grade = list(count_grades.values())
-
+    # labels as dict to pass to fig
     bar_labels = {'x': 'Grade', 'y': 'Failed Attempts'}
     # create bar chart using data
+    # only return chart if session had non completed climbs logged
     if grades:
         fig = px.bar(x=grades, y=number_of_each_grade, labels=bar_labels)
         fig.update_layout(
@@ -161,37 +164,35 @@ def get_range_of_difficulty_not_climbed(session_id):
         fig.update_yaxes(showgrid=False)
         # this code filters the grade list for ones which have a value
         # to remove empty grades from x axis but ensure correct order of grades
-
         grades_present_in_chart = []
-
         for grade in grades_correct_order:
             if grade in grades:
                 grades_present_in_chart.append(grade)
         fig.update_xaxes(categoryorder='array',
                          categoryarray=grades_correct_order)
         bar_grades = json.dumps(fig, cls=PlotlyJSONEncoder)
-
         return bar_grades
     else:
         return None
 
 
 def get_range_of_length_climbs(session_id):
-
+    """Queries database for all the climbs logged from the passed session 
+    , returns plotly scatter chart showing climbs spread of climbs and whether
+     or not they were completed, in JSON format"""
     # query database for climb details from the relevant session
     climbs = Climb.query.filter_by(session_id=session_id).all()
-
+    # create the empty arrays
     grade = []
     length = []
     completed = []
-
+    # loop through returned climbs recording details in arrays
     for climb in climbs:
         grade.append(climb.difficulty)
         length.append(climb.length)
         completed.append(climb.completed)
     # labels for axis
     scatter_labels = {'x': 'Grade', 'y': 'Number of Moves'}
-
     # change values of completed climb from true/false to yes/no for fig legend
     figure_labels = []
     for climb in completed:
@@ -205,7 +206,7 @@ def get_range_of_length_climbs(session_id):
     # pass the grades as an array to ensure they are displayed in correct order
     fig.update_xaxes(categoryorder='array',
                      categoryarray=grades_correct_order)
-
+    # style changes to layout
     fig.update_layout(
         # change text/graph line colors and font
         font_color='rgb(255, 255, 255)',
@@ -224,14 +225,13 @@ def get_range_of_length_climbs(session_id):
             y=1.05,
             xanchor="center",
             x=0.5,
-            bgcolor = 'rgba(68, 68, 68, 0.0)'
+            bgcolor='rgba(68, 68, 68, 0.0)'
         )
     )
     # change style of markers
     fig.update_traces(marker=dict(size=12,
                                   line=dict(width=2,
                                             color='rgb(255, 255, 255)')))
-
     # create json of figure
     scatter = json.dumps(fig, cls=PlotlyJSONEncoder)
     return scatter

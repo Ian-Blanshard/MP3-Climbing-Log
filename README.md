@@ -139,7 +139,51 @@ The layout and design for tablet/desktop will be the same with desktop having la
 
 ## Features <a name="features"></a>
 
+
+### Relational vs Non-Relational Databases
+
+For this project I was required to use a database and implement CRUD functionality.
+
+- Create: Adding new data or records to the database.
+- Read: Retrieving or querying data from the database.
+- Update: Modifying or editing existing data or records.
+- Delete: Removing data or records from the database.
+
+There are two types of database structures relational and non-relational, i decided a relational database was the best choice for my project, as the primary key/ foreign key features would be useful in the relationships between my users, their sessions and climbs from these sessions
+
+Below is a summary of the two types: 
+
+1. Relational Databases
+
+Structured Model: Utilize a table-based format, organizing data into rows and columns.
+
+Data Organization: Manage structured data efficiently with well-defined relationships.
+
+Complex Relationships: Ideal for applications that require handling intricate 
+relationships between data.
+
+Consistency: Ensure strong data consistency and integrity.
+
+2. Non-Relational Databases
+
+Flexible Models: Offer various data models like documents, key-value pairs, or graphs.
+
+Scalability: Designed to scale horizontally and handle dynamic, unstructured data.
+
+Adaptability: Well-suited for applications with rapidly changing data requirements and unstructured content.
+
 ### CRUD Functionality <a name="crud-functionality"></a>
+
+My app demonstrates CRUD functionality as outlined below:
+
+#### Create:
+  
+#### Read:
+
+#### Update:
+
+#### Delete:
+
 
 ### NavBar <a name="navbar"></a>
 
@@ -303,7 +347,7 @@ flash new session created
 
 session logged flash message
 
-### session info Page Features
+### Session Info Page Features
 
 ![session_info page](/climbing_log/static/images/session_info_page.jpg)
 

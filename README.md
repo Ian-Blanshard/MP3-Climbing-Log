@@ -532,8 +532,6 @@ The site is designed so that all content is still visible if there is issues wit
 
 ***
 
-
-
 ## Technologies used <a name="technologies-used"></a>
 
 

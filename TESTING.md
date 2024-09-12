@@ -12,10 +12,21 @@
 
   * [Manual Testing](#manual-testing)
     * [Testing across different devices and browsers](#testing-across-different-devices-and-browsers)
-
+    * [Testing Navbar](#testing-navbar-page)
+    * [Testing Homepage](#testing-home-page)
+    * [Testing Add User Page](#testing-add-user-page)
+    * [Testing Login Page](#testing-login-page)
+    * [Testing Delete Account Page](#testing-delete-account-page)
+    * [Testing View Sessions Page](#testing-view-sessions-page)
+    * [Testing Edit Climb Page](#testing-edit-climb-page)
+    * [Testing Record Session Page](#testing-record-session-page)
+    * [Testing Add Climb Page](#testing-add-climb-page)
+    * [Testing Session Info Page](#testing-session-info-page)
+    * [Testing 404 page](#testing-404-page)
+    
   * [Bugs](#bugs)
 
-  * [Testing Stories](#testing-stories)
+  * [Testing Stories](#testing-user-stories)
 
 ***
 

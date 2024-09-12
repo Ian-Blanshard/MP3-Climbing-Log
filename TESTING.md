@@ -139,39 +139,57 @@ Page content | All page content loaded correctly and visible to user | Pass
 #### Testing Delete Account page   <a name='testing-delete-account-page'></a>
 
 Feature | Outcome | Pass/Fail  
---- | --- | ---
+--- | --- | ---  
+Page content | All page content loaded correctly and visible to user | Pass  
+Delete account button | clicking button deleted the user account and logged the user out | Pass  
 
 #### Testing View Sessions Page <a name='testing-view-sessions-page'></a>
 
 Feature | Outcome | Pass/Fail  
---- | --- | ---
+--- | --- | ---  
+Page content | All page content loaded correctly and visible to user | Pass  
+View session details link | clicking link loaded correct session details page | Pass  
+Delete session button | clicking button deleted the selected session from the session list | Pass  
 
 #### Testing Edit Climb Page  <a name='testing-edit-climb-page'></a>
 
 Feature | Outcome | Pass/Fail  
---- | --- | ---
+--- | --- | ---  
+Page content | All page content loaded correctly and visible to user | Pass  
+Edit climb form submission | correctly updated climb information upon submission | Pass  
+Cancel button | clicking button returned user to view sessions page without saving changes | Pass  
 
 #### Testing Record Session Page  <a name='testing-record-session-page'></a>
 
 Feature | Outcome | Pass/Fail  
---- | --- | ---
+--- | --- | ---  
+Page content | All page content loaded correctly and visible to user | Pass  
+Record session form submission | correctly recorded new session upon submission | Pass  
+Cancel button | clicking button returned user to homepage without saving session | Pass  
 
 #### Testing Add Climb Page <a name='testing-add-climb-page'></a>
 
 Feature | Outcome | Pass/Fail  
---- | --- | ---
+--- | --- | ---  
+Page content | All page content loaded correctly and visible to user | Pass  
+Add climb form submission | correctly added a new climb upon submission | Pass  
+Cancel button | clicking button returned user to view sessions page without saving climb | Pass  
 
 #### Testing Session Info Page   <a name='testing-session-info-page'></a>
 
 Feature | Outcome | Pass/Fail  
---- | --- | ---
+--- | --- | ---  
+Page content | All page content loaded correctly and visible to user | Pass  
+View climb details link | clicking link displayed correct climb details | Pass  
+Back to view sessions button | clicking button returned user to view sessions page | Pass  
 
 #### Testing 404 page   <a name='testing-404-page'></a>
 
 Feature | Outcome | Pass/Fail  
---- | --- | ---
+--- | --- | ---  
+Page content | Custom 404 error page loaded correctly when navigating to a non-existent URL | Pass  
+Home page link on 404 page | clicking link successfully redirected user to homepage | Pass  
 
-***
 
 ### Bugs <a name="bugs"></a>
 
@@ -181,6 +199,55 @@ Fix the bug throws error when trying to log in with a username that doesn't exis
 
 incorrect button styling delete climb modal sessions page
 
+bug fix delete mst recent session/ climb insteasd of one that butti was for
+
 ***
 
 ### Testing User Stories <a name="testing-user-stories"></a>
+
+#### User Story 1: Logging Climbing Sessions  
+*As a user of the site, I want to keep a log of my climbing sessions so that I can track my progress over time.*
+
+| Feature              | Outcome                                                                            | Pass/Fail |
+|----------------------|------------------------------------------------------------------------------------|-----------|
+| Create new session    | User can create and log new climbing sessions via the "Record Session Page"        | Pass      |
+| Save session data     | Session data is saved in the database and is retrievable from the "View Sessions Page" | Pass      |
+| End session           | User can end session and receive a flash message indicating the session has been logged | Pass      |
+| Display recent sessions | Recent session displays on homepage after logging in                             | Pass      |
+
+#### User Story 2: Climbing Log Details  
+*As a user of the site, I want each log to contain details about the different climbs I did in that session so that I can review my performance for each climb.*
+
+| Feature              | Outcome                                                                            | Pass/Fail |
+|----------------------|------------------------------------------------------------------------------------|-----------|
+| Log individual climbs | User can log individual climbs for each session, including difficulty, length, and completion status | Pass      |
+| View logged climbs    | All climbs within a session are viewable from the "View Sessions Page"             | Pass      |
+| Edit climb details    | User can edit logged climbs from the "Edit Climb Page"                             | Pass      |
+| Delete climb          | User can delete a climb from the session, and confirmation is required             | Pass      |
+
+#### User Story 3: Comprehensive Climb Information  
+*As a user of the site, I want to store information such as the difficulty, length, name, and whether I completed each climb so that I can have a comprehensive record of my activities.*
+
+| Feature              | Outcome                                                                            | Pass/Fail |
+|----------------------|------------------------------------------------------------------------------------|-----------|
+| Record climb details  | User can log details like difficulty, length, name, and completion status on the "Add Climb Page" | Pass      |
+| Store climb data      | Climb data is saved to the database and retrievable via session overview            | Pass      |
+| View climb summary    | Logged climbs are summarized in both table format and expandable accordions on small screen sizes | Pass      |
+
+#### User Story 4: Visualize Session Data  
+*As a user of the site, I want to visualize data about my sessions and climbs using visually pleasing graphs and charts so that I can better understand my progress.*
+
+| Feature              | Outcome                                                                            | Pass/Fail |
+|----------------------|------------------------------------------------------------------------------------|-----------|
+| Visual charts for sessions | User can view pie chart and scatter plot for climb completions and difficulties | Pass      |
+| Bar charts for climbs | Bar charts display climb performance by difficulty and completion status on the "Session Info Page" | Pass      |
+| Interactive graphs    | Charts are interactive, allowing the user to toggle climb data visibility in the legends | Pass      |
+
+#### User Story 5: Guide Future Climbing  
+*As a user of the site, I want to use the information from my logs to guide my future climbing activities so that I can improve and set new goals.*
+
+| Feature              | Outcome                                                                            | Pass/Fail |
+|----------------------|------------------------------------------------------------------------------------|-----------|
+| Track climb progress  | Users can track session and climb history via graphs to identify improvement areas | Pass      |
+| View past performance | User can analyze past climbs and sessions to guide future climbs and goals         | Pass      |
+| Session comparison    | Future feature planned to compare sessions by location, visible on "Record Session Page" | Planned   |

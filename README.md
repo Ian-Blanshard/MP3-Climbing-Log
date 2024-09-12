@@ -549,6 +549,13 @@ This Project uses the following languages:
 
 ## Credits <a name="credits"></a>
 
+When creating my project I frequently used the docs for
+- [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- [Flask](https://flask.palletsprojects.com/en/3.0.x/)
+- [Plotly](https://plotly.com/python/)
+
+in addition to these the following sites/tutorials/blogs were useful:
+
 I used [this blog post](https://vertabelo.com/blog/schema-diagram/)
 to learn more about database schemas and [this blog post](https://www.gleek.io/blog/crows-foot-notation.html#google_vignette) to better understand crows foot notation schema drawings.
 
@@ -560,38 +567,16 @@ I used [this stackoverflow](https://stackoverflow.com/questions/70997771/is-ther
 
 After making some changes to my database after it was created I used [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-perform-flask-sqlalchemy-migrations-using-flask-migrate) for learning how to use flask-migrate to apply changes to the database.
 
+When I wanted to learn about how to use plotly charts with flask i used [this tutorial](https://www.geeksforgeeks.org/create-a-bar-chart-from-a-dataframe-with-plotly-and-flask/) and [this stackoverflow question](https://stackoverflow.com/questions/63616028/how-to-integrate-plotly-express-chart-to-flask-app) to help, create my charts and include them in my routes.py file.
 
-for learning how to create plotly charts and place into html
-https://stackoverflow.com/questions/63616028/how-to-integrate-plotly-express-chart-to-flask-app
-https://www.geeksforgeeks.org/create-a-bar-chart-from-a-dataframe-with-plotly-and-flask/
+When it came to editing my plotly charts I used [this question](https://community.plotly.com/t/how-can-i-adjust-the-whitespace-around-go-pie-chart/78584) on a plotly forum to help understand how.
 
-for pie chart borders 
-https://community.plotly.com/t/how-can-i-adjust-the-whitespace-around-go-pie-chart/78584
+When it came to creating the database queries I used the SQLAlchemy docs to better understand the ORM, particulaly [this page](https://docs.sqlalchemy.org/en/20/orm/queryguide/relationships.html) and [this one](https://docs.sqlalchemy.org/en/20/tutorial/orm_data_manipulation.html#tutorial-orm-data-manipulation).
 
-https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html
+For learning how to correctly implement a 404 page in flask I used [this site](https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/).
 
-https://docs.sqlalchemy.org/en/20/tutorial/orm_data_manipulation.html#tutorial-orm-data-manipulation
+When i was having trouble with managing the sizing of my back ground image [this blog post](https://www.webfx.com/blog/web-design/responsive-background-image/) helped resloving it.
 
-I'd hugely overcomplicated my sessions() route, doing multiple queries to build nested dictionaries so that i could use those relationships to display all the climbs for each session in a list using jinja. I realised the code was very confusing and there surely must be a better way. i used the following resources to learn that i should be using the existing relationships from my database and there was a far simpler way of doing it. this led to refactoring and producing a much better route.
-
-
-https://www.golinuxcloud.com/flask-sqlalchemy/#Querying_Data
-https://medium.com/@vickypalaniappan12/relationship-loading-techniques-in-sqlalchemy-4e7d1ff96f75
-https://docs.sqlalchemy.org/en/20/orm/queryguide/relationships.html
-
-for creating a 404 page in flask
-https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/
-
-plotly layouy/margin 
-https://plot.ly/python/reference/#layout-margin
-
-
-https://stackoverflow.com/questions/11178426/how-can-i-pass-data-from-flask-to-javascript-in-a-template
-
-for deleteclimb/session buttons in sessions.html
-https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes
-
-https://www.webfx.com/blog/web-design/responsive-background-image/
 
 ***
 

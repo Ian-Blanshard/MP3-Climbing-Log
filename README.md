@@ -42,6 +42,8 @@ You can view an account which already has some logged activities by Logging in w
 
 4 [Credits](#credits)
 
+4 [Testing](#testing)
+
 5 [Deployment](#deployment)
 
 6 [Finished Site](#finished-site)
@@ -153,6 +155,10 @@ The layout and design for tablet/desktop will be the same with desktop having la
  ***
 
 ### Colour Scheme and Font <a name="styles"></a>
+
+#### The color scheme for the site
+
+#### The font used for the site
 
 ***
 
@@ -321,28 +327,28 @@ Once the user is logged in the cards then change one for creating a new session,
 ![Home page logged in](/climbing_log/static/images/homepage_logged_in.jpg)
 
 
-##### page purpose card
+##### Page purpose card
 
   ![Details of page purpose](/climbing_log/static/images/page_purpose.jpg)
 
-##### link to create account card
+##### Link to create account card
 
   ![Home page link to create account](/climbing_log/static/images/home_page_create_account.jpg)
 
-##### link to login card
+##### Link to login card
 
   ![Home page link to login](/climbing_log/static/images/home_page_login.jpg)
 
-##### most recent session cards
+##### Most recent session cards
 
   ![Home page recent sessions link](/climbing_log/static/images/home_page_recent_sessions.jpg)
 
 
-##### link to log a new climbing session card
+##### Link to log a new climbing session card
 
   ![link to log a new climbing session](/climbing_log/static/images/home_page_new_session.jpg)
 
-##### link to view all sessions card
+##### Link to view all sessions card
 
   ![link to view all sessions](/climbing_log/static/images/home_page_view_sessions.jpg)
 
@@ -367,7 +373,7 @@ It has features which ensure the password must be entered twice and match before
 The login page allows user to enter their login details to access the site features which require login.
 It has flash messages, discussed in details above, which appear to provide feedback to the user. To notify them of using an incorrect password, using and incorrect username and when they succesfully log in.
 
-##### login page
+##### Login page
 
 ![Login page](/climbing_log/static/images/login_page.jpg)
 
@@ -403,16 +409,16 @@ There are buttons available to the user which allow them to edit/delete climbs a
 
 There are also modals which launch when the user clicks the delete session or climb buttons, which require confirmation of deletion. This protects the user from mistakenly deleting information.
 
-##### view sessions page large screen sizes
+##### View sessions page large screen sizes
 
 ![View session page on large screens](/climbing_log/static/images/view_sessions_large_page.jpg)
 
-##### view sessions page small screen sizes
+##### View sessions page small screen sizes
 
 ![View session page on small screens](/climbing_log/static/images/view_sessions_small_page.jpg)
 
 
-##### small screen accordian 
+##### Small screen accordian 
 
 ![View session small screen accordian](/climbing_log/static/images/view_sessions_small_page_accordian.jpg)
 
@@ -510,7 +516,19 @@ The 404 page is designed to show when the page the user is trying to view can't 
 
 ##### 404 page
 
-![404 page](/climbing_log/static/images/404page.jpg)
+![404 page](/climbing_log/static/images/404_page.jpg)
+
+
+#### Page design without background image
+
+The site is designed so that all content is still visible if there is issues with loading the background image
+
+##### Site with no background image example 1
+![site without background image](/climbing_log/static/images/background_image_not_load.jpg)
+
+##### Site with no background image example 2
+
+![site without background image](/climbing_log/static/images/background_image_not_load1.jpg)
 
 ***
 
@@ -533,6 +551,8 @@ This Project uses the following languages:
 [Flask-login](https://readthedocs.org/projects/flask-login/downloads/pdf/0.3.1/) was used as a simple way to manage user logins and restricting certain pages to authenticated users.
 
 [SQL Alchemy](https://www.sqlalchemy.org/) was used as an ORM to define models as python classes and map these to database tables.
+
+[Jinja](https://jinja.palletsprojects.com/en/3.1.x/) templating was used to add templates in my HTML files
 
 [Plotly Express](https://plotly.com/python/plotly-express/) was used to created the graphs and charts to display user information on logged activities.
 

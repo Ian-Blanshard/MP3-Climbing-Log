@@ -1,17 +1,24 @@
+  # Testing Climbing Log
   
   
-  * [Bugs](#bugs)
   * [Code Validation](#code-validation)
-    * [CSS code validation](#css-code-validation)
-    * [HTML code validation](#html-code-validation)
+    * [CSS code validation](#css-validation)
+    * [HTML code validation](#html-validation)
+    * [JavaScript validation](#javascript-validation)
+    * [python code validation](#python-validation)
+
   * [Lighthouse Testing](#lighthouse-testing)
+
   * [Manual Testing](#manual-testing)
     * [Testing across different devices and browsers](#testing-across-different-devices-and-browsers)
+
+  * [Bugs](#bugs)
+
   * [Testing Stories](#testing-stories)
 
+### Code validation <a name="code-validation"></a>
 
-
-#### html validation
+#### html validation <a name="css-validation"></a>
 
 ![](/climbing_log/static/images/html_validation.jpg)
 
@@ -21,7 +28,9 @@
 
 ![](/climbing_log/static/images/html_validation_pass.jpg)
 
-#### JavaScript validation
+#### html validation <a name="html-validation"></a>
+
+#### JavaScript validation <a name="javascript-validation"></a>
 
 JSHint JavaScript validator highlighted a number of unnecessary semicolons in my javscript
 
@@ -44,6 +53,7 @@ These were rectified and my code passed with no errors.
 
 ![python validation pass](/climbing_log/static/images/python_validation_passed.jpg)
 
+### Lighthouse testing <a name="lighthouse-testing"></a>
 
 ### Manual testing <a name="manual-testing"></a>
 
@@ -108,12 +118,42 @@ Feature | Outcome | Pass/Fail
 --- | --- | ---
 Page content | All page content loaded correctly and visible to user | Pass
 
-
-
-#### Testing   <a name='testing-'></a>
+#### Testing Delete Account page   <a name='testing-delete-account-page'></a>
 
 Feature | Outcome | Pass/Fail  
 --- | --- | ---
+
+#### Testing View Sessions Page <a name='testing-view-sessions-page'></a>
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---
+
+#### Testing Edit Climb Page  <a name='testing-edit-climb-page'></a>
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---
+
+#### Testing Record Session Page  <a name='testing-record-session-page'></a>
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---
+
+#### Testing Add Climb Page <a name='testing-add-climb-page'></a>
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---
+
+#### Testing Session Info Page   <a name='testing-session-info-page'></a>
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---
+
+#### Testing 404 page   <a name='testing-404-page'></a>
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---
+
+
 
 
 
@@ -128,6 +168,4 @@ Fix the bug throws error when trying to log in with a username that doesn't exis
 
 incorrect button styling delete climb modal sessions page
 
-
-
-url(/static/images/climbing.jpg)
+### Testing User Stories <a name="testing-user-stories"></a>

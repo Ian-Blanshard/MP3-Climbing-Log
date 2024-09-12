@@ -1,5 +1,6 @@
   # Testing Climbing Log
-  
+  ***
+  ## Contents
   
   * [Code Validation](#code-validation)
     * [CSS code validation](#css-validation)
@@ -15,6 +16,8 @@
   * [Bugs](#bugs)
 
   * [Testing Stories](#testing-stories)
+
+***
 
 ### Code validation <a name="code-validation"></a>
 
@@ -53,7 +56,11 @@ These were rectified and my code passed with no errors.
 
 ![python validation pass](/climbing_log/static/images/python_validation_passed.jpg)
 
+***
+
 ### Lighthouse testing <a name="lighthouse-testing"></a>
+
+***
 
 ### Manual testing <a name="manual-testing"></a>
 
@@ -153,12 +160,7 @@ Feature | Outcome | Pass/Fail
 Feature | Outcome | Pass/Fail  
 --- | --- | ---
 
-
-
-
-
-
-
+***
 
 ### Bugs <a name="bugs"></a>
 
@@ -167,5 +169,7 @@ Feature | Outcome | Pass/Fail
 Fix the bug throws error when trying to log in with a username that doesn't exist in database
 
 incorrect button styling delete climb modal sessions page
+
+***
 
 ### Testing User Stories <a name="testing-user-stories"></a>

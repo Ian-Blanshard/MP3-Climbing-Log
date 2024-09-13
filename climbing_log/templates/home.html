@@ -12,7 +12,7 @@ current_user.is_authenticated %}
   <div class="card-text card-text-homepage">
     <ul>
       <li>Start recording a new session</li>
-      <br>
+      <li><div class="spacer"></div></li>
       <li>
         <a href="{{ url_for('add_session') }}" class="btn btn-primary"
           >Log a session</a
@@ -33,7 +33,7 @@ current_user.is_authenticated %}
   <div class="card-text card-text-homepage">
     <ul>
       <li>View all your logged sessions</li>
-      <br>
+      <li><div class="spacer"></div></li>
       <li>
         <a href="{{ url_for('sessions') }}" class="btn btn-primary"
           >View sessions</a

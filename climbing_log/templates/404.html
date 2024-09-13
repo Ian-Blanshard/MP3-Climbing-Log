@@ -1,16 +1,17 @@
 {% extends 'base.html' %} {% block content %} 
 <div class="spacer"></div>
-<!-- homepage new session div-->
+<!-- 404 div-->
 <div class="card">
   <br>
   <h1 class="card-header">
     Oops this page Doesn't exist
   </h1>
   <br>
+  <!-- return home link div-->
   <div class="card-text card-text-homepage">
     <ul>
       <li>Click here to return home</li>
-      <br>
+      <li><div class="spacer"></div></li>
       <li>
         <a href="{{ url_for('home') }}" class="btn btn-primary"
           >Climbing Log Homepage</a

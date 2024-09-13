@@ -37,7 +37,6 @@ current_user.is_authenticated %}
     </div>
   </div>
 </div>
-
 <div class="card">
   <br />
   <div class="card-header">Delete account</div>
@@ -54,29 +53,31 @@ current_user.is_authenticated %}
     >
       <!-- enter password div  -->
       <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
+        <label for="password" id="enter-password" class="form-label">Password</label>
         <input
           type="password"
           class="form-control"
           id="password"
+          aria-labelledby="enter-password"
           name="password"
           minlength="8"
           maxlength="50"
           required
-        />
+        >
       </div>
       <!-- check password div -->
       <div class="mb-3">
-        <label for="password_check" class="form-label">Re-enter Password</label>
+        <label for="password_check" id="reenter-password" class="form-label">Re-enter Password</label>
         <input
           type="password"
           class="form-control"
           id="password_check"
+          aria-labelledby="reenter-password"
           name="password_check"
           minlength="8"
           maxlength="50"
           required
-        />
+        >
       </div>
       <!-- button which launches confirmation modal -->
       <p class="card-text text-end">

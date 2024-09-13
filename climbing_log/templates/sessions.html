@@ -89,7 +89,7 @@ current_user.is_authenticated %}
         {% for climb in session.climbs %}
 
         <tr>
-          <th scope="row">
+          <th class="th-styled-as-td" scope="row">
             {{ climb.name if climb.name else 'Unnamed Climb' }}
           </th>
           <td>{{ climb.difficulty }}</td>
@@ -189,7 +189,7 @@ current_user.is_authenticated %}
                   <div class="accordion-item">
                     <h2 class="accordion-header">
                       <button
-                        class="accordion-button collapse list-text-title"
+                        class="accordion-button collapsed list-text-title"
                         type="button"
                         data-bs-toggle="collapse"
                         data-bs-target="#flush-collapse-{{ climb.climb_id }}"
@@ -224,7 +224,7 @@ current_user.is_authenticated %}
                             <form
                               method="POST"
                               action="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
-                              id="deleteClimbForm-{{ climb.climb_id }}"
+                              id="deleteClimbFormList-{{ climb.climb_id }}"
                             >
                               <button
                                 type="button"

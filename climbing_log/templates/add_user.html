@@ -1,85 +1,89 @@
 {% extends 'base.html' %} {% block content %}
 <div class="spacer"></div>
 <div class="card">
-  <br />
+  <br>
   <h1 class="card-header add-user-header">Add user</h1>
-  <br />
+  <br>
   <div class="card-body form-div">
     <h5 class="card-title">
       Add your details below to create your user profile
     </h5>
-    <br />
+    <br>
     <!-- form for new user details-->
     <form method="POST" action="{{ url_for('add_user') }}">
       <!-- username div -->
       <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
+        <label for="username" id="username-label" class="form-label">Username</label>
         <input
           type="text"
           class="form-control"
           id="username"
+          aria-labelledby="username-label"
           name="username"
           minlength="3"
           maxlength="25"
           aria-describedby="enter username"
           required
-        />
+        >
       </div>
       <!-- email address div -->
       <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
+        <label for="email" id="email-label" class="form-label">Email address</label>
         <input
           type="email"
           class="form-control"
           id="email"
+          aria-labelledby="email-label"
           name="email"
           minlength="10"
           maxlength="75"
           aria-describedby="enter email address"
           required
-        />
+        >
         <div class="form-text">
           We'll never share your email with anyone else.
         </div>
       </div>
       <!-- password div -->
       <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
+        <label for="password" id="enter-password" class="form-label">Password</label>
         <input
           type="password"
           class="form-control"
           id="password"
+          aria-labelledby="enter-password"
           name="password"
           minlength="8"
           maxlength="50"
           required
-        />
+        >
         <!-- enter password twice to ensure correct -->
         <div class="mb-3">
-          <label for="password_check" class="form-label"
+          <label for="password_check" id="reenter-password" class="form-label"
             >Re-enter Password</label
           >
           <input
             type="password"
             class="form-control"
             id="password_check"
+            aria-labelledby="reenter-password"
             name="password_check"
             minlength="8"
             maxlength="50"
             required
-          />
+          >
         </div>
         <!-- date of birth div -->
         <div class="mb-3">
-          <label for="date_of_birth" class="form-label">Date of birth</label>
+          <label for="date_of_birth" id="dob-label" class="form-label">Date of birth</label>
           <input
             type="date"
             class="form-control"
             id="date_of_birth"
             name="date_of_birth"
-            aria-describedby="enter date of birth"
+            aria-labelledby="dob-label"
             required
-          />
+          >
         </div>
         <!-- sex radio buttons divs -->
         <div class="d-flex">
@@ -88,52 +92,54 @@
               type="radio"
               class="form-check-input"
               id="sexM"
+              aria-labelledby="sexM-label"
               name="sex"
               value="m"
               required
-            />
-            <label class="form-check-label" for="sexM">Male</label>
+            >
+            <label class="form-check-label" id="sexM-label" for="sexM">Male</label>
           </div>
           <div class="form-check">
             <input
               type="radio"
               class="form-check-input"
               id="sexF"
+              aria-labelledby="sexF-label"
               name="sex"
               value="f"
-            />
-            <label class="form-check-label" for="sexF">Female</label>
+            >
+            <label class="form-check-label" id="sexF-label" for="sexF">Female</label>
           </div>
         </div>
         <!-- height div -->
         <div class="mb-3">
-          <label for="height" class="form-label">Height in cm</label>
+          <label for="height" id="height-label" class="form-label">Height in cm</label>
           <input
             type="number"
-            step="0"
+            step="1"
             class="form-control"
             id="height"
             name="height"
-            minlength="2"
-            maxlength="3"
-            aria-describedby="enter your height in cm"
+            min="80"
+            max="300"
+            aria-labelledby="height-label"
             required
-          />
+          >
         </div>
         <!-- weight div -->
         <div class="mb-3">
-          <label for="weight" class="form-label">Weight in kg</label>
+          <label for="weight" id="weight-label" class="form-label">Weight in kg</label>
           <input
             type="number"
             step="0.01"
             class="form-control"
             id="weight"
             name="weight"
-            minlength="2"
-            maxlength="5"
-            aria-describedby="enter your weight in kgs"
+            min="30"
+            max="300"
+            aria-labelledby="weight-label"
             required
-          />
+          >
         </div>
         <!-- button to submit form -->
         <p class="card-text text-end">

@@ -71,6 +71,10 @@ These were rectified and my code passed with no errors.
 
 ### Lighthouse testing <a name="lighthouse-testing"></a>
 
+![lighthouse score before](/climbing_log/static/images/lighthouse_before.jpg)
+
+
+
 ***
 
 ### Manual testing <a name="manual-testing"></a>

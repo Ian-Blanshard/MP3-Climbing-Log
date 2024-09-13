@@ -76,7 +76,7 @@ You can view an account which already has some logged activities by Logging in w
 
 * As a user of the site, I want to keep a log of my climbing sessions so that I can track my progress over time.
 
-* As a user of the site, I want each log to contain details about the different climbs I did in that session so that I can review my performance for each climb.
+* As a user of the site, I want each log to contain details about the different climbs I did in that session so that I can review the information when I choose.
 
 * As a user of the site, I want to store information such as the difficulty, length, name, and whether I completed each climb so that I can have a comprehensive record of my activities.
 

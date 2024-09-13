@@ -9,10 +9,11 @@
       <h5 class="card-title">
         You must login to use the features of climbing log
       </h5>
-  
+      <!-- login to account form-->
       <form method="POST" action="#">
+        <!-- form username div -->
         <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
+          <label for="username" id="enter-username" class="form-label">Username</label>
           <input
             type="text"
             class="form-control"
@@ -20,25 +21,25 @@
             name="username"
             minlength="3"
             maxlength="25"
-            aria-describedby="enter email address"
+            aria-labelledby="enter-username"
             required
           />
+        <!-- form password div-->
         </div>
         <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
+          <label for="password" id="enter-password" class="form-label">Password</label>
           <input
             type="password"
             class="form-control"
             id="password"
+            aria-labelledby="enter-password"
             name="password"
             minlength="8"
             maxlength="50"
             required
           />
         </div>
-        
-        
-        
+        <!-- form submit button -->
         <p class="card-text text-end">
         <button type="submit" class="btn btn-primary">
           Login
@@ -47,5 +48,4 @@
       </form>
     </div>
   </div>
-
 {% endblock  %}

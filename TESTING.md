@@ -204,6 +204,9 @@ incorrect button styling delete climb modal sessions page
 
 bug fix delete mst recent session/ climb insteasd of one that butti was for
 
+
+drop down on edit climb was not showing correct grade
+
 ***
 
 ### Testing User Stories <a name="testing-user-stories"></a>

@@ -74,12 +74,13 @@ current_user.is_authenticated %}
       </div>
       <!-- form grade div -->
       <div class="mb-3">
+        <!-- not visible on screen but to have a value to get for script.js-->
+        <span id="difficulty-for-dropdown"  class="visually-hidden">{{ climb.difficulty }}</span>
         <label for="difficulty" id="difficulty-label" class="form-label">Grade</label>
         <select
           class="form-control"
           id="difficulty"
-          name="difficulty"
-          value="{{ climb.difficulty }}"
+          name="difficulty" 
           aria-labelledby="difficulty-label"
           required
         ></select>

@@ -33,6 +33,26 @@ if (gradeDropdown) {
     gradeDropdown.appendChild(option);
   });
 }
+// Get the difficulty value from the hidden span
+const gradeDropdownEditValue = document.getElementById(
+  "difficulty-for-dropdown"
+);
+// if difficulty-for-dropdown exists get text content
+if (gradeDropdownEditValue) {
+  const gradeDropdownEditValueText = gradeDropdownEditValue.textContent.trim();
+  // Populate dropdown options
+  grades.forEach((grade) => {
+    const option = document.createElement("option");
+    option.value = grade;
+    option.textContent = grade;
+    // Set the selected attribute for the grade that was in difficulty-for-dropdown
+    if (grade === gradeDropdownEditValueText) {
+      option.selected = true;
+    }
+    // add to difficulty element
+    gradeDropdown.appendChild(option);
+  });
+}
 // code for confirmation of delete user modal
 // create variables for two elements involved in modal/form
 const submitDeleteUserFormButton = document.getElementById(

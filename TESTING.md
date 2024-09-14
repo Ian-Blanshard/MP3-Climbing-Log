@@ -207,6 +207,8 @@ bug fix delete mst recent session/ climb insteasd of one that butti was for
 
 drop down on edit climb was not showing correct grade
 
+number of climb moves could be a negative value
+
 ***
 
 ### Testing User Stories <a name="testing-user-stories"></a>

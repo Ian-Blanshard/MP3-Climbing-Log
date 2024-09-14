@@ -78,7 +78,9 @@ current_user.is_authenticated %}
           name="difficulty"
           aria-labelledby="difficulty-label"
           required 
-        ></select>
+        >
+        <option value="" disabled selected>Select a grade</option>
+        </select>
       </div>
       <!-- form length div -->
       <div class="mb-3">
@@ -90,6 +92,7 @@ current_user.is_authenticated %}
           class="form-control"
           id="length"
           name="length"
+          min="1"
           aria-labelledby="length-label"
           required
         >

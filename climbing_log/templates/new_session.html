@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %} {% if
 current_user.is_authenticated %}
+<!-- How to add location help modal-->
 <div
   class="modal fade"
   id="myModal"
@@ -14,11 +15,11 @@ current_user.is_authenticated %}
             <li>
               Record the location of your climbing session in the box below
             </li>
-            <br>
+            <li><div class="spacer"></div></li>
             <li>
               Once the location is recorded you will be taken to the page to record your individual climbs
             </li>
-            <br>
+            <li><div class="spacer"></div></li>
             <li>
               Keeping track of the location of your climbs will allow you to track your performance at different locations
             </li>
@@ -35,6 +36,7 @@ current_user.is_authenticated %}
     </button>
   </p>
 </div>
+<!-- title div -->
 <div class="card">
   <br>
   <div class="card-header d-flex form-div">Session details
@@ -49,14 +51,16 @@ current_user.is_authenticated %}
       </button>
       </p>
   </div>
+  <!-- add location form div -->
   <div class="card-body form-div">
     <br>
     <h5 class="card-title">
       Add the location of the session to begin logging climbs
     </h5>
     <form method="POST" action="{{ url_for('add_session') }}">
+      <!-- location form element -->
       <div class="mb-3">
-        <label for="location" class="form-label">Location</label>
+        <label for="location" id="location-label" class="form-label">Location</label>
         <input
           type="text"
           class="form-control"
@@ -64,29 +68,15 @@ current_user.is_authenticated %}
           name="location"
           minlength="3"
           maxlength="50"
-          aria-describedby="enter location of session"
+          aria-labelledby="location-label"
           required
-        />
+        >
       </div>
+      <!-- form submit button -->
       <p class="card-text text-end">
         <button type="submit" class="btn btn-primary">Start session</button>
       </p>
     </form>
-  </div>
-</div>
-{% else %}
-<div class="card">
-  <div class="card-header">You are not logged into</div>
-  <div class="card-body">
-    <h5 class="card-title">You must be logged in to use this feature</h5>
-    <p class="card-text">
-      Either log in to your profile or create one to begin adding sessions and
-      logging your climbs
-    </p>
-    <a href="{{ url_for('add_user') }}" class="btn btn-primary"
-      >Create new user</a
-    >
-    <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
   </div>
 </div>
 {% endif %} {% endblock %}

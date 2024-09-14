@@ -305,6 +305,14 @@ The site contains a number of flash messages which diplay as a banner under the 
 
 ***
 
+### Favicon <a name="favicon"></a>
+
+The page has a unique favicon for its browser tab
+
+![favicon](/climbing_log/static/images/favicon-tab.jpg)
+
+***
+
 ### Page Features <a name="page-features"></a>
 
 ***
@@ -562,6 +570,7 @@ This Project uses the following languages:
 
 [FontAwesome](https://fontawesome.com/) was used for social media icons in the footer.
 
+[favicon.io](https://favicon.io/) was used to create the favicon for my site.
 
 ***
 

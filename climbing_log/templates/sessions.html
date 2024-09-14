@@ -251,30 +251,31 @@ current_user.is_authenticated %}
           </div>
         </div>
       </li>
-      <!-- edit/delete session div -->
-      <div class="climbs-as-list-button text-start">
-        <form
-          method="POST"
-          action="{{ url_for('delete_session', session_id=session.session_id) }}"
-          id="deleteSessionFormList-{{ session.session_id }}"
-        >
-          <button
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#deleteSessionModal"
-            data-session-id="{{ session.session_id }}"
-            class="btn btn-primary"
-          >
-            Delete Session
-          </button>
-        </form>
-        <a
-          href="{{ url_for('session_info', session_id=session.session_id) }}"
-          class="btn btn-primary"
-          >View charts</a
-        >
-      </div>
     </ul>
+    <!-- edit/delete session div -->
+    <div class="climbs-as-list-button text-start">
+      <form
+        method="POST"
+        action="{{ url_for('delete_session', session_id=session.session_id) }}"
+        id="deleteSessionFormList-{{ session.session_id }}"
+      >
+        <button
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#deleteSessionModal"
+          data-session-id="{{ session.session_id }}"
+          class="btn btn-primary"
+        >
+          Delete Session
+        </button>
+      </form>
+      <a
+        href="{{ url_for('session_info', session_id=session.session_id) }}"
+        class="btn btn-primary"
+        >View charts</a
+      >
+    </div>
   </div>
   {% endif %}{% endfor %}{% endif %}{% endblock %}
+</div>
 </div>

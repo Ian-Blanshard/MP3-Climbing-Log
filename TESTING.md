@@ -34,15 +34,14 @@
 
 #### html validation <a name="css-validation"></a>
 
-![](/climbing_log/static/images/html_validation.jpg)
+![HTML validation before 1](/climbing_log/static/images/html_validation.jpg)
 
-![](/climbing_log/static/images/html_validation1.jpg)
+![HTML validation before 2](/climbing_log/static/images/html_validation1.jpg)
 
-![](/climbing_log/static/images/html_validation2.jpg)
+![HTML validation before 3](/climbing_log/static/images/html_validation2.jpg)
 
-![](/climbing_log/static/images/html_validation_pass.jpg)
+![HTML validation after](/climbing_log/static/images/html_validation_pass.jpg)
 
-#### html validation <a name="html-validation"></a>
 
 #### JavaScript validation <a name="javascript-validation"></a>
 

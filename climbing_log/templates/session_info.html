@@ -32,21 +32,20 @@
 <br>
 {% endif %}
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script type="text/javascript">
+<script>
   var graphs = {{scatterJSON | safe}};
   Plotly.plot('scatter-chart',graphs,{});
 </script>
-<script type="text/javascript">
+<script>
   var graphs = {{graphJSON | safe}};
   Plotly.plot('pie-chart',graphs,{});
 </script>
-<script type="text/javascript">
+<script>
   var graphs = {{graph1JSON | safe}};
   Plotly.plot('bar-chart',graphs,{});
 </script>
-<script type="text/javascript">
+<script>
   var graphs = {{graph_grades_not_climbedJSON | safe}};
   Plotly.plot('bar-chart-not-grade',graphs,{});
 </script>
-
 {% endblock %}

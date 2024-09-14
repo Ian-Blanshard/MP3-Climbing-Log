@@ -28,6 +28,7 @@ current_user.is_authenticated %}
           </ul>
       </div>
     </div>
+    <!-- close modal button -->
     <p class="text-end">
       <button
         type="button"
@@ -40,8 +41,10 @@ current_user.is_authenticated %}
 </div>
 <br>
 <div class="card ">
+  <!-- title div -->
   <div class="card-header add-climb-header d-flex form-div">Add climb
     <p class="card-text ms-auto">
+      <!-- open help modal button-->
       <button
         type="button"
         class="btn btn-primary help-button"
@@ -130,10 +133,12 @@ current_user.is_authenticated %}
           </div>
         </div>
       </div>
-      <p class="card-text d-flex"> 
+      <p class="card-text d-flex">
+        <!-- end session button -->
         <a  class="btn btn-primary" href="{{ url_for('end_session')}}">
           End Session
         </a>
+        <!-- log climb button -->
         <button type="submit" class="btn btn-primary ms-auto" name="action" value="log_climb">
           Add Climb
         </button>

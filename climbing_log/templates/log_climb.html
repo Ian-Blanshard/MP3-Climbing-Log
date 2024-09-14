@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %} {% if
 current_user.is_authenticated %}
+<!-- how to log climb help modal -->
 <div
   class="modal fade"
   id="myModal"
@@ -8,17 +9,19 @@ current_user.is_authenticated %}
   aria-hidden="true"
 >
   <div class="modal-dialog">
-        <div class="modal-header text-center">How to log your climbs</div>
+        <div class="modal-header justify-content-center">
+          <h2 id="HowToLogClimbModal">How to log your climb</h2>
+        </div>
         <div class="modal-body text-center">
           <ul class="list-unstyled">
             <li>
               During your climbing session record details of each climb using the form provided
             </li>
-            <br>
+            <li><div class="spacer"></div></li>
             <li>
               After each attempt, log the climb details, whether you completed it or not, this will collect the details along with the time you log your climb
             </li>
-            <br>
+            <li><div class="spacer"></div></li>
             <li>
               Once you are finished click end session and analysis and details of all the climbs will be viewable on the view sessions page
             </li>
@@ -49,31 +52,37 @@ current_user.is_authenticated %}
       </button>
       </p>
   </div>
+  <!-- log climb div -->
   <div class="card-body form-div">
     <h5 class="card-title">Add climb to your current session</h5>
+    <!-- log climb form -->
     <form method="POST" action="{{ url_for('log_climb') }}">
+      <!-- from climb name div -->
       <div class="mb-3">
-        <label for="climbname" class="form-label">Climb name (optional)</label>
+        <label for="climbname" id="climb-label" class="form-label">Climb name (optional)</label>
         <input
           type="text"
           class="form-control"
           id="climbname"
           name="name"
           maxlength="50"
-          aria-describedby="enter climbing name, not required"
-        />
+          aria-labelledby="climb-label"
+        >
       </div>
+      <!-- form grade div -->
       <div class="mb-3">
-        <label for="difficulty" class="form-label">Grade</label>
+        <label for="difficulty" id="difficulty-label" class="form-label">Grade</label>
         <select
           class="form-control"
           id="difficulty"
           name="difficulty"
+          aria-labelledby="difficulty-label"
           required
         ></select>
       </div>
+      <!-- form length div -->
       <div class="mb-3">
-        <label for="length" class="form-label"
+        <label for="length" id="length-label" class="form-label"
           >Length of climb in (hand) moves
         </label>
         <input
@@ -81,30 +90,37 @@ current_user.is_authenticated %}
           class="form-control"
           id="length"
           name="length"
-          aria-describedby="enter number of moves for this climb"
+          aria-labelledby="length-label"
           required
-        />
+        >
         <br>
+        <!-- form climb completed div -->
         <div class="d-flex">
           <div class="form-check me-3">
+            <!-- not visible on screen but for aria-labelled by-->
+            <span id="completedLabel" class="visually-hidden">Mark as completed</span>
             <input
               type="radio"
               class="form-check-input"
               id="completed"
               name="completed"
               value="True"
+              aria-labelledby="completedLabel"
               required
-            />
+            >
             <label class="form-check-label" for="completed">completed</label>
           </div>
           <div class="form-check">
+            <!-- not visible on screen but for aria-labelled by-->
+            <span id="notCompletedLabel" class="visually-hidden">Mark as not completed</span>
             <input
               type="radio"
               class="form-check-input"
               id="notcompleted"
               name="completed"
               value="False"
-            />
+              aria-labelledby="notCompletedLabel"
+            >
             <label class="form-check-label" for="notcompleted"
               >not completed</label
             >
@@ -120,21 +136,6 @@ current_user.is_authenticated %}
         </button>
       </p>
     </form>
-  </div>
-</div>
-{% else %}
-<div class="card">
-  <div class="card-header">You are not logged into</div>
-  <div class="card-body">
-    <h5 class="card-title">You must be logged in to use this feature</h5>
-    <p class="card-text">
-      Either log in to your profile or create one to begin adding sessions and
-      logging your climbs
-    </p>
-    <a href="{{ url_for('add_user') }}" class="btn btn-primary"
-      >Create new user</a
-    >
-    <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
   </div>
 </div>
 {% endif %} {% endblock %}

@@ -380,6 +380,6 @@ def page_not_found(e):
 
 @app.errorhandler(401)
 def unauthorized_error(e):
-    """Displays 401 page, if user not logged in and attempts to access page
-    that requires login"""
+    """Displays 401 page, if user not logged in and attempts to access
+    page that requires login"""
     return render_template('401.html'), 401

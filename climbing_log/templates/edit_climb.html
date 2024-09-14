@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %} {% if
 current_user.is_authenticated %}
-<!-- help modal -->
+<!-- how to edit climb help modal -->
 <div
   class="modal fade"
   id="myModal"
@@ -9,17 +9,19 @@ current_user.is_authenticated %}
   aria-hidden="true"
 >
   <div class="modal-dialog">
-        <div class="modal-header text-center">How to edit your climb</div>
+        <div class="modal-header justify-content-center">
+          <h2 id="EditClimbModal">How to edit your climb</h2>
+        </div>
         <div class="modal-body text-center">
           <ul class="list-unstyled">
             <li>
               The previous details from the climb you logged will be displayed in the form
             </li>
-            <br>
+            <li><div class="spacer"></div></li>
             <li>
               Choose the details which you wish to change and replace them, then click edit climb
             </li>
-            <br>
+            <li><div class="spacer"></div></li>
             <li>
               You must recheck one of the options, completed or not completed to confirm whether you completed the climb
             </li>
@@ -57,8 +59,9 @@ current_user.is_authenticated %}
     <!-- edit climb form -->
     <!-- submitting form passes current climb id to route -->
     <form method="POST" action="{{ url_for('edit_climb', climb_id=climb_id) }}">
+      <!-- from climb name div -->
       <div class="mb-3">
-        <label for="climbname" class="form-label">Climb name (optional)</label>
+        <label for="climbname" id="climb-label" class="form-label">Climb name (optional)</label>
         <input
           type="text"
           class="form-control"
@@ -66,21 +69,24 @@ current_user.is_authenticated %}
           name="name"
           value="{{ climb.name }}"
           maxlength="50"
-          aria-describedby="enter climbing name, not required"
-        />
+          aria-labelledby="climb-label"
+        >
       </div>
+      <!-- form grade div -->
       <div class="mb-3">
-        <label for="difficulty" class="form-label">Grade</label>
+        <label for="difficulty" id="difficulty-label" class="form-label">Grade</label>
         <select
           class="form-control"
           id="difficulty"
           name="difficulty"
           value="{{ climb.difficulty }}"
+          aria-labelledby="difficulty-label"
           required
         ></select>
       </div>
+      <!-- form length div -->
       <div class="mb-3">
-        <label for="length" class="form-label"
+        <label for="length" id="length-label" class="form-label"
           >Length of climb in (hand) moves
         </label>
         <input
@@ -89,31 +95,39 @@ current_user.is_authenticated %}
           id="length"
           name="length"
           value="{{ climb.length }}"
-          aria-describedby="enter number of moves for this climb"
+          aria-labelledby="length-label"
           required
-        />
+        >
         <br>
+        <!-- form climb completed div -->
         <div class="d-flex">
           <div class="form-check me-3">
+            <!-- not visible on screen but for aria-labelled by-->
+            <span id="completedLabel" class="visually-hidden">Mark as completed</span>
             <input
               type="radio"
               class="form-check-input"
               id="completed"
               name="completed"
-              value="{{ climb.completed }}"
               value="True"
+              {% if climb.completed %} checked {% endif %} 
+              aria-labelledby="completedLabel"
               required
-            />
+            >
             <label class="form-check-label" for="completed">completed</label>
           </div>
           <div class="form-check">
+            <!-- not visible on screen but for aria-labelled by-->
+            <span id="notCompletedLabel" class="visually-hidden">Mark as not completed</span>
             <input
               type="radio"
               class="form-check-input"
               id="notcompleted"
               name="completed"
               value="False"
-            />
+              {% if not climb.completed %} checked {% endif %}
+              aria-labelledby="notCompletedLabel"
+            >
             <label class="form-check-label" for="notcompleted"
               >not completed</label
             >
@@ -124,23 +138,6 @@ current_user.is_authenticated %}
         <button type="submit" class="btn btn-primary">Edit climb</button>
       </p>
     </form>
-  </div>
-</div>
-
-{% else %}
-<!-- div to be dislayed if user is not logged in and page is accessed -->
-<div class="card">
-  <div class="card-header">You are not logged into</div>
-  <div class="card-body">
-    <h5 class="card-title">You must be logged in to use this feature</h5>
-    <p class="card-text">
-      Either log in to your profile or create one to begin adding sessions and
-      logging your climbs
-    </p>
-    <a href="{{ url_for('add_user') }}" class="btn btn-primary"
-      >Create new user</a
-    >
-    <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
   </div>
 </div>
 {% endif %} {% endblock %}

@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for, flash
-from flask_login import login_user, logout_user, current_user
+from flask_login import login_user, logout_user, current_user, login_required
 from climbing_log import app, db, login_manager, bcrypt
 from climbing_log.models import Users, Sessions, Climb
 from datetime import datetime
@@ -77,6 +77,7 @@ def login():
 
 
 @app.route("/logout")
+@login_required
 def logout():
     """log user out, flashes message for user info and returns homepage"""
     # log user out
@@ -135,6 +136,7 @@ def add_user():
 
 
 @app.route("/delete_user", methods=["GET", "POST"])
+@login_required
 def delete_user():
     """handles the user form for deleting account using GET/POST,
     GET will present delete user form to user, POST will deal with user
@@ -172,6 +174,7 @@ def delete_user():
 
 
 @app.route("/new_session", methods=["GET", "POST"])
+@login_required
 def add_session():
     """handles the user form for creating new session using GET/POST,
     GET will present new session form to user, POST will deal with user
@@ -202,6 +205,7 @@ def add_session():
 
 
 @app.route("/log_climb", methods=["GET", "POST"])
+@login_required
 def log_climb():
     """handles the user form for logging a climb using GET/POST, GET will
     present log climb form to user, POST will deal with user submiting form
@@ -248,6 +252,7 @@ def log_climb():
 
 
 @app.route('/end_session')
+@login_required
 def end_session():
     """for user to end current session from log climb page"""
     # alert user session is ended
@@ -257,6 +262,7 @@ def end_session():
 
 
 @app.route("/session_info/<int:session_id>")
+@login_required
 def session_info(session_id):
     """Displays page and creates plotly charts from session_id passed"""
     # if current user is logged in pass session id to methods for charts
@@ -279,6 +285,7 @@ def session_info(session_id):
 
 
 @app.route("/edit_climb/<int:climb_id>", methods=["GET", "POST"])
+@login_required
 def edit_climb(climb_id):
     """handles the user form for editing a climb using GET/POST, GET will
     present edit climb form to user filling in the climb details for the passed
@@ -302,6 +309,7 @@ def edit_climb(climb_id):
 
 
 @app.route("/delete_climb/<int:climb_id>", methods=["GET", "POST"])
+@login_required
 def delete_climb(climb_id):
     """deals with deletion of climbs from database"""
     # get climb from db for passed climb id
@@ -316,6 +324,7 @@ def delete_climb(climb_id):
 
 
 @app.route("/delete_session/<int:session_id>", methods=["GET", "POST"])
+@login_required
 def delete_session(session_id):
     """deals with deletion of sessions from database"""
     # get session from db for passed session id
@@ -330,6 +339,7 @@ def delete_session(session_id):
 
 
 @app.route('/sessions')
+@login_required
 def sessions():
     """returns sessions page, contains logged in users sessions and
     climbs from these sessions """
@@ -365,5 +375,11 @@ def sessions():
 @app.errorhandler(404)
 def page_not_found(e):
     """displays 404 page"""
-    # note that we set the 404 status explicitly
+
     return render_template('404.html'), 404
+
+@app.errorhandler(401)
+def unauthorized_error(e):
+    """Displays 401 page, if user not logged in and attempts to access page
+    that requires login"""
+    return render_template('401.html'), 401

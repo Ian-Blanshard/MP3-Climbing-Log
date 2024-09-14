@@ -87,7 +87,6 @@ current_user.is_authenticated %}
       </thead>
       <tbody>
         {% for climb in session.climbs %}
-
         <tr>
           <th class="th-styled-as-td" scope="row">
             {{ climb.name if climb.name else 'Unnamed Climb' }}
@@ -120,7 +119,6 @@ current_user.is_authenticated %}
             </form>
           </td>
         </tr>
-
         {% endfor %}
       </tbody>
     </table>
@@ -258,7 +256,7 @@ current_user.is_authenticated %}
         <form
           method="POST"
           action="{{ url_for('delete_session', session_id=session.session_id) }}"
-          id="deleteSessionForm-{{ session.session_id }}"
+          id="deleteSessionFormList-{{ session.session_id }}"
         >
           <button
             type="button"
@@ -278,9 +276,5 @@ current_user.is_authenticated %}
       </div>
     </ul>
   </div>
-  {% endif %} {% endfor %} {% else %}
-  <div>
-    <p>You need to log in to view this page.</p>
-    {% endif %} {% endblock %}
-  </div>
+  {% endif %}{% endfor %}{% endif %}{% endblock %}
 </div>

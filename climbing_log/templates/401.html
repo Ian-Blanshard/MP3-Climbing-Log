@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %} 
+<div class="spacer"></div>
+<!-- 404 div-->
+<div class="card">
+  <br>
+  <h1 class="card-header">
+    You need to be logged in<br> to view this page
+  </h1>
+  <br>
+  <!-- return home link div-->
+  <div class="card-text card-text-homepage">
+    <ul>
+      <li>Click here to return home</li>
+      <li><div class="spacer"></div></li>
+      <li>
+        <a href="{{ url_for('home') }}" class="btn btn-primary"
+          >Climbing Log Homepage</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
+

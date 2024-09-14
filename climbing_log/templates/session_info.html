@@ -3,21 +3,21 @@
 <div class="card">
   <div class="card-body">
     <p class="card-text chart-title">
-      What percentage of climbs did you complete in this session?
+      What percentage of climbs were completed in this session
     </p>
     <div id="pie-chart"></div>
   </div>
 </div>
 <div class="card">
   <div class="card-body">
-    <p class="card-text chart-title">Grade of climbs vs length</p>
+    <p class="card-text chart-title">Grade of climbs in session vs length</p>
     <div id="scatter-chart"></div>
   </div>
 </div>
 {% if graph1JSON %}
 <div class="card">
   <div class="card-body">
-    <p class="card-text chart-title">Grade spread of climbs completed from his session</p>
+    <p class="card-text chart-title">Grade spread of climbs completed</p>
     <div id="bar-chart"></div>
   </div>
 </div>
@@ -31,7 +31,6 @@
 <div class="spacer"></div>
 <br>
 {% endif %}
-
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script type="text/javascript">
   var graphs = {{scatterJSON | safe}};

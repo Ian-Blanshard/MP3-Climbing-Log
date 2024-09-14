@@ -55,7 +55,7 @@ I rectified all these issues and my code passed as can be seen below
 
 #### JavaScript validation <a name="javascript-validation"></a>
 
-JSHint JavaScript validator highlighted a number of unnecessary semicolons in my javscript
+JSHint JavaScript validator highlighted a number of unnecessary semicolons in my javaScript
 
 ![JavaScript validation](/climbing_log/static/images/javascript_validation.jpg)
 
@@ -168,7 +168,7 @@ Complete form | Couldn't submit incomplete form | Pass
 Feature | Outcome | Pass/Fail  
 --- | --- | ---
 Page content | All page content loaded correctly and visible to user | Pass
-Login form | Succesfully logged user into site | Pass
+Login form | Successfully logged user into site | Pass
 username field | Incorrect username entered flashed correct error message | Pass
 Password field | Incorrect password entered flashed correct error message | Pass
 
@@ -179,7 +179,7 @@ Feature | Outcome | Pass/Fail
 --- | --- | ---  
 Page content | All page content loaded correctly and visible to user | Pass  
 Delete account button | clicking button deleted the user account and logged the user out | Pass  
-Confirmation modal | When user clicks delete account cofirmation modal launches, no button closes with no action, yes button submits form | Pass
+Confirmation modal | When user clicks delete account confirmation modal launches, no button closes with no action, yes button submits form | Pass
 Incorrect password | If incorrect password entered account not deleted and correct flash message displayed | Pass
 
 
@@ -229,6 +229,10 @@ Feature | Outcome | Pass/Fail
 Page content | All page content loaded correctly and visible to user | Pass  
 View climb details link | clicking link displayed correct climb details | Pass  
 Back to view sessions button | clicking button returned user to view sessions page | Pass  
+Pie chart | Displayed correctly and all interactive features worked as intended | Pass
+Scatter chart | Displayed correctly and all interactive features worked as intended | Pass
+Climbs completed graph | Displayed correctly and all interactive features worked as intended, didn't display in no climbs completed in session | Pass
+Climbs not completed graph | Displayed correctly and all interactive features worked as intended, didn't display in no climbs not completed in session | Pass
 
 #### Testing 404 page   <a name='testing-404-page'></a>
 
@@ -272,47 +276,47 @@ Fixed bug where if a user tried to create and account and it failed due to dupli
 #### User Story 1: Logging Climbing Sessions  
 *As a user of the site, I want to keep a log of my climbing sessions so that I can track my progress over time.*
 
-| Feature              | Outcome                                                                            | Pass/Fail |
-|----------------------|------------------------------------------------------------------------------------|-----------|
-| Create new session    | User can create and log new climbing sessions via the "Record Session Page"        | Pass      |
-| Save session data     | Session data is saved in the database and is retrievable from the "View Sessions Page" | Pass      |
-| End session           | User can end session and receive a flash message indicating the session has been logged | Pass      |
-| Display recent sessions | Recent session displays on homepage after logging in                             | Pass      |
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Create new session | User can create and log new climbing sessions via the record Session page | Pass 
+Save session data | Session data is saved in the database and is retrievable and can be view in the view sessions and session info pages | Pass
+Session info charts | Session info charts allow me to track my performance and compare it to previous levels with the interactive charts | Pass
+Display recent sessions | Recent session displays on homepage after logging in | Pass 
 
 #### User Story 2: Climbing Log Details  
 *As a user of the site, I want each log to contain details about the different climbs I did in that session so that I can review the information when I choose.*
 
-| Feature              | Outcome                                                                            | Pass/Fail |
-|----------------------|------------------------------------------------------------------------------------|-----------|
-| Log individual climbs | User can log individual climbs for each session, including difficulty, length, and completion status | Pass      |
-| View logged climbs    | All climbs within a session are viewable from the "View Sessions Page"             | Pass      |
-| Edit climb details    | User can edit logged climbs from the "Edit Climb Page"                             | Pass      |
-| Delete climb          | User can delete a climb from the session, and confirmation is required             | Pass      |
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Log individual climbs | User can log individual climbs for each session, including difficulty, length, and completion status on log climbs page | Pass 
+View logged climbs | All climbs within a session are viewable from the view Sessions page | Pass 
+Edit climb details | User can edit logged climbs from the edit climb page | Pass 
+Delete climb | User can delete a climb from the session, and confirmation is required to ensure they don't accidentally do so | Pass 
 
 #### User Story 3: Comprehensive Climb Information  
 *As a user of the site, I want to store information such as the difficulty, length, name, and whether I completed each climb so that I can have a comprehensive record of my activities.*
 
-| Feature              | Outcome                                                                            | Pass/Fail |
-|----------------------|------------------------------------------------------------------------------------|-----------|
-| Record climb details  | User can log details like difficulty, length, name, and completion status on the "Add Climb Page" | Pass      |
-| Store climb data      | Climb data is saved to the database and retrievable via session overview            | Pass      |
-| View climb summary    | Logged climbs are summarized in both table format and expandable accordions on small screen sizes | Pass      |
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Record climb details | User can log details like difficulty, length, name, and completion status | Pass 
+Store climb data | Climb data is saved to the database and retrievable | Pass 
+View climb summary | Logged climbs are summarized in both table format for large screens and expandable accordions on small screen sizes | Pass 
 
 #### User Story 4: Visualize Session Data  
 *As a user of the site, I want to visualize data about my sessions and climbs using visually pleasing graphs and charts so that I can better understand my progress.*
 
-| Feature              | Outcome                                                                            | Pass/Fail |
-|----------------------|------------------------------------------------------------------------------------|-----------|
-| Visual charts for sessions | User can view pie chart and scatter plot for climb completions and difficulties | Pass      |
-| Bar charts for climbs | Bar charts display climb performance by difficulty and completion status on the "Session Info Page" | Pass      |
-| Interactive graphs    | Charts are interactive, allowing the user to toggle climb data visibility in the legends | Pass      |
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Visual charts for sessions | User can view pie chart, bar charts and scatter plot which provide information on different parts of performance | Pass 
+Charts design| Visually pleasing charts | Pass 
+Interactive graphs | Charts are interactive, allowing the user to toggle climb data visibility in the legends | Pass 
 
 #### User Story 5: Guide Future Climbing  
 *As a user of the site, I want to use the information from my logs to guide my future climbing activities so that I can improve and set new goals.*
 
-| Feature              | Outcome                                                                            | Pass/Fail |
-|----------------------|------------------------------------------------------------------------------------|-----------|
-| Track climb progress  | Users can track session and climb history via graphs to identify improvement areas | Pass      |
-| View past performance | User can analyze past climbs and sessions to guide future climbs and goals         | Pass      |
-| Session comparison    | Future feature planned to compare sessions by location, visible on "Record Session Page" | Planned   |
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Track climb progress  | Users can track session and climb history via graphs to identify improvement areas | Pass 
+View past performance | User can analyze past climbs and sessions to guide future climbs and goals | Pass
+Decide future training | User can use information to guide future training decisions | Pass
 

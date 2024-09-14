@@ -25,7 +25,7 @@ You can view an account which already has some logged activities by Logging in w
   * [User Stories](#user-stories)
   * [Database schema](#database-schema)
   * [Wireframes](#wireframes)
-  * [Colour Scheme and Font](#styles)
+  * [Color Scheme and Font](#styles)
 
 
 2 [Features](#features)
@@ -59,7 +59,7 @@ You can view an account which already has some logged activities by Logging in w
 
  * Have users log climbs, collect this information and store it in a database
 
- * Retreive this information and display it in a variety of graphical representations, to allow users to guide future training/ activities.
+ * Retrieve this information and display it in a variety of graphical representations, to allow users to guide future training/ activities.
 
  * Responsive design so it can be used across different devices
 
@@ -167,7 +167,7 @@ The colors used for the site (seen above) are a combination of white, black and 
 #### The font used for the site
 
 The font Kanit from [Google fonts](https://fonts.google.com/) is used for the site, with sans-serif set as a back-up if it can't be loaded.
-This font is used in a variety of weights accross the site, it is clear for users to read and the titles are easily read against the background image
+This font is used in a variety of weights across the site, it is clear for users to read and the titles are easily read against the background image.
 
 <br>
 
@@ -282,7 +282,7 @@ Footer contains icons for social media, which are clickable links opening up the
 
 ### Flash Messages <a name="flash-messages"></a>
 
-The site contains a number of flash messages which diplay as a banner under the navbar, these provide feedback to the user to let them know that operations have been performed succesfully when they interact with the page
+The site contains a number of flash messages which display as a banner under the navbar, these provide feedback to the user to let them know that operations have been performed successfully when they interact with the page
 
 - flash message for when user logs out of their profile
 
@@ -328,9 +328,9 @@ The page has a unique favicon for its browser tab
 
 #### Homepage
 
-The homepage features the hero image, this is present accross the whole site.
+The homepage features the hero image, this is present across the whole site.
 
-The homepage is the first page the user is presented with when visiting the site, it contains three cards, one has a short explaination of the site, one prompts them to create a user profile and the other to log in if they already have an account.
+The homepage is the first page the user is presented with when visiting the site, it contains three cards, one has a short explanation of the site, one prompts them to create a user profile and the other to log in if they already have an account.
 Both of these options are also displayed for quick access on the navbar.
 
 Once the user is logged in the cards then change one for creating a new session, one for viewing all their sessions and one contains a list of up to 10 of their recent sessions with a link to view the session charts/graphs.
@@ -374,9 +374,9 @@ Once the user is logged in the cards then change one for creating a new session,
 #### Create user page
 
 The create user page contains a form which gathers information required to set up an account, the page layout revolves around the hero image.
-It has features which ensure the password must be entered twice and match before the form can be submitted. The date of birth field can utalise a calendar to enter the users DOB. There is also user feedback through flash messages discussed above, these ensure already existing usernames/emails cannot be used again. There is alsoe feedback when to tell the user when they have successfully created an account. 
+It has features which ensure the password must be entered twice and match before the form can be submitted. The date of birth field can utilize a calendar to enter the users DOB. There is also user feedback through flash messages discussed above, these ensure already existing usernames/emails cannot be used again. There is also feedback which tells the user when they have successfully created an account. 
 
-##### Create userpage 
+##### Create user page 
 
 ![create user page form](/climbing_log/static/images/add_user_page.jpg)
 
@@ -388,7 +388,7 @@ It has features which ensure the password must be entered twice and match before
 
 
 The login page allows user to enter their login details to access the site features which require login.
-It has flash messages, discussed in details above, which appear to provide feedback to the user. To notify them of using an incorrect password, using and incorrect username and when they succesfully log in.
+It has flash messages, discussed in details above, which appear to provide feedback to the user. To notify them of using an incorrect password, using and incorrect username and when they successfully log in.
 
 ##### Login page
 
@@ -399,7 +399,7 @@ It has flash messages, discussed in details above, which appear to provide feedb
 #### Delete Account Page
 
 The delete user account page allows user to delete their account removing all their information from the database
-It also contains explanation that doing so will be permenant and that logged data will not be able to be retreived and password confirmation is required for this step to protect the user.
+It also contains explanation that doing so will be permanent and that logged data will not be able to be retrieved and password confirmation is required for this step to protect the user.
 
 
 ##### Delete account page
@@ -420,7 +420,7 @@ The form also contains flash messages, as discussed above in detail, which will 
 
 The view sessions page allows users to view their logged sessions, each session displays the basic information of session date, session length and number of climbs in the session.
 
-Depending upon screen size the climbs from the session are viewed in different ways, on large screen sizes all the climbs are visible in a table, but on smaller screen sizes these are moved into accordians which can be collapsed or expanded to view the climb information.
+Depending upon screen size the climbs from the session are viewed in different ways, on large screen sizes all the climbs are visible in a table, but on smaller screen sizes these are moved into accordions which can be collapsed or expanded to view the climb information.
 
 There are buttons available to the user which allow them to edit/delete climbs and delete sessions. There is also a button for each session which takes them the the session info page which contains charts/graphs with details on that session.
 
@@ -435,9 +435,9 @@ There are also modals which launch when the user clicks the delete session or cl
 ![View session page on small screens](/climbing_log/static/images/view_sessions_small_page.jpg)
 
 
-##### Small screen accordian 
+##### Small screen accordion 
 
-![View session small screen accordian](/climbing_log/static/images/view_sessions_small_page_accordian.jpg)
+![View session small screen accordion](/climbing_log/static/images/view_sessions_small_page_accordian.jpg)
 
 ##### Delete climb modal
 
@@ -487,7 +487,7 @@ The start session button has a flash message to alert the user that they have su
 
 The add climb page contains a form which the user can fill in with details of the climb they are attempting, it collects the climb name (which is an optional field), difficulty which is collected by a drop down, length of climb and radio buttons for either completed or not completed.
 
-Once the user has attempted their climb they add the climb to the session by clicking the add climb button, the form reloads and they can log the next climb. This action has feedback via a flash message.
+Once the user has attempted their climb they add the climb to the session by clicking the add climb button, the form reloads, and they can log the next climb. This action has feedback via a flash message.
 
 Upon completion of session they can click the end session button which will complete the session, provide them with feedback via a flash message and take them to the sessions page where details of that and their other sessions can be viewed.
 
@@ -497,7 +497,7 @@ The add climb page also has a help button which launches a modal to provide more
 
 ![Add climb page](/climbing_log/static/images/add_climb_page.jpg)
 
-##### Add clmb help modal
+##### Add climb help modal
 
 ![Add climb help modal](/climbing_log/static/images/add_climb_help_modal.jpg)
 
@@ -538,7 +538,7 @@ The 404 page is designed to show when the page the user is trying to view can't 
 
 #### Page design without background image
 
-The site is designed so that all content is still visible if there is issues with loading the background image
+The site is designed so that all content is still visible if there are issues with loading the background image
 
 ##### Site with no background image example 1
 ![site without background image](/climbing_log/static/images/background_image_not_load.jpg)
@@ -560,7 +560,7 @@ This Project uses the following languages:
 * JavaScript
 * Python
 
-[PostgresSQL](https://www.postgresql.org/) was used as the database to store and manage application data.
+[PostgreSQL](https://www.postgresql.org/) was used as the database to store and manage application data.
 
 [Flask](https://flask.palletsprojects.com/en/3.0.x/) backend framework was used to build the back end for this project.
 
@@ -572,9 +572,9 @@ This Project uses the following languages:
 
 [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) templating was used to add templates in my HTML files
 
-[Plotly Express](https://plotly.com/python/plotly-express/) was used to created the graphs and charts to display user information on logged activities.
+[Plotly Express](https://plotly.com/python/plotly-express/) was used to create the graphs and charts to display user information on logged activities.
 
-[Bootstrap](https://getbootstrap.com/) was used to assist in creating a responive layout and for prebuilt components such as the accordians and header/footer.
+[Bootstrap](https://getbootstrap.com/) was used to assist in creating a responsive layout and for prebuilt components such as the accordions and header/footer.
 
 [Git](https://git-scm.com/) and [GitHub](https://github.com/) for version control and as a repository.
 
@@ -602,19 +602,19 @@ in addition to these the following sites/tutorials/blogs were useful:
 I used [this blog post](https://vertabelo.com/blog/schema-diagram/)
 to learn more about database schemas and [this blog post](https://www.gleek.io/blog/crows-foot-notation.html#google_vignette) to better understand crows foot notation schema drawings.
 
-I used [this stackoverflow](https://stackoverflow.com/questions/70997771/is-there-a-way-to-use-python-flask-to-receive-a-unique-input-from-the-user) when looking for a solution for stopping duplicate enteries into database for unique fields.
+I used [this stack overflow](https://stackoverflow.com/questions/70997771/is-there-a-way-to-use-python-flask-to-receive-a-unique-input-from-the-user) when looking for a solution for stopping duplicate enteries into database for unique fields.
 
 [This tutorial](https://www.geeksforgeeks.org/how-to-add-authentication-to-your-app-with-flask-login/) was where i learned about and how to use flask-login.
 
-[This tutorial](https://www.geeksforgeeks.org/password-hashing-with-bcrypt-in-flask/) was where i learned aboutusing bcrypt for hashing passwords to store in the database using flask.
+[This tutorial](https://www.geeksforgeeks.org/password-hashing-with-bcrypt-in-flask/) was where i learned about using bcrypt for hashing passwords to store in the database using flask.
 
 After making some changes to my database after it was created I used [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-perform-flask-sqlalchemy-migrations-using-flask-migrate) for learning how to use flask-migrate to apply changes to the database.
 
-When I wanted to learn about how to use plotly charts with flask i used [this tutorial](https://www.geeksforgeeks.org/create-a-bar-chart-from-a-dataframe-with-plotly-and-flask/) and [this stackoverflow question](https://stackoverflow.com/questions/63616028/how-to-integrate-plotly-express-chart-to-flask-app) to help, create my charts and include them in my routes.py file.
+When I wanted to learn about how to use plotly charts with flask i used [this tutorial](https://www.geeksforgeeks.org/create-a-bar-chart-from-a-dataframe-with-plotly-and-flask/) and [this stack overflow question](https://stackoverflow.com/questions/63616028/how-to-integrate-plotly-express-chart-to-flask-app) to help, create my charts and include them in my routes.py file.
 
 When it came to editing my plotly charts I used [this question](https://community.plotly.com/t/how-can-i-adjust-the-whitespace-around-go-pie-chart/78584) on a plotly forum to help understand how.
 
-When it came to creating the database queries I used the SQLAlchemy docs to better understand the ORM, particulaly [this page](https://docs.sqlalchemy.org/en/20/orm/queryguide/relationships.html) and [this one](https://docs.sqlalchemy.org/en/20/tutorial/orm_data_manipulation.html#tutorial-orm-data-manipulation).
+When it came to creating the database queries I used the SQLAlchemy docs to better understand the ORM, particularly [this page](https://docs.sqlalchemy.org/en/20/orm/queryguide/relationships.html) and [this one](https://docs.sqlalchemy.org/en/20/tutorial/orm_data_manipulation.html#tutorial-orm-data-manipulation).
 
 For learning how to correctly implement a 404 page in flask I used [this site](https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/).
 
@@ -624,7 +624,7 @@ When i was having trouble with managing the sizing of my back ground image [this
 
 ## Testing  <a name="testing"></a>
 
-Testing was performed and documented in detail in a seperate file.
+Testing was performed and documented in detail in a separate file.
 
 The testing documentation can be viewed [here](/TESTING.md)
 
@@ -632,7 +632,7 @@ The testing documentation can be viewed [here](/TESTING.md)
 
 ## Deployment
 
-This project was developed using Microsoft Visual Studio Code, committed to Git and pushed to GitHub using the terminal with in VScode.
+This project was developed using Microsoft Visual Studio Code, committed to Git and pushed to GitHub using the terminal with in VS code.
 
 The final Live version of site is hosted on Heroku and can be found [here]()
 
@@ -659,7 +659,7 @@ pip freeze --local > requirements.txt
 
 9. On the Heroku dashboard, click deploy.
 
-10. Open the console on heroku and run a python3 terminal, create the db using db.create_all()
+10. Open the console on Heroku and run a python3 terminal, create the db using db.create_all()
 
 
 

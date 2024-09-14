@@ -115,8 +115,10 @@ def add_user():
         # flash messages to alert user if duplicates exist
         if duplicate_user:
             flash('duplicate username')
+            return render_template("add_user.html")
         elif duplicate_email:
             flash('duplicate email')
+            return render_template("add_user.html")
         # flash message to alert user if passwords entered don't match
         elif user.password != password_check:
             flash('passwords do not match')

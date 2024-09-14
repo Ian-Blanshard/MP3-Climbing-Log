@@ -46,9 +46,10 @@ You can view an account which already has some logged activities by Logging in w
 
 5 [Deployment](#deployment)
 
-6 [Finished Site](#finished-site)
+<br>
+<br>
 
-***
+
 
 ## User Experience (UX) <a name="UX"></a>
 
@@ -158,13 +159,21 @@ The layout and design for tablet/desktop will be the same with desktop having la
 
 #### The color scheme for the site
 
+![color scheme](/climbing_log/static/images/color_scheme.jpg)
+
+The colors used for the site (seen above) are a combination of white, black and shades of grey in different opacities, although the colors are quite basic the design of the site revolves around the background image and these colors allow for good contrast and therefore accessibility.
+
+
 #### The font used for the site
 
-***
+The font Kanit from [Google fonts](https://fonts.google.com/) is used for the site, with sans-serif set as a back-up if it can't be loaded.
+This font is used in a variety of weights accross the site, it is clear for users to read and the titles are easily read against the background image
+
+<br>
 
 ## Features <a name="features"></a>
 
-***
+
 
 ### Database <a name="database"></a>
 
@@ -208,7 +217,7 @@ My app demonstrates CRUD functionality as outlined below:
 - Deleting whole Sessions on the session page
 - Deleteing User account
 
-***
+<br>
 
 ### Database types
 
@@ -311,7 +320,7 @@ The page has a unique favicon for its browser tab
 
 ![favicon](/climbing_log/static/images/favicon-tab.jpg)
 
-***
+<br>
 
 ### Page Features <a name="page-features"></a>
 
@@ -538,7 +547,8 @@ The site is designed so that all content is still visible if there is issues wit
 
 ![site without background image](/climbing_log/static/images/background_image_not_load1.jpg)
 
-***
+<br>
+
 
 ## Technologies used <a name="technologies-used"></a>
 
@@ -576,9 +586,11 @@ This Project uses the following languages:
 
 Please see the requirements.txt for a full list of the packages used and versions in my project.
 
-***
+<br>
 
 ## Credits <a name="credits"></a>
+
+The background image used on the site was taken by me, and I own all rights to it.
 
 When creating my project I frequently used the docs for
 - [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
@@ -608,8 +620,7 @@ For learning how to correctly implement a 404 page in flask I used [this site](h
 
 When i was having trouble with managing the sizing of my back ground image [this blog post](https://www.webfx.com/blog/web-design/responsive-background-image/) helped resloving it.
 
-
-***
+<br>
 
 ## Testing  <a name="testing"></a>
 
@@ -617,8 +628,7 @@ Testing was performed and documented in detail in a seperate file.
 
 The testing documentation can be viewed [here](/TESTING.md)
 
-
-***
+<br>
 
 ## Deployment
 

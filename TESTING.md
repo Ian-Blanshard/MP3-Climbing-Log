@@ -138,7 +138,6 @@ Feature | Outcome | Pass/Fail
 Page content | All page content loaded correctly and visible to user | Pass
 Sign up here button | clicking button loaded create account form | Pass
 Login to your account button | clicking button loaded user login form | Pass
-Recent sessions div | Loaded recent sessions if present, all links to recent sessions working correctly, if no recent sessions text saying no recent sessions loaded | Pass
 
 ##### Logged in:
 
@@ -147,7 +146,7 @@ Feature | Outcome | Pass/Fail
 Page content | All page content loaded correctly and visible to user | Pass
 Log a session button | clicking button loaded new session form | Pass
 View sessions button | clicking button loaded view sessions page | Pass
-Your recent sessions list | Recent sessions loaded with view session analysis charts button | Pass
+Your recent sessions list | Recent sessions loaded with view session analysis charts button, if no session recorded correct text loaded | Pass
 View sessions analysis charts button | Loaded session info page for correct session | Pass
 
 #### Testing Add User Page  <a name='testing-add-user-page'></a>
@@ -155,12 +154,24 @@ View sessions analysis charts button | Loaded session info page for correct sess
 Feature | Outcome | Pass/Fail  
 --- | --- | ---
 Page content | All page content loaded correctly and visible to user | Pass
+Add user form | Form submitted correctly created user in database | Pass
+Password check | Password must be correctly entered twice, two different passwords flash error message, length must be greater than 8 | Pass
+Username check | Flashed error when tried to use a username which already existed in database | Pass
+Date of birth check | Couldn't submit for with date of birth in future | Pass
+Height check | Couldn't submit form with unrealistic height like 1cm | Pass
+Weight check | Couldn't submit form with unrealistic weight like 1kg | Pass
+Complete form | Couldn't submit incomplete form | Pass
+
 
 #### Testing Login Page  <a name='testing-login-page'></a>
 
 Feature | Outcome | Pass/Fail  
 --- | --- | ---
 Page content | All page content loaded correctly and visible to user | Pass
+Login form | Succesfully logged user into site | Pass
+username field | Incorrect username entered flashed correct error message | Pass
+Password field | Incorrect password entered flashed correct error message | Pass
+
 
 #### Testing Delete Account page   <a name='testing-delete-account-page'></a>
 
@@ -168,6 +179,9 @@ Feature | Outcome | Pass/Fail
 --- | --- | ---  
 Page content | All page content loaded correctly and visible to user | Pass  
 Delete account button | clicking button deleted the user account and logged the user out | Pass  
+Confirmation modal | When user clicks delete account cofirmation modal launches, no button closes with no action, yes button submits form | Pass
+Incorrect password | If incorrect password entered account not deleted and correct flash message displayed | Pass
+
 
 #### Testing View Sessions Page <a name='testing-view-sessions-page'></a>
 
@@ -176,12 +190,16 @@ Feature | Outcome | Pass/Fail
 Page content | All page content loaded correctly and visible to user | Pass  
 View session details link | clicking link loaded correct session details page | Pass  
 Delete session button | clicking button deleted the selected session from the session list | Pass  
+Delete climb button | Clicking button deleted correct climb | Pass
+Edit climb button | Clicking button loaded edit climb page with correct climb details | Pass
+View session analysis charts button | Clicking button loaded session info page for correct session | Pass
 
 #### Testing Edit Climb Page  <a name='testing-edit-climb-page'></a>
 
 Feature | Outcome | Pass/Fail  
 --- | --- | ---  
 Page content | All page content loaded correctly and visible to user | Pass  
+Get climb details from database | All climb details correctly retrieved from database and filled into form | Pass
 Edit climb form submission | correctly updated climb information upon submission | Pass  
 Cancel button | clicking button returned user to view sessions page without saving changes | Pass  
 
@@ -192,6 +210,7 @@ Feature | Outcome | Pass/Fail
 Page content | All page content loaded correctly and visible to user | Pass  
 Record session form submission | correctly recorded new session upon submission | Pass  
 Cancel button | clicking button returned user to homepage without saving session | Pass  
+Help modal | Modal launched correctly, displayed correct text and close button closed modal | Pass
 
 #### Testing Add Climb Page <a name='testing-add-climb-page'></a>
 
@@ -199,7 +218,9 @@ Feature | Outcome | Pass/Fail
 --- | --- | ---  
 Page content | All page content loaded correctly and visible to user | Pass  
 Add climb form submission | correctly added a new climb upon submission | Pass  
-Cancel button | clicking button returned user to view sessions page without saving climb | Pass  
+End session button | clicking button took user to view sessions page | Pass  
+Help modal | Modal launched correctly, displayed correct text and close button closed modal | Pass
+From checks | Couldn't enter negative number for climb length, couldn't submit form without required fields | Pass
 
 #### Testing Session Info Page   <a name='testing-session-info-page'></a>
 
@@ -216,25 +237,33 @@ Feature | Outcome | Pass/Fail
 Page content | Custom 404 error page loaded correctly when navigating to a non-existent URL | Pass  
 Home page link on 404 page | clicking link successfully redirected user to homepage | Pass  
 
+#### Testing 401 page   <a name='testing-404-page'></a>
+
+Feature | Outcome | Pass/Fail  
+--- | --- | ---  
+Page content | Custom 401 error page loaded correctly when attempting to view page which requires login when user not logged in | Pass  
+Home page link on 401 page | clicking link successfully redirected user to homepage | Pass 
+
 
 ### Bugs <a name="bugs"></a>
 
-#### Bug fix
+#### Bug fixes
 
-Fix the bug throws error when trying to log in with a username that doesn't exist in database
+Fixed bug in which the page would show an error if the user attempted to login with a username not in the database.
 
-incorrect button styling delete climb modal sessions page
+Fixed bug in which the confirmation modal buttons did not display the correct styling.
 
-bug fix delete mst recent session/ climb insteasd of one that butti was for
+Fixed a bug for deleting climb, the button would always delete the most recent climb not the correct one which the button was loaded next to.
 
+Fixed a bug in which when the edit climb form loaded it did not display the correct grade in the dropdown.
 
-drop down on edit climb was not showing correct grade
+Fixed a bug where users could enter a negative number for the length of climb.
 
-number of climb moves could be a negative value
+Fixed bug where user could enter a DOB in the future in create user form.
 
-create user allowed dob in future
+Fixed bug in which if the user had no recent sessions this wasn't communicated to them under the recent session header on homepage.
 
-fixed bug where if a user tried to create and account and it failed due to duplicate user and/ or email it would still load the login page after form submission, even though it flashed the correct error message and did not create account.
+Fixed bug where if a user tried to create and account and it failed due to duplicate user and/ or email it would still load the login page after form submission, even though it flashed the correct error message and did not create account.
 
 ***
 

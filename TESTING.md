@@ -32,7 +32,11 @@
 
 ### Code validation <a name="code-validation"></a>
 
-#### html validation <a name="css-validation"></a>
+#### CSS validation <a name="css-validation"></a>
+
+![CSS validation](/climbing_log/static/images/css_validation.jpg)
+
+#### HTML validation <a name="html-validation"></a>
 
 ![HTML validation before 1](/climbing_log/static/images/html_validation.jpg)
 

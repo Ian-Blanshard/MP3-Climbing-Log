@@ -458,7 +458,7 @@ The existing climb details are loaded from the database into the form, and can b
 
 #### Record Session Page
 
-The record session page is the first page a user is presented with when they want to start a new session. It contains a form which collects the location of the session, this will be used in future version when I would like to add features to compare sessions from different locations.
+The record session page is the first page a user is presented with when they want to start a new session. It contains a form which collects the location of the session, this will be used in future version when I would like to add features to compare sessions from different locations, I would also like to implement a feature to verify the users location.
 
 It also contains a help button which launches a modal which provides more details to the user on how logging a session works and the start session button which takes them to the climb logging page and creates the session in the database. 
 
@@ -550,6 +550,8 @@ This Project uses the following languages:
 * JavaScript
 * Python
 
+[PostgresSQL](https://www.postgresql.org/) was used as the database to store and manage application data.
+
 [Flask](https://flask.palletsprojects.com/en/3.0.x/) backend framework was used to build the back end for this project.
 
 [Flask-Bcrypt](https://flask-bcrypt.readthedocs.io/en/1.0.1/) was used to hash user passwords prior to saving them to the database for security.
@@ -571,6 +573,8 @@ This Project uses the following languages:
 [FontAwesome](https://fontawesome.com/) was used for social media icons in the footer.
 
 [favicon.io](https://favicon.io/) was used to create the favicon for my site.
+
+Please see the requirements.txt for a full list of the packages used and versions in my project.
 
 ***
 

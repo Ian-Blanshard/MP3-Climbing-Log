@@ -15,9 +15,11 @@ current_user.is_authenticated %}
       </div>
       <div class="card-body">
         <p class="card-text text-end">
+          <!-- confirm and delete session button -->
           <button type="button" class="btn btn-secondary" id="submitDeleteSessionForm">
             Delete Session
           </button>
+          <!-- close modal button-->
           <button
             type="button"
             class="btn btn-secondary"
@@ -30,6 +32,7 @@ current_user.is_authenticated %}
     </div>
   </div>
 </div>
+<!-- modal for confirmation of deleting climb -->
 <div
   class="modal fade"
   id="deleteClimbModal"
@@ -42,7 +45,9 @@ current_user.is_authenticated %}
       <div class="card-header">Are you sure you wish to delete this climb?</div>
       <div class="card-body">
         <p class="card-text text-end">
+          <!-- confirm and delete session button -->
           <button type="button" class="btn btn-secondary" id="submitDeleteClimbForm">Delete Climb</button>
+          <!-- close modal button-->
           <button
             type="button"
             class="btn btn-secondary"
@@ -57,6 +62,19 @@ current_user.is_authenticated %}
 </div>
 <h1 class="sessions-header">Your sessions</h1>
 <!-- session details as table for larger screen sizes -->
+<!-- if user doesn't have any session -->
+{% if sessions|length == 0 %}
+  <div class="card">
+    <div class="card-text card-text-homepage">
+      <h2>You have no recent sessions</h2>
+      <br>
+      <a href="{{ url_for('add_session') }}" class="btn btn-primary"
+          >Log a session</a
+        >
+    </div>
+  </div>
+{% else %}
+<!-- loop for every session / if it has climbs -->
 {% for session in sessions %} {% if session.climbs %}
 <div
   class="card"
@@ -64,16 +82,19 @@ current_user.is_authenticated %}
   data-session-id="{{ session.session_id }}"
 >
   <br>
+  <!-- header to show session date -->
   <h2 class="card-header climbs-as-table-header">
     Session on <br>
     {{ session.date }}
   </h2>
   <br>
+  <!-- div to display session length and number of climbs -->
   <div class="card-body">
     <p class="text-start">
       Session length: {{ session_lengths[session.session_id] }}
     </p>
     <p class="text-start">Number of climbs: {{ session.climbs | length }}</p>
+    <!-- table for displaying all the climbs from session -->
     <table class="table table-sm">
       <thead>
         <tr>
@@ -86,6 +107,7 @@ current_user.is_authenticated %}
         </tr>
       </thead>
       <tbody>
+        <!-- loop through and create row for each climb-->
         {% for climb in session.climbs %}
         <tr>
           <th class="th-styled-as-td" scope="row">
@@ -95,6 +117,7 @@ current_user.is_authenticated %}
           <td>{{ climb.length }}</td>
           <td>{{ 'Yes' if climb.completed else 'No' }}</td>
           <td>
+            <!-- edit climb button for each climb -->
             <a
               href="{{ url_for('edit_climb', climb_id=climb.climb_id) }}"
               class="btn btn-primary climbs-as-table-button"
@@ -102,11 +125,13 @@ current_user.is_authenticated %}
             >
           </td>
           <td>
+            <!-- form which handles deleting climb -->
             <form
               method="POST"
               action="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
               id="deleteClimbForm-{{ climb.climb_id }}"
             >
+            <!-- button to delete climb - launches confirm modal -->
               <button
                 type="button"
                 data-bs-toggle="modal"
@@ -128,6 +153,7 @@ current_user.is_authenticated %}
         action="{{ url_for('delete_session', session_id=session.session_id) }}"
         id="deleteSessionForm-{{ session.session_id }}"
       >
+      <!-- button to delete session - launches confirm modal -->
         <button
           type="button"
           data-bs-toggle="modal"
@@ -138,6 +164,7 @@ current_user.is_authenticated %}
           Delete Session
         </button>
       </form>
+      <!-- button to link to session_info for the specific climb -->
       <a
         href="{{ url_for('session_info', session_id=session.session_id) }}"
         class="btn btn-primary edit-session-table-btn"
@@ -146,16 +173,18 @@ current_user.is_authenticated %}
     </div>
   </div>
 </div>
-{% endif %} {% endfor %}
+{% endif %} {% endfor %} {% endif %}
 <!-- session details as list for smaller screen sizes -->
 {% for session in sessions %} {% if session.climbs %}
 <!-- session details div -->
 <div class="card" id="climbs-as-list">
   <br>
+  <!-- header to show session date -->
   <h2 class="card-title">
     Session from <br>
     {{ session.date }}
   </h2>
+  <!-- list format for smaller screens outer accordian has session info -->
   <div class="card-text card-text-homepage">
     <ul>
       <li>Session length: <br>{{ session_lengths[session.session_id] }}</li>
@@ -166,6 +195,7 @@ current_user.is_authenticated %}
         <div class="accordion">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
+              <!-- button to expand accordian holding all climbs -->
               <button
                 class="accordion-button collapsed text-start list-text-title"
                 type="button"
@@ -186,6 +216,7 @@ current_user.is_authenticated %}
                 <div class="accordion accordion-flush">
                   <div class="accordion-item">
                     <h2 class="accordion-header">
+                      <!-- button to expand accordian holding climb details-->
                       <button
                         class="accordion-button collapsed list-text-title"
                         type="button"
@@ -194,9 +225,11 @@ current_user.is_authenticated %}
                         aria-expanded="false"
                         aria-controls="flush-collapse-{{ climb.climb_id }}"
                       >
+                      <!-- climb name is clickable part of accordian -->
                           {{ climb.name if climb.name else 'Unnamed Climb' }} 
                       </button>
                     </h2>
+                    <!-- accordian opens up and contains climb info in a list-->
                     <div
                       id="flush-collapse-{{ climb.climb_id}}"
                       class="accordion-collapse collapse"
@@ -219,11 +252,13 @@ current_user.is_authenticated %}
                           </li>
                           <!-- edit/delete climb buttons -->
                           <li class="list-group-item text-end">
+                            <!-- form which handles deleting climb -->
                             <form
                               method="POST"
                               action="{{ url_for('delete_climb', climb_id=climb.climb_id) }}"
                               id="deleteClimbFormList-{{ climb.climb_id }}"
                             >
+                            <!-- button to delete climb - launches confirm modal -->
                               <button
                                 type="button"
                                 data-bs-toggle="modal"
@@ -234,6 +269,7 @@ current_user.is_authenticated %}
                                 Delete climb
                               </button>
                             </form>
+                            <!-- edit climb button for each climb -->
                             <a
                               href="{{ url_for('edit_climb', climb_id=climb.climb_id) }}"
                               class="btn btn-primary"
@@ -259,6 +295,7 @@ current_user.is_authenticated %}
           action="{{ url_for('delete_session', session_id=session.session_id) }}"
           id="deleteSessionFormList-{{ session.session_id }}"
         >
+        <!-- button to delete session - launches confirm modal -->
           <button
             type="button"
             data-bs-toggle="modal"
@@ -269,6 +306,7 @@ current_user.is_authenticated %}
             Delete Session
           </button>
         </form>
+        <!-- button to link to session_info for the specific climb -->
         <a
           href="{{ url_for('session_info', session_id=session.session_id) }}"
           class="btn btn-primary"

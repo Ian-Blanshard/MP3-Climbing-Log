@@ -73,8 +73,8 @@ def get_completed_uncompleted_climbs(session_id):
     # remove text from pie
     fig.update_traces(textinfo='none')
     # convert the plotly figure to JSON
-    pie_json = json.dumps(fig, cls=PlotlyJSONEncoder)
-    return pie_json
+    pie_json_of_climbs = json.dumps(fig, cls=PlotlyJSONEncoder)
+    return pie_json_of_climbs
 
 
 def get_range_of_difficulty_climbed(session_id):

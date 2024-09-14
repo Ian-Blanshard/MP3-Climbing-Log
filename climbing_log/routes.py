@@ -269,17 +269,17 @@ def session_info(session_id):
     # if current user is logged in pass session id to methods for charts
     if current_user.is_authenticated:
         pie_json = get_completed_uncompleted_climbs(session_id)
-        bar_json = get_range_of_difficulty_climbed(session_id)
+        bar_completed_grades = get_range_of_difficulty_climbed(session_id)
         bar_uncompleted_grades = get_range_of_difficulty_not_climbed(
             session_id)
         scatter_json = get_range_of_length_climbs(session_id)
         # return page and JSON represntations of plotly charts
         return render_template(
             'session_info.html',
-            graphJSON=pie_json,
-            graph1JSON=bar_json,
-            graph_grades_not_climbedJSON=bar_uncompleted_grades,
-            scatterJSON=scatter_json
+            pie_chart_grades=pie_json,
+            bar_chart_completed=bar_completed_grades,
+            bar_chart_not_completed=bar_uncompleted_grades,
+            scatter_of_climbs=scatter_json
         )
     # render session info without charts JSONs
     return render_template('session_info.html')
@@ -378,6 +378,7 @@ def page_not_found(e):
     """displays 404 page"""
 
     return render_template('404.html'), 404
+
 
 @app.errorhandler(401)
 def unauthorized_error(e):

@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <br>
+<!-- div to hold pie chart -->
 <div class="card">
   <div class="card-body">
     <p class="card-text chart-title">
@@ -8,6 +9,7 @@
     <div id="pie-chart"></div>
   </div>
 </div>
+<!-- div to hold scatter -->
 <div class="card">
   <div class="card-body">
     <p class="card-text chart-title">Grade of climbs in session vs length</p>
@@ -15,6 +17,7 @@
   </div>
 </div>
 {% if graph1JSON %}
+<!-- div to hold bar chart for climbs completed -->
 <div class="card">
   <div class="card-body">
     <p class="card-text chart-title">Grade spread of climbs completed</p>
@@ -22,6 +25,7 @@
   </div>
 </div>
 {% endif %} {% if graph_grades_not_climbedJSON %}
+<!-- div to hold bar chart for climbs not completed -->
 <div class="card">
   <div class="card-body">
     <p class="card-text chart-title">Grade spread of climbs failed on</p>
@@ -32,20 +36,24 @@
 <br>
 {% endif %}
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<!-- script to create scatter chart -->
 <script>
-  var graphs = {{scatterJSON | safe}};
+  var graphs = {{scatter_of_climbs | safe}};
   Plotly.plot('scatter-chart',graphs,{});
 </script>
+<!-- script to create pie chart -->
 <script>
-  var graphs = {{graphJSON | safe}};
+  var graphs = {{pie_chart_grades | safe}};
   Plotly.plot('pie-chart',graphs,{});
 </script>
+<!-- script to create bar chart for climbs completed -->
 <script>
-  var graphs = {{graph1JSON | safe}};
+  var graphs = {{bar_chart_completed | safe}};
   Plotly.plot('bar-chart',graphs,{});
 </script>
+<!-- script to create bar chart for climbs not completed -->
 <script>
-  var graphs = {{graph_grades_not_climbedJSON | safe}};
+  var graphs = {{bar_chart_not_completed | safe}};
   Plotly.plot('bar-chart-not-grade',graphs,{});
 </script>
 {% endblock %}

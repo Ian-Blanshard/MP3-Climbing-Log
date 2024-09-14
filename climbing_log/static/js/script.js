@@ -46,6 +46,8 @@ if (submitDeleteUserFormButton && deleteUserForm) {
     deleteUserForm.submit();
   });
 }
+// code for confirmation of delete session modal
+// create variables for two elements involved in modal/form
 const deleteSessionModal = document.getElementById("deleteSessionModal");
 const submitDeleteSessionFormButton = document.getElementById(
   "submitDeleteSessionForm"

@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_user, logout_user, current_user, login_required
 from climbing_log import app, db, login_manager, bcrypt
 from climbing_log.models import Users, Sessions, Climb
-from datetime import datetime
+from datetime import datetime, date
 from sqlalchemy.orm import joinedload
 from climbing_log.chart_queries import (
     get_completed_uncompleted_climbs,
@@ -94,6 +94,7 @@ def add_user():
     GET will present add user form to user, POST will deal with user
     submiting form and check validity of details added, bcrypt will hash
      password before sending to database, flashed messages for user info"""
+    today = date.today().strftime('%Y-%m-%d')
     # if POST request / user submitting for
     if request.method == 'POST':
         # get info submitted and save to user varaiable
@@ -132,7 +133,7 @@ def add_user():
         # take user to login page
         return redirect(url_for("login"))
     # GET request loads add user page/frm
-    return render_template("add_user.html")
+    return render_template("add_user.html", max_date=today)
 
 
 @app.route("/delete_user", methods=["GET", "POST"])

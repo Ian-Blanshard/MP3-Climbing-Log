@@ -209,6 +209,8 @@ drop down on edit climb was not showing correct grade
 
 number of climb moves could be a negative value
 
+create user allowed dob in future
+
 ***
 
 ### Testing User Stories <a name="testing-user-stories"></a>

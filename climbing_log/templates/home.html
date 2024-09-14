@@ -47,6 +47,18 @@ current_user.is_authenticated %}
 <div class="card">
   <h2 class="card-header">Your recent<br>sessions</h2>
   <br>
+  <!-- if user doesn't have any sessions -->
+  {% if sessions|length == 0 %}
+  <div class="card">
+    <div class="card-text card-text-homepage">
+      <h2>You have no recent sessions</h2>
+      <br>
+      <a href="{{ url_for('add_session') }}" class="btn btn-primary"
+          >Log a session</a
+        >
+    </div>
+  </div>
+  {% else %}
   {% for session in sessions %}{% if session.climbs %}
   <div class="card-text card-text-homepage">
     <ul>
@@ -61,7 +73,7 @@ current_user.is_authenticated %}
     </ul>
     <div class="spacer"></div>
   </div>
-  {% endif %}{% endfor %}
+  {% endif %}{% endfor %}{% endif %}
   <div class="spacer-l"></div>
 </div>
 {% else %}

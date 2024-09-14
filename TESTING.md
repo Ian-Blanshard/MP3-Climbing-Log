@@ -34,15 +34,21 @@
 
 #### CSS validation <a name="css-validation"></a>
 
+My CSS code passed validation with no errors
+
 ![CSS validation](/climbing_log/static/images/css_validation.jpg)
 
 #### HTML validation <a name="html-validation"></a>
+
+My HTML code has a number of errors as seen below, these were due to a number of trailing slashes, br elements being used in lists and an unclosed div.
 
 ![HTML validation before 1](/climbing_log/static/images/html_validation.jpg)
 
 ![HTML validation before 2](/climbing_log/static/images/html_validation1.jpg)
 
 ![HTML validation before 3](/climbing_log/static/images/html_validation2.jpg)
+
+I rectified all these issues and my code passed as can be seen below
 
 ![HTML validation after](/climbing_log/static/images/html_validation_pass.jpg)
 
@@ -74,7 +80,15 @@ These were rectified and my code passed with no errors.
 
 ### Lighthouse testing <a name="lighthouse-testing"></a>
 
+Lighthouse testing was good scores for all apart from my SEO, I altered some of the elements used for heading and included a meta description in the head, this rectified the issues and I also achieved a high score for SEO.
+
+Initial score
+
 ![lighthouse score before](/climbing_log/static/images/lighthouse_before.jpg)
+
+Lighthouse score following changes
+
+![lighthouse score after](/climbing_log/static/images/lighthouse_after.jpg)
 
 
 
@@ -86,10 +100,10 @@ These were rectified and my code passed with no errors.
 
 Browser | Outcome | Pass/Fail  
 --- | --- | ---
-Google Chrome | - | -
-Microsoft Edge | - | -
-Mozilla Firefox | - | -
-Apple Safari | - | -
+Google Chrome | Site functioned as expected, design appearance correct and responsive across different screen sizes | Pass
+Microsoft Edge | Site functioned as expected, design appearance correct and responsive across different screen sizes | Pass
+Mozilla Firefox | Site functioned as expected, design appearance correct and responsive across different screen sizes | Pass
+Apple Safari | Site functioned as expected, design appearance correct and responsive across different screen sizes, tested only on mobile screen size (iphone 12) | Pass
 
 #### Testing site features  <a name="testing-site-features"></a>
 
@@ -109,6 +123,10 @@ Login link | clicking link loaded user login form | Pass
 Feature | Outcome | Pass/Fail  
 --- | --- | ---
 Climbing logo brand link | clicking brand link reloaded homepage | Pass
+View sessions link | clicking link loaded sessions page | Pass
+Record sessions link | clicking link loaded new session page | Pass
+Logout link | clicking link launched confirmation of logging out modal, both modal buttons functioned correctly | Pass
+Delete account link | clicking link loaded delete account page | Pass
 
 
 #### Testing Home Page  <a name='testing-home-page'></a>
@@ -120,6 +138,7 @@ Feature | Outcome | Pass/Fail
 Page content | All page content loaded correctly and visible to user | Pass
 Sign up here button | clicking button loaded create account form | Pass
 Login to your account button | clicking button loaded user login form | Pass
+Recent sessions div | Loaded recent sessions if present, all links to recent sessions working correctly, if no recent sessions text saying no recent sessions loaded | Pass
 
 ##### Logged in:
 
@@ -215,6 +234,8 @@ number of climb moves could be a negative value
 
 create user allowed dob in future
 
+fixed bug where if a user tried to create and account and it failed due to duplicate user and/ or email it would still load the login page after form submission, even though it flashed the correct error message and did not create account.
+
 ***
 
 ### Testing User Stories <a name="testing-user-stories"></a>
@@ -230,7 +251,7 @@ create user allowed dob in future
 | Display recent sessions | Recent session displays on homepage after logging in                             | Pass      |
 
 #### User Story 2: Climbing Log Details  
-*As a user of the site, I want each log to contain details about the different climbs I did in that session so that I can review my performance for each climb.*
+*As a user of the site, I want each log to contain details about the different climbs I did in that session so that I can review the information when I choose.*
 
 | Feature              | Outcome                                                                            | Pass/Fail |
 |----------------------|------------------------------------------------------------------------------------|-----------|
@@ -265,3 +286,4 @@ create user allowed dob in future
 | Track climb progress  | Users can track session and climb history via graphs to identify improvement areas | Pass      |
 | View past performance | User can analyze past climbs and sessions to guide future climbs and goals         | Pass      |
 | Session comparison    | Future feature planned to compare sessions by location, visible on "Record Session Page" | Planned   |
+
